@@ -22,10 +22,9 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    color: #F1F2F9;
+    color: #f1f2f9;
     margin-top: 0;
-    margin-bottom: 8px ;
-
+    margin-bottom: 8px;
   }
 
   &__price {
@@ -33,20 +32,19 @@
     size: 22px;
     margin-top: 0;
     margin-bottom: 0px;
-    color: #F1F2F9;
+    color: #f1f2f9;
 
     &-old {
       text-decoration: line-through;
       height: 28px;
-      color: #75767F;
+      color: #75767f;
       font-weight: 600;
-
     }
   }
 
   &__divider {
     height: 1px;
-    background-color: #3B3E4A;
+    background-color: #3b3e4a;
     margin: 8px 0;
     width: 208px;
   }
@@ -63,7 +61,7 @@
       font-size: 12px;
       line-height: 100%;
       margin: 0;
-      color: #75767F;
+      color: #75767f;
     }
 
     &-value {
@@ -71,10 +69,8 @@
       font-size: 12px;
       line-height: 100%;
       margin: 0;
-      color: #F1F2F9;
+      color: #f1f2f9;
     }
-
-    
   }
 
   &__capacity {
@@ -88,7 +84,7 @@
       font-size: 12px;
       line-height: 100%;
       margin: 0;
-      color: #75767F;
+      color: #75767f;
     }
 
     &-value {
@@ -96,10 +92,8 @@
       font-size: 12px;
       line-height: 100%;
       margin: 0;
-      color: #F1F2F9;
+      color: #f1f2f9;
     }
-
-    
   }
 
   &__ram {
@@ -113,7 +107,7 @@
       font-size: 12px;
       line-height: 100%;
       margin: 0;
-      color: #75767F;
+      color: #75767f;
     }
 
     &-value {
@@ -121,46 +115,46 @@
       font-size: 12px;
       line-height: 100%;
       margin: 0;
-      color: #F1F2F9;
+      color: #f1f2f9;
     }
-
   }
 
-
-
-  &__button{
+  &__button {
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
     align-items: center;
 
-  &-add{
-  width: 160px; ;
-  height: 40px;
-  background-color: #905BFF;
-  color: white;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease, transform 0.3s ease, color 0.2s ease;
+    &-add {
+      width: 160px;
+      height: 40px;
+      background-color: #905bff;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition:
+        background-color 0.3s ease,
+        transform 0.3s ease,
+        color 0.2s ease;
 
-  &:hover {
-    background-color: #7A3FFF; 
-    transform: scale(1.05);
-    cursor: pointer;
-    color: #e0e0e0;
-  }
-  }
+      &:hover {
+        background-color: #7a3fff;
+        transform: scale(1.05);
+        cursor: pointer;
+        color: #e0e0e0;
+      }
+    }
 
-  &-like{
-  width: 40px; ;
-  height: 40px;
-  background-color: #323542;
-  color: #F1F2F9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  }
+    &-like {
+      width: 40px;
+      height: 40px;
+      background-color: #323542;
+      color: #f1f2f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
