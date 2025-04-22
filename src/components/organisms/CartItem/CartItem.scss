@@ -1,0 +1,86 @@
+@use '../../../styles/utils/variables';
+@use '../../../styles/utils/mixins';
+
+.cart-item {
+  background-color: variables.$surface1-color;
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__body {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__close-btn {
+    display: block;
+    background-color: variables.$surface1-color;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    font-size: 10px;
+    line-height: 10px;
+
+    &--svg {
+      color: variables.$surface2-color;
+    }
+  }
+
+  &__image {
+    max-width: 66px;
+    max-height: 66px;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__price {
+    color: variables.$white-accent-color;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+.counter {
+  display: flex;
+  height: 32px;
+  border-color: variables.$surface1-color;
+  align-items: center;
+
+
+  &__amount {
+    display: block;
+    width: 32px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__decrease,
+  &__increase {
+    // border-color: variables.$surface1-color;
+    border-color: variables.$surface2-color;
+    border-radius: 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 32px;
+    align-items: center;
+    padding: 0;
+  }
+
+  &__increse {
+    background-color: variables.$surface2-color;
+  }
+}
