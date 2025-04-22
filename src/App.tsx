@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import './App.css';
+import './App.scss';
 import { store } from './app/store';
 import { Router } from './components/Router';
 
