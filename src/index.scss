@@ -1,7 +1,6 @@
+@use './styles/utils/font.scss';
 @use 'normalize-scss' as *;
 @include normalize();
-
-@use './styles/utils/font.scss';
 
 :root {
   font-family: 'Mont', sans-serif;
