@@ -3,6 +3,7 @@
 
 .cart-item {
   background-color: $surface1-color;
+  box-sizing: border-box;
   width: 320px;
   padding: 16px;
   display: flex;
@@ -44,8 +45,17 @@
   }
 
   &__name {
+    max-width: 128px;
     font-size: 14px;
     font-weight: 600;
+
+    @include on-tablet {
+      max-width: 176px;
+    }
+
+    @include on-small-desktop {
+      max-width: 336px;
+    }
   }
 
   &__footer {
