@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Mont'; /* Название шрифта, которое будет использоваться в проекте */
-  src: url('/public/fonts/Mont-Regular.otf') format('opentype'); /* Путь к файлу шрифта */
-  font-weight: normal; /* Определяет нормальный вес шрифта */
-  font-style: normal; /* Определяет нормальный стиль шрифта */
+  font-family: 'Mont'; 
+  src: url('/public/fonts/Mont-Regular.otf') format('opentype'); 
+  font-weight: normal; 
+  font-style: normal; 
 }

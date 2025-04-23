@@ -1,49 +1,36 @@
 import React from 'react';
 import './prodCard.scss';
 import './fonts.css';
+import Image from './IPHONE_TEST.png';
 
-interface ProductCardProps {
-  image: string;
-  title: string;
-  price: number;
-  oldPrice: number;
-  screen: string;
-  capacity: number;
-  ram: number;
-}
-
-export const ProductCard: React.FC<ProductCardProps> = ({
-  image,
-  title,
-  price,
-  oldPrice,
-  screen,
-  capacity,
-  ram,
-}) => {
+export const ProductCard: React.FC = () => {
   return (
     <div className="product-card">
-      <img className="product-card__img" src={image} alt="" />
+      <img className="product-card__img" src={Image} alt="" />
 
-      <h2 className="product-card__title">{title}</h2>
+      <h2 className="product-card__title">
+        "Apple iPhone Xs 64GB Silver (iMT9G2FS/A)"
+      </h2>
       <p className="product-card__price">
-        {`$${price}`}{' '}
-        <span className="product-card__price-old">{`$${oldPrice}`}</span>
+        $799
+        <span className="product-card__price-old">$899</span>
       </p>
 
       <div className="product-card__divider"></div>
 
-      <div className="product-card__screen">
-        <p className="product-card__screen-text">Screen</p>
-        <p className="product-card__screen-value">{screen}</p>
-      </div>
-      <div className="product-card__capacity">
-        <p className="product-card__capacity-text">Capacity</p>
-        <p className="product-card__capacity-value">{capacity} GB</p>
-      </div>
-      <div className="product-card__ram">
-        <p className="product-card__ram-text">Ram</p>
-        <p className="product-card__ram-value">{ram} GB</p>
+      <div className="product-card__specifications">
+        <div className="product-card__specification">
+          <p className="product-card__specification-text">Screen</p>
+          <p className="product-card__specification-value">5.8” OLED</p>
+        </div>
+        <div className="product-card__specification">
+          <p className="product-card__specification-text">Capacity</p>
+          <p className="product-card__specification-value">64 GB</p>
+        </div>
+        <div className="product-card__specification">
+          <p className="product-card__specification-text">Ram</p>
+          <p className="product-card__specification-value">4 GB</p>
+        </div>
       </div>
 
       <div className="product-card__button">
@@ -51,7 +38,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           Add to cart
         </a>
         <button className="product-card__button-like">
-          <img src="/icons/like-icon.svg" alt="like" />
+          <img src="/icons/heart-icon.svg" alt="like" />
         </button>
       </div>
     </div>

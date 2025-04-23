@@ -1,3 +1,6 @@
+@use '/src/styles/utils/variables.scss' as *;
+@import '/src/styles/utils/mixins.scss';
+
 * {
   font-family: 'Mont', sans-serif;
 }
@@ -7,13 +10,13 @@
   flex-direction: column;
   box-sizing: border-box;
   width: 272px;
-  padding: 32px 32px 32px;
-  border: 1px solid #161827;
-  background-color: #161827;
+  padding: 32px;
+  border: 1px solid $surface1-color;
+  background-color: $surface1-color;
 
   &__img {
-    width: 208;
-    height: 196;
+    width: 208px;
+    height: 196px;
     align-self: center;
     margin-bottom: 24px;
   }
@@ -22,102 +25,61 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    color: #f1f2f9;
-    margin-top: 0;
+    color: $white-accent-color;
+    margin: 0 0 8px;
+  }
+
+  .product-card__specifications {
     margin-bottom: 8px;
-  }
-
-  &__price {
-    font-weight: 800;
-    size: 22px;
-    margin-top: 0;
-    margin-bottom: 0px;
-    color: #f1f2f9;
-
-    &-old {
-      text-decoration: line-through;
-      height: 28px;
-      color: #75767f;
-      font-weight: 600;
+    .product-card__specification {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      align-items: center;
+  
+      &-text {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        margin: 0;
+        color: $secondary-color;
+      }
+  
+      &-value {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        margin: 0;
+        color: $white-accent-color;
+      }
     }
   }
 
-  &__divider {
-    height: 1px;
-    background-color: #3b3e4a;
-    margin: 8px 0;
-    width: 208px;
-  }
+   &__price {
+     font-weight: 800 ;
+     font-size: 22px;
+     margin-top: 0;
+     margin-bottom: 0;
+     color: $white-accent-color;
 
-  &__screen {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    margin-top: 16px;
-    align-items: center;
+     &-old {
+      font-weight: 600 ;
+       margin-left: 8px;
+       text-decoration: line-through;
+       height: 28px;
+       color: $secondary-color;
+       
+     }
+   }
 
-    &-text {
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 100%;
-      margin: 0;
-      color: #75767f;
-    }
+   &__divider {
+     height: 1px;
+     background-color: $elements-color;
+     margin: 8px 0;
+     width: 208px;
+   }
 
-    &-value {
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 100%;
-      margin: 0;
-      color: #f1f2f9;
-    }
-  }
-
-  &__capacity {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    align-items: center;
-
-    &-text {
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 100%;
-      margin: 0;
-      color: #75767f;
-    }
-
-    &-value {
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 100%;
-      margin: 0;
-      color: #f1f2f9;
-    }
-  }
-
-  &__ram {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 16px;
-    align-items: center;
-
-    &-text {
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 100%;
-      margin: 0;
-      color: #75767f;
-    }
-
-    &-value {
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 100%;
-      margin: 0;
-      color: #f1f2f9;
-    }
-  }
+  
 
   &__button {
     display: flex;
@@ -126,9 +88,12 @@
     align-items: center;
 
     &-add {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
       width: 160px;
       height: 40px;
-      background-color: #905bff;
+      background-color: $purple-accent-color;
       color: white;
       text-decoration: none;
       display: flex;
@@ -139,19 +104,14 @@
         transform 0.3s ease,
         color 0.2s ease;
 
-      &:hover {
-        background-color: #7a3fff;
-        transform: scale(1.05);
-        cursor: pointer;
-        color: #e0e0e0;
-      }
+        @include hover(transform, scale(1.1));
     }
 
     &-like {
+      border-radius: 0;
       width: 40px;
-      height: 40px;
-      background-color: #323542;
-      color: #f1f2f9;
+      background-color: $surface2-color;
+      color: $white-accent-color;
       display: flex;
       align-items: center;
       justify-content: center;
