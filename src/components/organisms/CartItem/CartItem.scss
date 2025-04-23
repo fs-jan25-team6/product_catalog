@@ -1,15 +1,15 @@
-@use '../../../styles/utils/variables';
-@use '../../../styles/utils/mixins';
+@use '../../../styles/utils/variables' as *;
+@use '../../../styles/utils/mixins' as *;
 
 .cart-item {
-  background-color: variables.$surface1-color;
+  background-color: $surface1-color;
   width: 100%;
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 
-  @include mixins.on-tablet {
+  @include on-tablet {
     padding: 24px;
     flex-direction: row;
     gap: 24px;
@@ -23,7 +23,7 @@
 
   &__close-btn {
     display: block;
-    background-color: variables.$surface1-color;
+    background-color: $surface1-color;
     width: 16px;
     height: 16px;
     padding: 0;
@@ -31,7 +31,7 @@
     line-height: 10px;
 
     &--svg {
-      color: variables.$surface2-color;
+      color: $surface2-color;
     }
   }
 
@@ -50,13 +50,13 @@
     justify-content: space-between;
     align-items: center;
 
-    @include mixins.on-tablet {
+    @include on-tablet {
       flex-grow: 1;
     }
   }
 
   &__price {
-    color: variables.$white-accent-color;
+    color: $white-accent-color;
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;
@@ -66,7 +66,7 @@
 .counter {
   display: flex;
   height: 32px;
-  border-color: variables.$surface1-color;
+  border-color: $surface1-color;
   align-items: center;
 
 
@@ -80,8 +80,7 @@
 
   &__decrease,
   &__increase {
-    // border-color: variables.$surface1-color;
-    border-color: variables.$surface2-color;
+    border-color: $surface2-color;
     border-radius: 0;
     box-sizing: border-box;
     height: 100%;
@@ -91,6 +90,6 @@
   }
 
   &__increse {
-    background-color: variables.$surface2-color;
+    background-color: $surface2-color;
   }
 }

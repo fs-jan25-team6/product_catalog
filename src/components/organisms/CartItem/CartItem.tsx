@@ -1,5 +1,6 @@
 import React from 'react';
 import './CartItem.scss';
+import CloseLogo from '../../../../public/icons/close-icon.svg?react';
 
 const tempCartItem = {
   "id": 1,
@@ -22,11 +23,12 @@ export const CartItem: React.FC = () => {
       <div className='cart-item'>
         <div className='cart-item__body'>
           <button className='cart-item__close-btn'>
-            <img
+            <CloseLogo />
+            {/* <img
               className='cart-item__close-btn--svg'
               src='../../../public/icons/close-icon.svg'
               alt='close button'>
-            </img>
+            </img> */}
           </button>
           <img className='cart-item__image' src={tempCartItem.image} alt={tempCartItem.name}></img>
           <h3 className='cart-item__name'>{tempCartItem.name}</h3>
