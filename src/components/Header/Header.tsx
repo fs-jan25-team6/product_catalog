@@ -13,7 +13,11 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <NavLink to="/" className={styles.header__logo}>
-        <img src="./icons/logo-icon.svg" alt="logo" />
+        <img
+          src="./icons/logo-icon.svg"
+          alt="logo"
+          className={styles.header__img}
+        />
       </NavLink>
 
       <nav className={styles.header__nav}>
