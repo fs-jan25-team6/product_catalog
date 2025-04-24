@@ -7,7 +7,7 @@ export const AppLayout: React.FC = () => {
     <div className="content">
       <Header />
       <main className="main">
-        <h2>main content</h2>
+        {/* <h2>main content</h2> */}
         <section>
           <Outlet />
         </section>
