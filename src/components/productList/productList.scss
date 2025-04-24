@@ -1,0 +1,28 @@
+@import '/src/styles/utils/mixins';
+
+.favourites {
+  @include content-padding-inline;
+
+  &__header {
+    background-color: green;
+    height: 64px;
+    // <Header />
+  }
+
+  &__product-list {
+    @include page-grid;
+    margin-top: 80px;
+    margin-bottom: 40px;
+  }
+
+  &__card-placeholder {
+    background-color: green;
+    height: 506px;
+    width: 272px;
+  }
+
+  &__footer {
+    background-color: green;
+    height: 96px;
+  }
+}

@@ -1,0 +1,23 @@
+@import '/src/styles/utils/variables.scss';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__icon {
+    width: 16x;
+    color: #F1F2F9;
+  }
+
+  &__separator {
+    width: 16px;
+    color: #4A4D58;
+  }
+
+  &__current {
+    font-size: 13px;
+    font-weight: 700;
+    color: #75767F;
+  }
+}

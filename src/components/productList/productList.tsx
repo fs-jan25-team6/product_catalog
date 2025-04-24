@@ -1,0 +1,50 @@
+import React from 'react';
+import './productList.scss';
+import './Breadcrumbs.scss';
+import './Title.scss';
+
+export const ProductList: React.FC = () => {
+  return (
+    <div className="favourites">
+      <div className="favourites__header">{/* <Header /> */}</div>
+
+      <nav className="breadcrumbs">
+        <a href="/" className="breadcrumbs__link">
+          <img
+            src="/icons/home-icon.svg"
+            alt="home"
+            className="breadcrumbs__icon"
+          />
+        </a>
+        <img
+          src="/icons/arrow-right-icon.svg"
+          alt=">"
+          className="breadcrumbs__separator"
+        />
+        <span className="breadcrumbs__current">Favourites</span>
+      </nav>
+
+      <h1 className="title">Favourites</h1>
+
+      <div className="favourites__subtitle"></div>
+      <div className="favourites__product-list">
+        <div className="favourites__card-placeholder">
+          {/* <ProductCard /> */}
+        </div>
+        <div className="favourites__card-placeholder">
+          {/* <ProductCard /> */}
+        </div>
+        <div className="favourites__card-placeholder">
+          {/* <ProductCard /> */}
+        </div>
+        <div className="favourites__card-placeholder">
+          {/* <ProductCard /> */}
+        </div>
+        <div className="favourites__card-placeholder">
+          {/* <ProductCard /> */}
+        </div>
+      </div>
+      <div className="favourites__footer">{/* <FOOTER /> */}</div>
+    </div>
+  );
+};
