@@ -4,23 +4,22 @@
 @use './main-info.scss' as *;
 
 .product-page {
-    min-width: 320px;
-    box-sizing: border-box;
-    background-color: $main-background-color;
+  min-width: 320px;
+  box-sizing: border-box;
+  background-color: $main-background-color;
 
-    @include content-padding-inline;
-    padding-top: 24px;
-
+  @include content-padding-inline;
+  padding-top: 24px;
 }
 
 .product__name {
-    margin-top: 16px;
-    margin-bottom: 32px;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 140%;
+  margin-top: 16px;
+  margin-bottom: 32px;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
 
-    @include on-tablet {
-        margin-bottom: 40px;
-    }
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
 }
