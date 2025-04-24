@@ -1,0 +1,121 @@
+@use '../../../styles/utils/variables' as *;
+@use '../../../styles/utils/mixins' as *;
+
+.cart-item {
+  background-color: $surface1-color;
+  box-sizing: border-box;
+  width: 320px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    padding: 24px;
+    width: 592px;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  @include on-small-desktop {
+    width: 752px;
+  }
+
+  &__body {
+    display: flex;
+    gap: 23px;
+    align-items: center;
+  }
+
+  &__close-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $surface1-color;
+    padding: 0;
+
+    &--svg {
+      color: $surface2-color;
+    }
+  }
+
+  &__image {
+    max-width: 66px;
+    max-height: 66px;
+  }
+
+  &__name {
+    max-width: 128px;
+    font-size: 14px;
+    font-weight: 600;
+
+    @include on-tablet {
+      max-width: 176px;
+    }
+
+    @include on-small-desktop {
+      max-width: 336px;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      justify-content: end;
+      gap: 50px;
+      flex-grow: 1;
+    }
+  }
+
+  &__price {
+    color: $white-accent-color;
+    margin: 0;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+.counter {
+  display: flex;
+  height: 32px;
+  border-color: $surface1-color;
+  align-items: center;
+
+
+  &__amount {
+    display: block;
+    margin: 0;
+    width: 32px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__decrease,
+  &__increase {
+    display: flex;
+    justify-content: center;
+    background-color: $surface1-color;
+    border-color: $surface2-color;
+    border-radius: 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 32px;
+    align-items: center;
+    padding: 0;
+  }
+
+  &__decrease {
+    &--svg {
+      color: $surface2-color;
+    }
+  }
+
+  &__increase {
+    background-color: $surface2-color;
+  }
+}
