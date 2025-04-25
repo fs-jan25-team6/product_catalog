@@ -6,7 +6,7 @@ import { PhonesPage } from '../pages/PhonesPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { TabletsPage } from '../pages/TabletsPage';
 import { AccessoriesPage } from '../pages/AccessoriesPage';
-import { CartPage } from '../pages/CartPage';
+import { CartPage } from '../pages/CartPage/CartPage';
 import { FavoritesPage } from '../pages/FavoritesPage';
 import { ProductPage } from '../pages/ProductPage';
 
