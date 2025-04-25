@@ -1,0 +1,117 @@
+@use '/src/styles/utils/variables.scss' as *;
+@import '/src/styles/utils/mixins.scss';
+
+* {
+  font-family: 'Mont', sans-serif;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 272px;
+  padding: 32px;
+  border: 1px solid $surface1-color;
+  background-color: $surface1-color;
+
+  &__img {
+    width: 208px;
+    height: 196px;
+    align-self: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $white-accent-color;
+    margin: 0 0 8px;
+  }
+
+  .product-card__specifications {
+    margin-bottom: 8px;
+    .product-card__specification {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      align-items: center;
+
+      &-text {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        margin: 0;
+        color: $secondary-color;
+      }
+
+      &-value {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        margin: 0;
+        color: $white-accent-color;
+      }
+    }
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: $white-accent-color;
+
+    &-old {
+      font-weight: 600;
+      margin-left: 8px;
+      text-decoration: line-through;
+      height: 28px;
+      color: $secondary-color;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: $elements-color;
+    margin: 8px 0;
+    width: 208px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    align-items: center;
+
+    &-add {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      width: 160px;
+      height: 40px;
+      background-color: $purple-accent-color;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition:
+        background-color 0.3s ease,
+        transform 0.3s ease,
+        color 0.2s ease;
+
+      @include hover(transform, scale(1.1));
+    }
+
+    &-like {
+      border-radius: 0;
+      width: 40px;
+      background-color: $surface2-color;
+      color: $white-accent-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
