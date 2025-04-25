@@ -1,0 +1,74 @@
+@use '/src/styles/utils/variables.scss' as *;
+@use '/src/styles/utils/mixins.scss' as *;
+@use '/src/styles/utils/normalize.scss' as *;
+
+.product__offers {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      color: $white-accent-color;
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    &__button {
+      box-sizing: border-box;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $main-background-color;
+      border: 1px solid $surface2-color;
+    }
+  }
+
+  &__catalog {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    overflow: visible;
+    overflow-x: hidden;
+
+    @include on-tablet {
+        gap: 16px;
+    }
+
+    @include on-small-desktop {
+      justify-content: center;
+      align-items: center;
+    }
+    &__card {
+      min-width: 212px;
+      overflow: hidden;
+      height: 439px;
+      background-color: green;
+
+      @include on-tablet {
+        width: 237px;
+        height: 512px;
+      }
+
+      @include on-small-desktop {
+        width: 272px;
+        height: 506px;
+      }
+    }
+  }
+}

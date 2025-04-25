@@ -155,53 +155,57 @@ export const ProductPage: React.FC = () => {
             <div className="product__main-info__features__breakline"></div>
 
             <div className="product__main-info__features__prices">
-              <span className="product__main-info__features__prices--discount">
+              <span className="product__main-info__features__prices__discount">
                 $799
               </span>
-              <span className="product__main-info__features__prices--regular">
+              <span className="product__main-info__features__prices__regular">
                 $1199
               </span>
             </div>
 
             <div className="product__main-info__features__buttons">
-              <button className="product__main-info__features__buttons--cart">
+              <button className="product__main-info__features__buttons__cart">
                 Add to cart
               </button>
-              <button className="product__main-info__features__buttons--favourites">
-                <img src="./icons/heart-icon.svg" alt="fav" />
+              <button className="product__main-info__features__buttons__favourites">
+                <img
+                  className="product__main-info__features__buttons__favourites__icon"
+                  src="./icons/heart-icon.svg"
+                  alt="fav"
+                />
               </button>
             </div>
 
             <div className="product__main-info__features__descriptions">
               <div className="product__main-info__features__description">
-                <span className="product__main-info__features__description--label">
+                <span className="product__main-info__features__description__label">
                   Screen
                 </span>
-                <span className="product__main-info__features__description--value">
+                <span className="product__main-info__features__description__value">
                   6.5” OLED
                 </span>
               </div>
               <div className="product__main-info__features__description">
-                <span className="product__main-info__features__description--label">
+                <span className="product__main-info__features__description__label">
                   Resolution
                 </span>
-                <span className="product__main-info__features__description--value">
+                <span className="product__main-info__features__description__value">
                   2688x1242
                 </span>
               </div>
               <div className="product__main-info__features__description">
-                <span className="product__main-info__features__description--label">
+                <span className="product__main-info__features__description__label">
                   Processor
                 </span>
-                <span className="product__main-info__features__description--value">
+                <span className="product__main-info__features__description__value">
                   Apple A12 Bionic
                 </span>
               </div>
               <div className="product__main-info__features__description">
-                <span className="product__main-info__features__description--label">
+                <span className="product__main-info__features__description__label">
                   RAM
                 </span>
-                <span className="product__main-info__features__description--value">
+                <span className="product__main-info__features__description__value">
                   3 GB
                 </span>
               </div>
@@ -213,30 +217,32 @@ export const ProductPage: React.FC = () => {
           <div className="product__detailes__about">
             <h3 className="product__detailes__about__title">About</h3>
 
-            <div className="product__detailes__about__breakline"></div>
+            <div className="product__detailes__breakline"></div>
 
             <div className="product__detailes__about__content">
-              <article className="product__detailes__about__pro">
-                <h4 className="product__detailes__about__pro__title">
+              <article className="product__detailes__about__article">
+                <h4 className="product__detailes__about__article__title">
                   And then there was Pro
                 </h4>
-                <p className="product__detailes__about__pro__description--1">
-                  A transformative triple‑camera system that adds tons of
-                  capability without complexity.
-                </p>
-                <p className="product__detailes__about__pro__description--2">
-                  An unprecedented leap in battery life. And a mind‑blowing chip
-                  that doubles down on machine learning and pushes the
-                  boundaries of what a smartphone can do. Welcome to the first
-                  iPhone powerful enough to be called Pro.
+                <p className="product__detailes__about__article__description">
+                  <p className="product__detailes__about__article__description__p1">
+                    A transformative triple‑camera system that adds tons of
+                    capability without complexity.
+                  </p>
+                  <p className="product__detailes__about__article__description__p2">
+                    An unprecedented leap in battery life. And a mind‑blowing
+                    chip that doubles down on machine learning and pushes the
+                    boundaries of what a smartphone can do. Welcome to the first
+                    iPhone powerful enough to be called Pro.
+                  </p>
                 </p>
               </article>
 
-              <article className="product__detailes__about__pro">
-                <h4 className="product__detailes__about__camera__title">
+              <article className="product__detailes__about__article">
+                <h4 className="product__detailes__about__article__title">
                   Camera
                 </h4>
-                <p className="product__detailes__about__camera__description">
+                <p className="product__detailes__about__article__description">
                   Meet the first triple‑camera system to combine cutting‑edge
                   technology with the legendary simplicity of iPhone. Capture up
                   to four times more scene. Get beautiful images in drastically
@@ -246,12 +252,12 @@ export const ProductPage: React.FC = () => {
                 </p>
               </article>
 
-              <article className="product__detailes__about__pro">
-                <h4 className="product__detailes__about__shoot-it__title">
+              <article className="product__detailes__about__article">
+                <h4 className="product__detailes__about__article__title">
                   Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak
                   it. Love it.
                 </h4>
-                <p className="product__detailes__about__shoot-it__description">
+                <p className="product__detailes__about__article__description">
                   iPhone 11 Pro lets you capture videos that are beautifully
                   true to life, with greater detail and smoother motion. Epic
                   processing power means it can shoot 4K video with extended
@@ -266,70 +272,70 @@ export const ProductPage: React.FC = () => {
           <div className="product__detailes__tech-specs">
             <h3 className="product__detailes__tech-specs__title">Tech specs</h3>
 
-            <div className="product__detailes__about__breakline"></div>
+            <div className="product__detailes__breakline"></div>
 
             <div className="product__detailes__tech-specs__features">
               <div className="product__detailes__tech-specs__feature">
-                <span className="product__detailes__tech-specs__feature--label">
+                <span className="product__detailes__tech-specs__feature__label">
                   Screen
                 </span>
-                <span className="product__detailes__tech-specs__feature--value">
+                <span className="product__detailes__tech-specs__feature__value">
                   6.5” OLED
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
-                <span className="product__detailes__tech-specs__feature--label">
+                <span className="product__detailes__tech-specs__feature__label">
                   Resolution
                 </span>
-                <span className="product__detailes__tech-specs__feature--value">
+                <span className="product__detailes__tech-specs__feature__value">
                   2688x1242
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
-                <span className="product__detailes__tech-specs__feature--label">
+                <span className="product__detailes__tech-specs__feature__label">
                   Processor
                 </span>
-                <span className="product__detailes__tech-specs__feature--value">
+                <span className="product__detailes__tech-specs__feature__value">
                   Apple A12 Bionic
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
-                <span className="product__detailes__tech-specs__feature--label">
+                <span className="product__detailes__tech-specs__feature__label">
                   RAM
                 </span>
-                <span className="product__detailes__tech-specs__feature--value">
+                <span className="product__detailes__tech-specs__feature__value">
                   3 GB
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
-                <span className="product__detailes__tech-specs__feature--label">
+                <span className="product__detailes__tech-specs__feature__label">
                   Built in memory
                 </span>
-                <span className="product__detailes__tech-specs__feature--value">
+                <span className="product__detailes__tech-specs__feature__value">
                   64 GB
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
-                <span className="product__detailes__tech-specs__feature--label">
+                <span className="product__detailes__tech-specs__feature__label">
                   Camera
                 </span>
-                <span className="product__detailes__tech-specs__feature--value">
+                <span className="product__detailes__tech-specs__feature__value">
                   12 Mp + 12 Mp + 12 Mp (Triple)
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
-                <span className="product__detailes__tech-specs__feature--label">
+                <span className="product__detailes__tech-specs__feature__label">
                   Zoom
                 </span>
-                <span className="product__detailes__tech-specs__feature--value">
+                <span className="product__detailes__tech-specs__feature__value">
                   Optical, 2x
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
-                <span className="product__detailes__tech-specs__feature--label">
+                <span className="product__detailes__tech-specs__feature__label">
                   Cell
                 </span>
-                <span className="product__detailes__tech-specs__feature--value">
+                <span className="product__detailes__tech-specs__feature__value">
                   GSM, LTE, UMTS
                 </span>
               </div>
@@ -341,11 +347,19 @@ export const ProductPage: React.FC = () => {
           <div className="product__offers__head">
             <h2 className="product__offers__head__title">You may also like</h2>
             <div className="product__offers__head__buttons">
-              <button className="product__offers__head__buttons--left">
-                <img src="./icons/arrow-left-icon.svg" alt="arrow-left" />
+              <button className="product__offers__head__button">
+                <img
+                  className="product__offers__head__button__arrow"
+                  src="./icons/arrow-left-icon.svg"
+                  alt="<"
+                />
               </button>
-              <button className="product__offers__head__buttons--right">
-                <img src="./icons/arrow-right-icon.svg" alt="arr-right" />
+              <button className="product__offers__head__button">
+                <img
+                  className="product__offers__head__button__arrow"
+                  src="./icons/arrow-right-icon.svg"
+                  alt=">"
+                />
               </button>
             </div>
           </div>
