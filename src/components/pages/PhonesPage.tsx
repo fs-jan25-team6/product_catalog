@@ -1,20 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../app/store';
+import { ProductList } from '../ProductList/ProductList';
+import { Product } from '../../types/Product';
 
 export const PhonesPage: React.FC = () => {
-  const products = useAppSelector(state => state.products);
+  const products = useAppSelector(state => state.products) as Product[];
+  const phones = products.filter(product => product.category === 'accessories');
 
   return (
     <>
       <h2>📱 Phones page</h2>
-      <div className="stack stack--vertical">
-        {products.map(el => (
-          <NavLink to={`/product/${el.id}`} key={el.id}>
-            Product #{el.id} ({el.name})
-          </NavLink>
-        ))}
-      </div>
+      <ProductList list={phones} />
     </>
   );
 };

@@ -1,0 +1,121 @@
+$divider-color: #3b3e4a;
+$grey-color: #75767f;
+$greywhite-color: #f1f2f9;
+$grey-surface0-color: #0f1121;
+$grey-surface1-color: #161827;
+$grey-surface2-color: #323542;
+$purple-accent-color: #905bff;
+$purple-accent-hover-color: #a378ff;
+
+@use '/src/styles/utils/mixins.scss' as *;
+
+.card {
+  color: $greywhite-color;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background-color: $grey-surface1-color;
+
+  &__content {
+    flex: 1;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 1;
+
+    aspect-ratio: 1/1;
+  }
+
+  &__description {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    padding-top: 16px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &__value {
+      font-size: 22px;
+      font-weight: bold;
+
+      &--strikethrough {
+        text-decoration: line-through;
+        color: $grey-color;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: $divider-color;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    gap: 8px;
+    padding-block: 8px;
+
+    &__field {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    &__label {
+      color: $grey-color;
+    }
+  }
+
+  &__controls {
+    height: 40px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    height: 100%;
+    background-color: $grey-surface2-color;
+
+    cursor: pointer;
+
+    border: none;
+    box-sizing: border-box;
+
+    &--cart {
+      flex-grow: 1;
+      background-color: $purple-accent-color;
+
+      @include hover(background-color, $purple-accent-hover-color);
+    }
+
+    &--fav {
+      aspect-ratio: 1/1;
+    }
+  }
+}
