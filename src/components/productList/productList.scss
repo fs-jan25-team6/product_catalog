@@ -1,28 +1,38 @@
 @import '/src/styles/utils/mixins';
 
 .favourites {
-  @include content-padding-inline;
-
-  &__header {
-    background-color: green;
-    height: 64px;
-    // <Header />
+  &__content {
+    @include content-padding-inline;
   }
 
   &__product-list {
     @include page-grid;
-    margin-top: 80px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__subtitle {
+    font-weight: 600;
+    font-size: 14px;
     margin-bottom: 40px;
   }
 
   &__card-placeholder {
+    grid-column: span 6;
+    
     background-color: green;
-    height: 506px;
     width: 272px;
-  }
+    height: 506px;
+    margin-bottom: 40px;
 
-  &__footer {
-    background-color: green;
-    height: 96px;
+    @media (max-width: 1199px) {
+      width: 288px;
+      height: 506px;
+    }
+
+    @media (max-width: 639px) {
+      width: 287px;
+      height: 440px;
+    }
   }
 }
