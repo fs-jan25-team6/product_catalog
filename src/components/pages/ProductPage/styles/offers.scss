@@ -47,7 +47,7 @@
     overflow-x: hidden;
 
     @include on-tablet {
-        gap: 16px;
+      gap: 16px;
     }
 
     @include on-small-desktop {

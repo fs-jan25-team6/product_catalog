@@ -33,13 +33,11 @@
       justify-content: start;
 
       @include on-tablet {
-
       }
 
       @include on-small-desktop {
         width: 464px;
         height: 464px;
-
       }
 
       &--img {
@@ -232,7 +230,6 @@
         font-size: 14px;
         line-height: 21px;
         text-align: center;
-
       }
 
       &__favourites {
@@ -242,7 +239,7 @@
         justify-content: center;
         align-items: center;
         background-color: $surface2-color;
-        
+
         &__icon {
           width: 16px;
           height: 16px;
