@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import './styles/ProductPage.scss';
 import { Link } from 'react-router-dom';
 
-import img1 from './tempImg/img-1.png';
-import img2 from './tempImg/img-2.png';
-import img3 from './tempImg/img-3.png';
-import img4 from './tempImg/img-4.png';
-import img5 from './tempImg/img-5.png';
+import HomeIcon from '../../../../public/icons/home-icon.svg?react';
+import ArrowRightIcon from '../../../../public/icons/arrow-right-icon.svg?react';
+import ArrowRightWhiteIcon from '../../../../public/icons/arrow-right-white-icon.svg?react';
+import ArrowLeftIcon from '../../../../public/icons/arrow-left-icon.svg?react';
+import ArrowLeftWhiteIcon from '../../../../public/icons/arrow-left-white-icon.svg?react';
+import HeartIcon from '../../../../public/icons/heart-icon.svg?react';
+import FilledHeartIcon from '../../../../public/icons/heart-filled-icon.svg?react';
+
+import idToNumberHash from '../../../helpers/getHashed';
 
 const tempProduct = {
   id: 'apple-iphone-11-pro-max-64gb-gold',
@@ -57,20 +61,24 @@ const tempProduct = {
 
 export const ProductPage: React.FC = () => {
   // const { productId } = useParams();
+
+  const [isFavourite, setIsFavourite] = useState(false);
+  const [isInCart, setIsInCart] = useState(false);
+
+  const toggleFavourite = () => setIsFavourite(!isFavourite);
+
+  const toggleCart = () => setIsInCart(!isInCart);
+
   return (
     <div className="product-page">
       <div className="product-page__content">
         <section className="navigation">
           <div className="navigation__breadcrumbs">
             <Link to="/" className="navigation__breadcrumbs__home">
-              <img src="./icons/home-icon.svg" alt="home" />
+              <HomeIcon />
             </Link>
             <span>
-              <img
-                src="./icons/arrow-right-icon.svg"
-                alt="arrow-right"
-                className="navigation__breadcrumbs__arrow-right"
-              />
+              <ArrowRightIcon className="navigation__breadcrumbs__arrow-right" />
             </span>
             <Link to="/phones" className="navigation__breadcrumbs__category">
               Phones
@@ -83,17 +91,13 @@ export const ProductPage: React.FC = () => {
               />
             </span>
             <span className="navigation__breadcrumbs__product">
-              Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+              {tempProduct.name} (iMT9G2FS/A)
             </span>
           </div>
 
           <div className="navigation__back">
             <span>
-              <img
-                src="./icons/arrow-left-white-icon.svg"
-                alt="arrow-right"
-                className="navigation__back__arrow-left"
-              />
+              <ArrowLeftWhiteIcon className="navigation__back__arrow-left" />
             </span>
             <Link to="/phones" className="navigation__back__link">
               Back
@@ -101,46 +105,26 @@ export const ProductPage: React.FC = () => {
           </div>
         </section>
 
-        <h2 className="product__name">
-          Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-        </h2>
+        <h2 className="product__name">{tempProduct.name} (iMT9G2FS/A)</h2>
 
         <section className="product__main-info">
           <div className="product__main-info__images">
             <div className="product__main-info__images__main-image">
               <img
-                className="product__main-info__images__main-image--img"
-                src={img1}
+                className="product__main-info__images__main-image__img"
+                src={tempProduct.images[0]}
                 alt="iphone-img"
               />
             </div>
 
             <div className="product__main-info__images__slider">
-              <img
-                className="product__main-info__images__slider--img"
-                src={img1}
-                alt="iphone-img"
-              />
-              <img
-                className="product__main-info__images__slider--img"
-                src={img2}
-                alt="iphone-img"
-              />
-              <img
-                className="product__main-info__images__slider--img"
-                src={img3}
-                alt="iphone-img"
-              />
-              <img
-                className="product__main-info__images__slider--img"
-                src={img4}
-                alt="iphone-img"
-              />
-              <img
-                className="product__main-info__images__slider--img"
-                src={img5}
-                alt="iphone-img"
-              />
+              {tempProduct.images.map(image => (
+                <img
+                  className="product__main-info__images__slider__img"
+                  src={image}
+                  alt="iphone-img"
+                />
+              ))}
             </div>
           </div>
 
@@ -151,22 +135,22 @@ export const ProductPage: React.FC = () => {
                   Available colors
                 </span>
                 <div className="product__main-info__features__colors__list">
-                  <div className="product__main-info__features__colors__list__outline">
-                    <div className="product__main-info__features__colors__list--red"></div>
-                  </div>
-                  <div className="product__main-info__features__colors__list__outline">
-                    <div className="product__main-info__features__colors__list--green"></div>
-                  </div>
-                  <div className="product__main-info__features__colors__list__outline">
-                    <div className="product__main-info__features__colors__list--white"></div>
-                  </div>
-                  <div className="product__main-info__features__colors__list__outline">
-                    <div className="product__main-info__features__colors__list--purple"></div>
-                  </div>
+                  {tempProduct.colorsAvailable.map(col => (
+                    <div
+                      key={col}
+                      className={`product__main-info__features__colors__list__outline ${
+                        col === tempProduct.color ? '--active' : ''
+                      }`}
+                    >
+                      <div
+                        className={`product__main-info__features__colors__list__item --${col}`}
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
               <span className="product__main-info__features__id">
-                ID: 802390
+                ID: {idToNumberHash(tempProduct.id)}
               </span>
             </div>
 
@@ -177,24 +161,18 @@ export const ProductPage: React.FC = () => {
                 Select capacity
               </span>
               <div className="product__main-info__features__capacity__list">
-                <a
-                  href="#"
-                  className="product__main-info__features__capacity__list__memory--active"
-                >
-                  64 GB
-                </a>
-                <a
-                  href="#"
-                  className="product__main-info__features__capacity__list__memory"
-                >
-                  256 GB
-                </a>
-                <a
-                  href="#"
-                  className="product__main-info__features__capacity__list__memory"
-                >
-                  512 GB
-                </a>
+                {tempProduct.capacityAvailable.map(cap => (
+                  <a
+                    href="#"
+                    className={
+                      cap === tempProduct.capacity
+                        ? 'product__main-info__features__capacity__list__memory--active'
+                        : 'product__main-info__features__capacity__list__memory'
+                    }
+                  >
+                    {cap}
+                  </a>
+                ))}
               </div>
             </div>
 
@@ -210,15 +188,25 @@ export const ProductPage: React.FC = () => {
             </div>
 
             <div className="product__main-info__features__buttons">
-              <button className="product__main-info__features__buttons__cart">
-                Add to cart
+              <button
+                className={
+                  isInCart
+                    ? 'product__main-info__features__buttons__cart--added'
+                    : 'product__main-info__features__buttons__cart'
+                }
+                onClick={toggleCart}
+              >
+                {isInCart ? 'Added' : 'Add to cart'}
               </button>
-              <button className="product__main-info__features__buttons__favourites">
-                <img
-                  className="product__main-info__features__buttons__favourites__icon"
-                  src="./icons/heart-icon.svg"
-                  alt="fav"
-                />
+              <button
+                className={
+                  isFavourite
+                    ? 'product__main-info__features__buttons__favourites--added'
+                    : 'product__main-info__features__buttons__favourites'
+                }
+                onClick={toggleFavourite}
+              >
+                {isFavourite ? <FilledHeartIcon /> : <HeartIcon />}
               </button>
             </div>
 
@@ -228,7 +216,7 @@ export const ProductPage: React.FC = () => {
                   Screen
                 </span>
                 <span className="product__main-info__features__description__value">
-                  6.5” OLED
+                  {tempProduct.screen}
                 </span>
               </div>
               <div className="product__main-info__features__description">
@@ -236,7 +224,7 @@ export const ProductPage: React.FC = () => {
                   Resolution
                 </span>
                 <span className="product__main-info__features__description__value">
-                  2688x1242
+                  {tempProduct.resolution}
                 </span>
               </div>
               <div className="product__main-info__features__description">
@@ -244,7 +232,7 @@ export const ProductPage: React.FC = () => {
                   Processor
                 </span>
                 <span className="product__main-info__features__description__value">
-                  Apple A12 Bionic
+                  {tempProduct.processor}
                 </span>
               </div>
               <div className="product__main-info__features__description">
@@ -252,7 +240,7 @@ export const ProductPage: React.FC = () => {
                   RAM
                 </span>
                 <span className="product__main-info__features__description__value">
-                  3 GB
+                  {tempProduct.ram}
                 </span>
               </div>
             </div>
@@ -266,52 +254,18 @@ export const ProductPage: React.FC = () => {
             <div className="product__detailes__breakline"></div>
 
             <div className="product__detailes__about__content">
-              <article className="product__detailes__about__article">
-                <h4 className="product__detailes__about__article__title">
-                  And then there was Pro
-                </h4>
-                <p className="product__detailes__about__article__description">
-                  <p className="product__detailes__about__article__description__p1">
-                    A transformative triple‑camera system that adds tons of
-                    capability without complexity.
-                  </p>
-                  <p className="product__detailes__about__article__description__p2">
-                    An unprecedented leap in battery life. And a mind‑blowing
-                    chip that doubles down on machine learning and pushes the
-                    boundaries of what a smartphone can do. Welcome to the first
-                    iPhone powerful enough to be called Pro.
-                  </p>
-                </p>
-              </article>
-
-              <article className="product__detailes__about__article">
-                <h4 className="product__detailes__about__article__title">
-                  Camera
-                </h4>
-                <p className="product__detailes__about__article__description">
-                  Meet the first triple‑camera system to combine cutting‑edge
-                  technology with the legendary simplicity of iPhone. Capture up
-                  to four times more scene. Get beautiful images in drastically
-                  lower light. Shoot the highest‑quality video in a smartphone —
-                  then edit with the same tools you love for photos. You’ve
-                  never shot with anything like it.
-                </p>
-              </article>
-
-              <article className="product__detailes__about__article">
-                <h4 className="product__detailes__about__article__title">
-                  Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak
-                  it. Love it.
-                </h4>
-                <p className="product__detailes__about__article__description">
-                  iPhone 11 Pro lets you capture videos that are beautifully
-                  true to life, with greater detail and smoother motion. Epic
-                  processing power means it can shoot 4K video with extended
-                  dynamic range and cinematic video stabilization — all at 60
-                  fps. You get more creative control, too, with four times more
-                  scene and powerful new editing tools to play with.
-                </p>
-              </article>
+              {tempProduct.description.map(article => (
+                <article className="product__detailes__about__article">
+                  <h4 className="product__detailes__about__article__title">
+                    {article.title}
+                  </h4>
+                  {article.text.map(paragragh => (
+                    <p className="product__detailes__about__article__description">
+                      {paragragh}
+                    </p>
+                  ))}
+                </article>
+              ))}
             </div>
           </div>
 
@@ -326,7 +280,7 @@ export const ProductPage: React.FC = () => {
                   Screen
                 </span>
                 <span className="product__detailes__tech-specs__feature__value">
-                  6.5” OLED
+                  {tempProduct.screen}
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
@@ -334,7 +288,7 @@ export const ProductPage: React.FC = () => {
                   Resolution
                 </span>
                 <span className="product__detailes__tech-specs__feature__value">
-                  2688x1242
+                  {tempProduct.resolution}
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
@@ -342,7 +296,7 @@ export const ProductPage: React.FC = () => {
                   Processor
                 </span>
                 <span className="product__detailes__tech-specs__feature__value">
-                  Apple A12 Bionic
+                  {tempProduct.processor}
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
@@ -350,7 +304,7 @@ export const ProductPage: React.FC = () => {
                   RAM
                 </span>
                 <span className="product__detailes__tech-specs__feature__value">
-                  3 GB
+                  {tempProduct.ram}
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
@@ -358,7 +312,7 @@ export const ProductPage: React.FC = () => {
                   Built in memory
                 </span>
                 <span className="product__detailes__tech-specs__feature__value">
-                  64 GB
+                  {tempProduct.capacity}
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
@@ -366,7 +320,7 @@ export const ProductPage: React.FC = () => {
                   Camera
                 </span>
                 <span className="product__detailes__tech-specs__feature__value">
-                  12 Mp + 12 Mp + 12 Mp (Triple)
+                  {tempProduct.camera} (Triple)
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
@@ -374,7 +328,7 @@ export const ProductPage: React.FC = () => {
                   Zoom
                 </span>
                 <span className="product__detailes__tech-specs__feature__value">
-                  Optical, 2x
+                  {tempProduct.zoom}
                 </span>
               </div>
               <div className="product__detailes__tech-specs__feature">
@@ -382,7 +336,7 @@ export const ProductPage: React.FC = () => {
                   Cell
                 </span>
                 <span className="product__detailes__tech-specs__feature__value">
-                  GSM, LTE, UMTS
+                  {tempProduct.cell.join(', ')}
                 </span>
               </div>
             </div>
@@ -394,18 +348,10 @@ export const ProductPage: React.FC = () => {
             <h2 className="product__offers__head__title">You may also like</h2>
             <div className="product__offers__head__buttons">
               <button className="product__offers__head__button">
-                <img
-                  className="product__offers__head__button__arrow"
-                  src="./icons/arrow-left-icon.svg"
-                  alt="<"
-                />
+                <ArrowLeftIcon className="product__offers__head__button__arrow" />
               </button>
-              <button className="product__offers__head__button">
-                <img
-                  className="product__offers__head__button__arrow"
-                  src="./icons/arrow-right-icon.svg"
-                  alt=">"
-                />
+              <button className="product__offers__head__button --active">
+                <ArrowRightWhiteIcon className="product__offers__head__button__arrow --active" />
               </button>
             </div>
           </div>

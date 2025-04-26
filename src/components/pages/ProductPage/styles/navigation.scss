@@ -51,17 +51,19 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    font-weight: 700;
-    line-height: 100%;
 
     &__arrow-left {
       display: block;
-      width: 16px;
-      height: 16px;
+      color: $white-accent-color; // Катерина, ти відьма, чому у тебе працює, у мене ні
     }
 
     &__link {
       display: block;
+      height: 16px;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 100%;
+      align-content: center;
     }
   }
 }

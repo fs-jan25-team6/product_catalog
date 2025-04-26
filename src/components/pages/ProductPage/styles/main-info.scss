@@ -24,23 +24,20 @@
     }
 
     &__main-image {
-      min-width: 288px;
-      min-height: 288px;
+      width: 288px;
+      height: 288px;
       grid-column: 1 / -1;
       box-sizing: border-box;
       padding: 11px;
       display: flex;
       justify-content: start;
 
-      @include on-tablet {
-      }
-
       @include on-small-desktop {
         width: 464px;
         height: 464px;
       }
 
-      &--img {
+      &__img {
         width: 100%;
         object-fit: contain;
       }
@@ -58,7 +55,7 @@
         justify-content: start;
       }
 
-      &--img {
+      &__img {
         height: 50px;
         width: auto;
         object-fit: contain;
@@ -112,31 +109,21 @@
           display: flex;
           justify-content: center;
           align-items: center;
+
+          &.--active {
+            border: 1px solid $white-accent-color;
+          }
         }
 
-        &--red {
+        &__item {
           width: 28px;
           height: 28px;
           border-radius: 50%;
-          background-color: $red-accent-color;
-        }
-        &--green {
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          background-color: $green-accent-color;
-        }
-        &--white {
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          background-color: $white-accent-color;
-        }
-        &--purple {
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          background-color: $purple-accent-color;
+
+          &.--spacegray { background-color: $spacegray; }
+          &.--midnightgreen { background-color: $midnightgreen; }
+          &.--gold { background-color: $gold; }
+          &.--silver { background-color: $silver; }
         }
       }
     }
@@ -166,14 +153,15 @@
 
       &__list {
         display: flex;
-        flex-direction: row;
         gap: 8px;
 
         &__memory {
+          height: 32px;
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 8px;
+          box-sizing: border-box;
+          padding: 7px 8px 4px;
           border: 1px solid $icons-color;
           color: $white-accent-color;
           font-weight: 400;
@@ -181,10 +169,10 @@
           line-height: 21px;
 
           &--active {
+            @extend .product__main-info__features__capacity__list__memory;
             background-color: $white-accent-color;
             color: $main-background-color;
-            text-align: center;
-            padding: 8px;
+            border: 0;
           }
         }
       }
@@ -230,6 +218,21 @@
         font-size: 14px;
         line-height: 21px;
         text-align: center;
+
+        @include hover(background-color, $purple-hover-color);
+
+        &--added {
+          flex-grow: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $surface2-color;
+  
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 21px;
+          text-align: center;
+        }
       }
 
       &__favourites {
@@ -239,6 +242,16 @@
         justify-content: center;
         align-items: center;
         background-color: $surface2-color;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &--added {
+          @extend .product__main-info__features__buttons__favourites;
+          border: 1px solid $elements-color;
+          background-color: $main-background-color;
+        }
 
         &__icon {
           width: 16px;
