@@ -1,10 +1,9 @@
 @use '/src/styles/utils/mixins.scss' as *;
 
 .container {
-  @include page-grid;
-  @include content-padding-inline;
-
   row-gap: 40px;
+
+  @include page-grid;
 
   &__item {
     grid-column: span 4;

@@ -56,7 +56,7 @@ $purple-accent-hover-color: #a378ff;
 
     &__value {
       font-size: 22px;
-      font-weight: bold;
+      font-weight: 800;
 
       &--strikethrough {
         text-decoration: line-through;
@@ -102,13 +102,21 @@ $purple-accent-hover-color: #a378ff;
     height: 100%;
     background-color: $grey-surface2-color;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     cursor: pointer;
 
     border: none;
     box-sizing: border-box;
+    padding: 0;
+
+    &:first-of-type {
+      flex-grow: 1;
+    }
 
     &--cart {
-      flex-grow: 1;
       background-color: $purple-accent-color;
 
       @include hover(background-color, $purple-accent-hover-color);

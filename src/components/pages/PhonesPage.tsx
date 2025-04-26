@@ -1,16 +1,7 @@
 import React from 'react';
-import { useAppSelector } from '../../app/store';
-import { ProductList } from '../ProductList/ProductList';
-import { Product } from '../../types/Product';
+import { CategoryPage } from '../templates/CategoryPage';
+import { Category } from '../../enums/Category';
 
 export const PhonesPage: React.FC = () => {
-  const products = useAppSelector(state => state.products) as Product[];
-  const phones = products.filter(product => product.category === 'accessories');
-
-  return (
-    <>
-      <h2>📱 Phones page</h2>
-      <ProductList list={phones} />
-    </>
-  );
+  return <CategoryPage title="Mobile phones" category={Category.Phones} />;
 };

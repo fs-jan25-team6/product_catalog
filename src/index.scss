@@ -1,5 +1,6 @@
 @use './styles/utils/font.scss';
 @use 'normalize-scss' as *;
+@use './styles/utils/mixins.scss' as *;
 @include normalize();
 
 :root {
@@ -47,4 +48,8 @@ body {
   &--vertical {
     flex-direction: column;
   }
+}
+
+.container {
+  @include content-padding-inline;
 }
