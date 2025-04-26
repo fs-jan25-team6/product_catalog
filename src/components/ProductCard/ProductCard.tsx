@@ -1,45 +1,83 @@
 import React from 'react';
-import './prodCard.scss';
-import './fonts.css';
-import Image from './IPHONE_TEST.png';
+import { Product } from '../../types/Product';
+import styles from './ProductCard.module.scss';
+import classNames from 'classnames';
+import HeartIcon from './../../../public/icons/heart-icon.svg?react';
+import FilledHeartIcon from './../../../public/icons/heart-filled-icon.svg?react';
 
-export const ProductCard: React.FC = () => {
+type Props = {
+  product: Product;
+  isFavorite: boolean;
+  isInCart: boolean;
+};
+
+export const ProductCard: React.FC<Props> = ({
+  product,
+  isFavorite,
+  isInCart,
+}) => {
+  const isOnDiscount = product.price < product.fullPrice;
+
   return (
-    <div className="product-card">
-      <img className="product-card__img" src={Image} alt="" />
-
-      <h2 className="product-card__title">
-        "Apple iPhone Xs 64GB Silver (iMT9G2FS/A)"
-      </h2>
-      <p className="product-card__price">
-        $799
-        <span className="product-card__price-old">$899</span>
-      </p>
-
-      <div className="product-card__divider"></div>
-
-      <div className="product-card__specifications">
-        <div className="product-card__specification">
-          <p className="product-card__specification-text">Screen</p>
-          <p className="product-card__specification-value">5.8” OLED</p>
+    <div className={styles.card}>
+      <div className={styles.card__content}>
+        <img
+          src={product.image}
+          alt={`${product.name} photo`}
+          className={styles.card__photo}
+        />
+        <div className={styles.card__description}>
+          <div className={styles.card__title}>{product.name}</div>
+          <div className={styles.card__price}>
+            <div className={styles.card__price__value}>
+              ${isOnDiscount ? product.price : product.fullPrice}
+            </div>
+            {isOnDiscount && (
+              <div
+                className={classNames(
+                  styles.card__price__value,
+                  styles['card__price__value--strikethrough'],
+                )}
+              >
+                ${product.fullPrice}
+              </div>
+            )}
+          </div>
+          <div className={styles.card__divider}></div>
+          <div className={styles.card__specs}>
+            <div className={styles.card__specs__field}>
+              <div className={styles.card__specs__label}>Screen</div>
+              <div className={styles.card__specs__value}>{product.screen}</div>
+            </div>
+            <div className={styles.card__specs__field}>
+              <div className={styles.card__specs__label}>Capacity</div>
+              <div className={styles.card__specs__value}>
+                {product.capacity}
+              </div>
+            </div>
+            <div className={styles.card__specs__field}>
+              <div className={styles.card__specs__label}>RAM</div>
+              <div className={styles.card__specs__value}>{product.ram}</div>
+            </div>
+          </div>
+          <div className={styles.card__controls}>
+            <button
+              className={classNames(styles['card__button'], {
+                [styles['card__button--cart']]: !isInCart,
+              })}
+            >
+              {isInCart ? 'Added' : 'Add to cart'}
+            </button>
+            <button
+              className={classNames(
+                styles['card__button'],
+                styles['card__button--fav'],
+              )}
+            >
+              {isFavorite ? <FilledHeartIcon /> : <HeartIcon />}
+            </button>
+          </div>
         </div>
-        <div className="product-card__specification">
-          <p className="product-card__specification-text">Capacity</p>
-          <p className="product-card__specification-value">64 GB</p>
-        </div>
-        <div className="product-card__specification">
-          <p className="product-card__specification-text">Ram</p>
-          <p className="product-card__specification-value">4 GB</p>
-        </div>
-      </div>
-
-      <div className="product-card__button">
-        <a href="#" className="product-card__button-add">
-          Add to cart
-        </a>
-        <button className="product-card__button-like">
-          <img src="/icons/heart-icon.svg" alt="like" />
-        </button>
       </div>
     </div>
   );
