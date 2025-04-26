@@ -120,10 +120,18 @@
           height: 28px;
           border-radius: 50%;
 
-          &.--spacegray { background-color: $spacegray; }
-          &.--midnightgreen { background-color: $midnightgreen; }
-          &.--gold { background-color: $gold; }
-          &.--silver { background-color: $silver; }
+          &.--spacegray {
+            background-color: $spacegray;
+          }
+          &.--midnightgreen {
+            background-color: $midnightgreen;
+          }
+          &.--gold {
+            background-color: $gold;
+          }
+          &.--silver {
+            background-color: $silver;
+          }
         }
       }
     }
@@ -227,7 +235,7 @@
           justify-content: center;
           align-items: center;
           background-color: $surface2-color;
-  
+
           font-weight: 600;
           font-size: 14px;
           line-height: 21px;
