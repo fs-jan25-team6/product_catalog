@@ -1,5 +1,7 @@
 import React from 'react';
+import { CategoryPage } from '../templates/CategoryPage';
+import { Category } from '../../enums/Category';
 
 export const AccessoriesPage: React.FC = () => {
-  return <h2>🎧 Accessories page</h2>;
+  return <CategoryPage title="Accessories" category={Category.Accessories} />;
 };
