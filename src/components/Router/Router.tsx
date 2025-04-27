@@ -8,7 +8,7 @@ import { TabletsPage } from '../pages/TabletsPage';
 import { AccessoriesPage } from '../pages/AccessoriesPage';
 import { CartPage } from '../pages/CartPage/CartPage';
 import { FavoritesPage } from '../pages/FavoritesPage';
-import { ProductPage } from '../pages/ProductPage';
+import { ProductPage } from '../pages/ProductPage/ProductPage';
 
 export const Router: React.FC = () => (
   <HashRouter>
