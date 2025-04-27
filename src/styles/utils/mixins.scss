@@ -20,6 +20,7 @@
   transition: #{$property} 0.3s;
   &:hover {
     #{$property}: $value; // for example, transform: scale(1.1)
+    cursor: pointer;
   }
 }
 
