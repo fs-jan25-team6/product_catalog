@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductList } from '../productList/productList';
+import { ProductList } from './productList/productList';
 
 export const FavoritesPage: React.FC = () => {
   return (

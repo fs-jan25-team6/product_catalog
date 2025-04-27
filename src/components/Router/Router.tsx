@@ -7,7 +7,7 @@ import { NotFoundPage } from '../pages/NotFoundPage';
 import { TabletsPage } from '../pages/TabletsPage';
 import { AccessoriesPage } from '../pages/AccessoriesPage';
 import { CartPage } from '../pages/CartPage';
-import { FavoritesPage } from '../pages/FavoritesPage';
+import { FavoritesPage } from '../pages/FavouritesPage/FavoritesPage';
 import { ProductPage } from '../pages/ProductPage';
 
 export const Router: React.FC = () => (
