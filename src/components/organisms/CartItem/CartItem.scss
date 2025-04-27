@@ -4,7 +4,8 @@
 .cart-item {
   background-color: $surface1-color;
   box-sizing: border-box;
-  width: 320px;
+  // max-width: 320px;
+  width: 100%;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -12,14 +13,15 @@
 
   @include on-tablet {
     padding: 24px;
-    width: 592px;
+    // width: 592px;
     flex-direction: row;
+    align-items: center;
     gap: 24px;
   }
 
-  @include on-small-desktop {
-    width: 752px;
-  }
+  // @include on-small-desktop {
+  //   width: 752px;
+  // }
 
   &__body {
     display: flex;
