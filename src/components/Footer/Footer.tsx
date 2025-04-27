@@ -24,12 +24,13 @@ export const Footer: React.FC = () => {
 
       <button className={styles.footer__back}>
         <span className={styles.footer__text}>Back to top</span>
-
-        <img
-          src="./icons/arrow-up-icon.svg"
-          alt="Slider button"
-          className={styles.footer__icon}
-        />
+        <div className={styles.footer__btn}>
+          <img
+            src="./icons/back-to-top-icon.svg"
+            alt="Slider button"
+            className={styles.footer__icon}
+          />
+        </div>
       </button>
     </footer>
   );
