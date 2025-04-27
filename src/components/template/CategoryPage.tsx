@@ -2,6 +2,7 @@ import React from 'react';
 import { useAppSelector } from '../../app/store';
 import { ProductList } from '../ProductList/ProductList';
 import { Product } from '../../types/Product';
+import { Typography } from '../atoms/Typography';
 
 type Props = {
   title: string;
@@ -14,10 +15,12 @@ export const CategoryPage: React.FC<Props> = ({ title, category }) => {
 
   return (
     <>
-      <h1>{title}</h1>
-      <span>
+      <Typography tag="h1" variant="h1">
+        {title}
+      </Typography>
+      <Typography tag="span" variant="body">
         {filtered.length} item{filtered.length === 1 ? '' : 's'}
-      </span>
+      </Typography>
 
       <ProductList list={filtered} />
     </>
