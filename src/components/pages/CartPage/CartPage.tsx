@@ -18,7 +18,7 @@ export const CartPage: React.FC = () => {
             alt="Left button"
           />
 
-          <span className="cart__back-text">Back</span>
+          <p className="cart__back-text">Back</p>
         </button>
 
         {/* add logic <Navigate to='..' /> */}
