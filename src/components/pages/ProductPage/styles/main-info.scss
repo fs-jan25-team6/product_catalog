@@ -140,9 +140,9 @@
             'midnight': $midnight,
             'skyblue': $skyblue,
             'spacegray': $spacegray,
-            'spaceblack': $spaceblack
+            'spaceblack': $spaceblack,
           );
-          
+
           @each $name, $color in $colors {
             &.--#{$name} {
               background-color: $color;
