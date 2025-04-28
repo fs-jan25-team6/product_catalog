@@ -3,6 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { NAV_LINKS } from './constants';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
+import { MenuIcon } from '../../assets/icons/menu-icon';
+import { ShoppingBag } from '../../assets/icons/shopping-bag-icon';
+import { HeartIcon } from '../../assets/icons/heart-icon';
 
 export const Header: React.FC = () => {
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -40,7 +43,7 @@ export const Header: React.FC = () => {
             styles['header__icon--favourites'],
           )}
         >
-          <img src="./icons/heart-icon.svg" alt="Favourites" />
+          <HeartIcon />
         </NavLink>
         <NavLink
           to="/cart"
@@ -49,7 +52,7 @@ export const Header: React.FC = () => {
             styles['header__icon--cart'],
           )}
         >
-          <img src="./icons/shopping-bag-icon.svg" alt="Shopping bag" />
+          <ShoppingBag />
         </NavLink>
         <NavLink
           to="/burger_menu"
@@ -58,7 +61,7 @@ export const Header: React.FC = () => {
             styles['header__icon--burger'],
           )}
         >
-          <img src="./icons/menu-icon.svg" alt="Menu" />
+          <MenuIcon />
         </NavLink>
       </div>
     </header>

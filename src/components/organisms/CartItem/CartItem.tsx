@@ -1,8 +1,8 @@
 import React from 'react';
 import './CartItem.scss';
-import CloseIcon from '../../../../public/icons/close-icon.svg?react';
-import MinusIcon from '../../../../public/icons/minus-icon.svg?react';
-import PlusIcon from '../../../../public/icons/plus-icon.svg?react';
+import { CloseIcon } from '../../../assets/icons/close-icon';
+import { MinusIcon } from '../../../assets/icons/minus-icon';
+import { PlusIcon } from '../../../assets/icons/plus-icon';
 
 const tempCartItem = {
   id: 1,
@@ -25,7 +25,10 @@ export const CartItem: React.FC = () => {
       <div className="cart-item">
         <div className="cart-item__body">
           <button className="cart-item__close-btn">
-            <CloseIcon className="cart-item__close-btn--svg" />
+            <CloseIcon
+              color="$icons-color"
+              className="cart-item__close-btn--svg"
+            />
           </button>
           <img
             className="cart-item__image"
@@ -38,11 +41,11 @@ export const CartItem: React.FC = () => {
         <div className="cart-item__footer">
           <div className="counter">
             <button className="counter__decrease">
-              <MinusIcon className="counter__decrease--svg" />
+              <MinusIcon color="$icons-color" />
             </button>
             <p className="counter__amount"> 1 </p>
             <button className="counter__increase">
-              <PlusIcon className="counter__increase--svg" />
+              <PlusIcon />
             </button>
           </div>
 

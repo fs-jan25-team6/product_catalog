@@ -3,11 +3,13 @@
 @use '/src/styles/utils/normalize.scss' as *;
 
 .navigation {
-  font-size: 12px;
-  color: $white-accent-color;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 100%;
+  color: $white-accent-color;
 
   @include on-tablet {
     gap: 40px;
@@ -19,27 +21,11 @@
     align-items: center;
     width: 100%;
 
-    font-weight: 700;
-    line-height: 100%;
-
-    &__home {
-      display: block;
-      width: 16px;
-      height: 16px;
-    }
-
-    &__arrow-right {
-      display: block;
-      width: 16px;
-      height: 16px;
-      color: $icons-color;
-    }
-    &__category {
-      display: block;
+    &__arrow {
+      transform: rotate(180deg);
     }
 
     &__product {
-      display: block;
       color: $secondary-color;
       white-space: nowrap;
       overflow: hidden;
@@ -51,19 +37,5 @@
     display: flex;
     align-items: center;
     gap: 4px;
-
-    &__arrow-left {
-      display: block;
-      color: $white-accent-color; // Катерина, ти відьма, чому у тебе працює, у мене ні
-    }
-
-    &__link {
-      display: block;
-      height: 16px;
-      font-size: 12px;
-      font-weight: 800;
-      line-height: 100%;
-      align-content: center;
-    }
   }
 }

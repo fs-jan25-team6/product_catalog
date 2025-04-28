@@ -40,6 +40,10 @@
         background-color: $surface2-color;
         border: 0;
       }
+
+      &__arrow-right {
+        transform: rotate(180deg);
+      }
     }
   }
 

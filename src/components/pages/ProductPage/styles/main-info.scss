@@ -120,17 +120,33 @@
           height: 28px;
           border-radius: 50%;
 
-          &.--spacegray {
-            background-color: $spacegray;
-          }
-          &.--midnightgreen {
-            background-color: $midnightgreen;
-          }
-          &.--gold {
-            background-color: $gold;
-          }
-          &.--silver {
-            background-color: $silver;
+          $colors: (
+            'black': $black,
+            'white': $white,
+            'silver': $silver,
+            'gold': $gold,
+            'rosegold': $rosegold,
+            'yellow': $yellow,
+            'red': $red,
+            'purple': $purple,
+            'green': $green,
+            'coral': $coral,
+            'midnightgreen': $midnightgreen,
+            'graphite': $graphite,
+            'sierrablue': $sierrablue,
+            'blue': $blue,
+            'pink': $pink,
+            'starlight': $starlight,
+            'midnight': $midnight,
+            'skyblue': $skyblue,
+            'spacegray': $spacegray,
+            'spaceblack': $spaceblack
+          );
+          
+          @each $name, $color in $colors {
+            &.--#{$name} {
+              background-color: $color;
+            }
           }
         }
       }
@@ -161,6 +177,7 @@
 
       &__list {
         display: flex;
+        flex-wrap: wrap;
         gap: 8px;
 
         &__memory {
@@ -176,8 +193,7 @@
           font-size: 14px;
           line-height: 21px;
 
-          &--active {
-            @extend .product__main-info__features__capacity__list__memory;
+          &.--active {
             background-color: $white-accent-color;
             color: $main-background-color;
             border: 0;
@@ -229,7 +245,7 @@
 
         @include hover(background-color, $purple-hover-color);
 
-        &--added {
+        &.--added {
           flex-grow: 1;
           display: flex;
           justify-content: center;
@@ -255,15 +271,9 @@
           cursor: pointer;
         }
 
-        &--added {
-          @extend .product__main-info__features__buttons__favourites;
+        &.--added {
           border: 1px solid $elements-color;
           background-color: $main-background-color;
-        }
-
-        &__icon {
-          width: 16px;
-          height: 16px;
         }
       }
     }

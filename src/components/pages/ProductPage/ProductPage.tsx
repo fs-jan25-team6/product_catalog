@@ -3,15 +3,13 @@ import React, { useState } from 'react';
 import './styles/ProductPage.scss';
 import { Link } from 'react-router-dom';
 
-import HomeIcon from '../../../../public/icons/home-icon.svg?react';
-import ArrowRightIcon from '../../../../public/icons/arrow-right-icon.svg?react';
-import ArrowRightWhiteIcon from '../../../../public/icons/arrow-right-white-icon.svg?react';
-import ArrowLeftIcon from '../../../../public/icons/arrow-left-icon.svg?react';
-import ArrowLeftWhiteIcon from '../../../../public/icons/arrow-left-white-icon.svg?react';
-import HeartIcon from '../../../../public/icons/heart-icon.svg?react';
-import FilledHeartIcon from '../../../../public/icons/heart-filled-icon.svg?react';
+import { HomeIcon } from '../../../assets/icons/home-icon';
+import { ArrowIcon } from '../../../assets/icons/arrow-icon';
 
 import idToNumberHash from '../../../helpers/getHashed';
+import classNames from 'classnames';
+import { HeartFilledIcon } from '../../../assets/icons/heart-filled-icon';
+import { HeartIcon } from '../../../assets/icons/heart-icon';
 
 const tempProduct = {
   id: 'apple-iphone-11-pro-max-64gb-gold',
@@ -74,35 +72,30 @@ export const ProductPage: React.FC = () => {
       <div className="product-page__content">
         <section className="navigation">
           <div className="navigation__breadcrumbs">
-            <Link to="/" className="navigation__breadcrumbs__home">
+            <Link to="/">
               <HomeIcon />
             </Link>
-            <span>
-              <ArrowRightIcon className="navigation__breadcrumbs__arrow-right" />
-            </span>
+
+            <ArrowIcon
+              color="$icons-color"
+              className="navigation__breadcrumbs__arrow"
+            />
             <Link to="/phones" className="navigation__breadcrumbs__category">
               Phones
             </Link>
-            <span>
-              <img
-                src="./icons/arrow-right-icon.svg"
-                alt="arrow-right"
-                className="navigation__breadcrumbs__arrow-right"
-              />
-            </span>
+            <ArrowIcon
+              color="$icons-color"
+              className="navigation__breadcrumbs__arrow"
+            />
             <span className="navigation__breadcrumbs__product">
               {tempProduct.name} (iMT9G2FS/A)
             </span>
           </div>
 
-          <div className="navigation__back">
-            <span>
-              <ArrowLeftWhiteIcon className="navigation__back__arrow-left" />
-            </span>
-            <Link to="/phones" className="navigation__back__link">
-              Back
-            </Link>
-          </div>
+          <Link to="/phones" className="navigation__back">
+            <ArrowIcon />
+            <span>Back</span>
+          </Link>
         </section>
 
         <h2 className="product__name">{tempProduct.name} (iMT9G2FS/A)</h2>
@@ -164,11 +157,9 @@ export const ProductPage: React.FC = () => {
                 {tempProduct.capacityAvailable.map(cap => (
                   <a
                     href="#"
-                    className={
-                      cap === tempProduct.capacity
-                        ? 'product__main-info__features__capacity__list__memory--active'
-                        : 'product__main-info__features__capacity__list__memory'
-                    }
+                    className={`product__main-info__features__capacity__list__memory ${
+                      cap === tempProduct.capacity ? '--active' : ''
+                    }`}
                   >
                     {cap}
                   </a>
@@ -189,24 +180,23 @@ export const ProductPage: React.FC = () => {
 
             <div className="product__main-info__features__buttons">
               <button
-                className={
-                  isInCart
-                    ? 'product__main-info__features__buttons__cart--added'
-                    : 'product__main-info__features__buttons__cart'
-                }
+                className={classNames(
+                  'product__main-info__features__buttons__cart',
+                  { '--added': isInCart },
+                )}
                 onClick={toggleCart}
+                disabled={isInCart}
               >
                 {isInCart ? 'Added' : 'Add to cart'}
               </button>
               <button
-                className={
-                  isFavourite
-                    ? 'product__main-info__features__buttons__favourites--added'
-                    : 'product__main-info__features__buttons__favourites'
-                }
+                className={classNames(
+                  'product__main-info__features__buttons__favourites',
+                  { '--added': isFavourite },
+                )}
                 onClick={toggleFavourite}
               >
-                {isFavourite ? <FilledHeartIcon /> : <HeartIcon />}
+                {isFavourite ? <HeartFilledIcon /> : <HeartIcon />}
               </button>
             </div>
 
@@ -348,10 +338,13 @@ export const ProductPage: React.FC = () => {
             <h2 className="product__offers__head__title">You may also like</h2>
             <div className="product__offers__head__buttons">
               <button className="product__offers__head__button">
-                <ArrowLeftIcon className="product__offers__head__button__arrow" />
+                <ArrowIcon
+                  color="$icons-color"
+                  className="product__offers__head__button__arrow-left"
+                />
               </button>
               <button className="product__offers__head__button --active">
-                <ArrowRightWhiteIcon className="product__offers__head__button__arrow --active" />
+                <ArrowIcon className="product__offers__head__button__arrow-right" />
               </button>
             </div>
           </div>

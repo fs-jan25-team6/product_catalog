@@ -101,7 +101,6 @@
     display: flex;
     justify-content: center;
     background-color: $surface1-color;
-    border-color: $surface2-color;
     border-radius: 0;
     box-sizing: border-box;
     height: 100%;
@@ -111,9 +110,7 @@
   }
 
   &__decrease {
-    &--svg {
-      color: $surface2-color;
-    }
+    border: 1px solid $elements-color;
   }
 
   &__increase {

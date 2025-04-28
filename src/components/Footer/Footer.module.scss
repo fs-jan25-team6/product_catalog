@@ -116,8 +116,6 @@
   }
 
   &__icon {
-    width: 16px;
-    aspect-ratio: 1;
-    color: $white-accent-color;
+    transform: rotate(90deg);
   }
 }
