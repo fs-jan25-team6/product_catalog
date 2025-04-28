@@ -114,8 +114,4 @@
 
     @include hover(transform, scale(1.1));
   }
-
-  &__icon {
-    transform: rotate(90deg);
-  }
 }

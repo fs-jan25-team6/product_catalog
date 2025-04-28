@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import './styles/ProductPage.scss';
+import '../../../assets/icons/Icon/Icon.scss';
 import { Link } from 'react-router-dom';
 
 import { HomeIcon } from '../../../assets/icons/home-icon';
@@ -10,6 +11,7 @@ import idToNumberHash from '../../../helpers/getHashed';
 import classNames from 'classnames';
 import { HeartFilledIcon } from '../../../assets/icons/heart-filled-icon';
 import { HeartIcon } from '../../../assets/icons/heart-icon';
+import { Icon } from '../../../assets/icons/Icon/Icon';
 
 const tempProduct = {
   id: 'apple-iphone-11-pro-max-64gb-gold',
@@ -73,27 +75,29 @@ export const ProductPage: React.FC = () => {
         <section className="navigation">
           <div className="navigation__breadcrumbs">
             <Link to="/">
-              <HomeIcon />
+              <Icon className="icon">
+                <HomeIcon />
+              </Icon>
             </Link>
 
-            <ArrowIcon
-              color="$icons-color"
-              className="navigation__breadcrumbs__arrow"
-            />
+            <Icon className="icon icon--grey icon--arrow-right">
+              <ArrowIcon />
+            </Icon>
             <Link to="/phones" className="navigation__breadcrumbs__category">
               Phones
             </Link>
-            <ArrowIcon
-              color="$icons-color"
-              className="navigation__breadcrumbs__arrow"
-            />
+            <Icon className="icon icon--grey icon--arrow-right">
+              <ArrowIcon />
+            </Icon>
             <span className="navigation__breadcrumbs__product">
               {tempProduct.name} (iMT9G2FS/A)
             </span>
           </div>
 
           <Link to="/phones" className="navigation__back">
-            <ArrowIcon />
+            <Icon className="icon">
+              <ArrowIcon />
+            </Icon>
             <span>Back</span>
           </Link>
         </section>
@@ -196,7 +200,9 @@ export const ProductPage: React.FC = () => {
                 )}
                 onClick={toggleFavourite}
               >
-                {isFavourite ? <HeartFilledIcon /> : <HeartIcon />}
+                <Icon className="icon">
+                  {isFavourite ? <HeartFilledIcon /> : <HeartIcon />}
+                </Icon>
               </button>
             </div>
 
@@ -338,13 +344,14 @@ export const ProductPage: React.FC = () => {
             <h2 className="product__offers__head__title">You may also like</h2>
             <div className="product__offers__head__buttons">
               <button className="product__offers__head__button">
-                <ArrowIcon
-                  color="$icons-color"
-                  className="product__offers__head__button__arrow-left"
-                />
+                <Icon className="icon icon--grey">
+                  <ArrowIcon />
+                </Icon>
               </button>
               <button className="product__offers__head__button --active">
-                <ArrowIcon className="product__offers__head__button__arrow-right" />
+                <Icon className="icon icon--arrow-right">
+                  <ArrowIcon />
+                </Icon>
               </button>
             </div>
           </div>

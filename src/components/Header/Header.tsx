@@ -2,10 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { NAV_LINKS } from './constants';
 import styles from './Header.module.scss';
+import '../../assets/icons/Icon/Icon.scss';
 import classNames from 'classnames';
 import { MenuIcon } from '../../assets/icons/menu-icon';
-import { ShoppingBag } from '../../assets/icons/shopping-bag-icon';
+import { ShoppingBagIcon } from '../../assets/icons/shopping-bag-icon';
 import { HeartIcon } from '../../assets/icons/heart-icon';
+import { Icon } from '../../assets/icons/Icon/Icon';
 
 export const Header: React.FC = () => {
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -43,7 +45,9 @@ export const Header: React.FC = () => {
             styles['header__icon--favourites'],
           )}
         >
-          <HeartIcon />
+          <Icon className="icon">
+            <HeartIcon />
+          </Icon>
         </NavLink>
         <NavLink
           to="/cart"
@@ -52,7 +56,9 @@ export const Header: React.FC = () => {
             styles['header__icon--cart'],
           )}
         >
-          <ShoppingBag />
+          <Icon className="icon">
+            <ShoppingBagIcon />
+          </Icon>
         </NavLink>
         <NavLink
           to="/burger_menu"
@@ -61,7 +67,9 @@ export const Header: React.FC = () => {
             styles['header__icon--burger'],
           )}
         >
-          <MenuIcon />
+          <Icon className="icon">
+            <MenuIcon />
+          </Icon>
         </NavLink>
       </div>
     </header>
