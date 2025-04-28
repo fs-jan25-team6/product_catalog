@@ -8,25 +8,37 @@ import { ResponsiveImage } from '../../atoms/ResponsiveImage/ResponsiveImage';
 export const HomePage: React.FC = () => {
   return (
     <>
-      <h2 className="home-page__title--32px">Welcome to Nice Gadgets store!</h2>
+      <h2 className="home-page__title--bigger">
+        Welcome to Nice Gadgets store!
+      </h2>
 
       <div className="home-page__slider">
-        <ResponsiveImage
-          alt="Phone advertisement"
-          desktopSrc="/img/baner-slider-desktop.png"
-          tabletSrc="/img/baner-slider-tablet.png"
-          mobileSrc="/img/baner-slider-mobile.png"
-        />
-        {/* <img className='home-page__baner' src='/img/baner-slider-mobile.png' alt='Phone advertisement'></img> */}
-        <div className="slider">
-          <div className="slider__item"></div>
-          <div className="slider__item"></div>
-          <div className="slider__item"></div>
+        <button className="slider-btn__left slider-btn__left--big">
+          <ArrowLeftIcon className="slider-btn__left--svg slider-btn__left--svg--active" />
+        </button>
+
+        <div className="home-page__slider-content">
+          <ResponsiveImage
+            alt="Phone advertisement"
+            desktopSrc="/img/baner-slider-desktop.png"
+            tabletSrc="/img/baner-slider-tablet.png"
+            mobileSrc="/img/baner-slider-mobile.png"
+          />
+          <div className="slider">
+            <div className="slider__item"></div>
+            <div className="slider__item"></div>
+            <div className="slider__item"></div>
+          </div>
         </div>
+
+        <button className="slider-btn__right slider-btn__right--big">
+          <ArrowRightIcon className="slider-btn__right--svg" />
+        </button>
       </div>
 
+
       <div className="home-page__recomendation">
-        <h3 className="home-page__title">
+        <h3 className="home-page__title home-page__title--recomendation home-page__title--recomendation--hide-br">
           Brand new <br /> models
         </h3>
         <div className="slider-btn">
@@ -45,11 +57,12 @@ export const HomePage: React.FC = () => {
       <h3 className="home-page__title">Shop by category</h3>
       <div className="categories">
         <div className="categories__item">
-          <img
-            className="categories__baner"
-            src="/img/category-phones-mobile.png"
+          <ResponsiveImage
             alt="Phones category"
-          ></img>
+            desktopSrc="/img/category-phones-desktop.png"
+            tabletSrc="/img/category-phones-tablet.png"
+            mobileSrc="/img/category-phones-mobile.png"
+          />
           <NavLink to="/phones" className="categories__title">
             Mobile phones
           </NavLink>
@@ -57,11 +70,12 @@ export const HomePage: React.FC = () => {
         </div>
 
         <div className="categories__item">
-          <img
-            className="categories__baner"
-            src="/img/category-tablets-mobile.png"
-            alt="Phones category"
-          ></img>
+          <ResponsiveImage
+            alt="Tablets category"
+            desktopSrc="/img/category-tablets-desktop.png"
+            tabletSrc="/img/category-tablets-tablet.png"
+            mobileSrc="/img/category-tablets-mobile.png"
+          />
           <NavLink to="/tablets" className="categories__title">
             Tablets
           </NavLink>
@@ -69,11 +83,12 @@ export const HomePage: React.FC = () => {
         </div>
 
         <div className="categories__item">
-          <img
-            className="categories__baner"
-            src="/img/category-accessories-mobile.png"
-            alt="Phones category"
-          ></img>
+          <ResponsiveImage
+            alt="Accessories category"
+            desktopSrc="/img/category-accessories-desktop.png"
+            tabletSrc="/img/category-accessories-tablet.png"
+            mobileSrc="/img/category-accessories-mobile.png"
+          />
           <NavLink to="/accessories" className="categories__title">
             Accessories
           </NavLink>
@@ -82,7 +97,7 @@ export const HomePage: React.FC = () => {
       </div>
 
       <div className="home-page__recomendation">
-        <h3 className="home-page__title">Hot prices</h3>
+        <h3 className="home-page__title home-page__title--recomendation">Hot prices</h3>
         <div className="slider-btn">
           <button className="slider-btn__left">
             <ArrowLeftIcon className="slider-btn__left--svg" />

@@ -1,31 +1,77 @@
 @use '../../../styles/utils/variables' as *;
 @use '../../../styles/utils/mixins' as *;
 
+.container {
+  @include content-padding-inline;
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-small-desktop {
+    padding-top: 56px;
+  }
+}
+
 .home-page {
   &__title {
     font-size: 22px;
     font-weight: 800;
     line-height: 41px;
 
-    margin: 0;
-    margin-inline: 16px;
     margin-bottom: 24px;
 
-    &--32px {
+    @include on-tablet {
       font-size: 32px;
+
+    }
+
+    &--recomendation {
+      margin-bottom: 0;
+
+      &--hide-br br {
+        @include on-tablet {
+          display: none;
+        }
+      }
+    }
+
+    &--bigger {
+      font-size: 32px;
+      margin-bottom: 24px;
+
+      @include on-tablet {
+        font-size: 48px;
+        line-height: 56px;
+        margin-bottom: 32px;
+      }
+
+      @include on-small-desktop {
+        margin-bottom: 56px;
+      }
     }
   }
 
-  // &__baner {
-  //   background-color: black;
-  // }
-
   &__slider {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
     margin-bottom: 60px;
+
+    @include on-tablet {
+      display: flex;
+      gap: 19px;
+      margin-bottom: 64px;
+    }
+
+    @include on-small-desktop {
+      margin-bottom: 80px;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
   }
 
   &__recomendation {
@@ -41,6 +87,14 @@
     background-color: $surface1-color;
     margin-inline: auto;
     margin-bottom: 57px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-small-desktop {
+      margin-bottom: 80px;
+    }
   }
 }
 
@@ -51,22 +105,29 @@
   gap: 32px;
   margin-bottom: 56px;
 
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  @include on-small-desktop {
+    margin-bottom: 80px;
+  }
+
   &__item {
     display: flex;
     flex-direction: column;
-  }
-
-  &__baner {
-    margin-bottom: 24px;
   }
 
   &__title {
     text-decoration: none;
     color: $white-accent-color;
     margin: 0;
+    margin-top: 24px;
     margin-bottom: 4px;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   &__amount {
@@ -99,6 +160,26 @@
   &__left {
     &--svg {
       color: $surface2-color;
+
+      &--active {
+        color: $white-accent-color;
+      }
+    }
+
+    &--big {
+      display: none;
+
+      @include on-tablet {
+        display: block;
+        width: 32px;
+        height: 189px;
+
+        background-color: $surface2-color;
+      }
+
+      @include on-small-desktop {
+        height: 400px;
+      }
     }
   }
 
@@ -107,6 +188,20 @@
 
     &--svg {
       color: $white-accent-color;
+    }
+
+    &--big {
+      display: none;
+
+      @include on-tablet {
+        display: block;
+        width: 32px;
+        height: 189px;
+      }
+
+      @include on-small-desktop {
+        height: 400px;
+      }
     }
   }
 }
