@@ -1,0 +1,21 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__label {
+    font-size: 12px;
+  }
+
+  &__field {
+    background: grey;
+
+    height: 32px;
+  }
+
+  box-sizing: border-box;
+
+  background-color: greenyellow;
+
+  border: 1px solid white;
+}
