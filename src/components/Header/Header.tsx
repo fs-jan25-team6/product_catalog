@@ -9,8 +9,6 @@ import { MenuIcon } from '../../assets/icons/menu-icon';
 import { ShoppingBagIcon } from '../../assets/icons/shopping-bag-icon';
 import { HeartIcon } from '../../assets/icons/heart-icon';
 import { Icon } from '../../assets/icons/Icon/Icon';
-import { SideMenu } from '../SIdeMenu';
-import { NAV_LINKS } from '../../constants/navigation';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
