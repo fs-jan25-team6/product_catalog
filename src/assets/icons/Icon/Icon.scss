@@ -1,0 +1,21 @@
+@use '/src/styles/utils/variables.scss' as *;
+
+.icon {
+  color: $white-accent-color;
+  width: 16px;
+  height: 16px;
+
+  &--grey {
+    color: $icons-color;
+  }
+
+  &--arrow-up {
+    transform: rotate(90deg);
+  }
+  &--arrow-right {
+    transform: rotate(180deg);
+  }
+  &--arrow-down {
+    transform: rotate(270deg);
+  }
+}
