@@ -169,8 +169,8 @@
 
     &:focus::after,
     &:active::after {
-    opacity: 1;
-  }
+      opacity: 1;
+    }
 
     &--favourites,
     &--cart {
