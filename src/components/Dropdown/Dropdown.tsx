@@ -50,7 +50,10 @@ export const Dropdown: React.FC<Props> = ({
 
               return (
                 <div className={styles.dropdownIndicator}>
-                  <Icon direction={menuIsOpen ? 'up' : 'down'}>
+                  <Icon
+                    color="secondary"
+                    direction={menuIsOpen ? 'up' : 'down'}
+                  >
                     <ArrowIcon />
                   </Icon>
                 </div>
