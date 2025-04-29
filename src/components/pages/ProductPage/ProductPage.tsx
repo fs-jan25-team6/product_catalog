@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import './styles/ProductPage.scss';
-import '../../../assets/icons/Icon/Icon.scss';
 import { Link } from 'react-router-dom';
 
 import { HomeIcon } from '../../../assets/icons/home-icon';
@@ -75,18 +74,18 @@ export const ProductPage: React.FC = () => {
         <section className="navigation">
           <div className="navigation__breadcrumbs">
             <Link to="/">
-              <Icon className="icon">
+              <Icon>
                 <HomeIcon />
               </Icon>
             </Link>
 
-            <Icon className="icon icon--grey icon--arrow-right">
+            <Icon color="secondary" direction="right">
               <ArrowIcon />
             </Icon>
             <Link to="/phones" className="navigation__breadcrumbs__category">
               Phones
             </Link>
-            <Icon className="icon icon--grey icon--arrow-right">
+            <Icon color="secondary" direction="right">
               <ArrowIcon />
             </Icon>
             <span className="navigation__breadcrumbs__product">
@@ -95,7 +94,7 @@ export const ProductPage: React.FC = () => {
           </div>
 
           <Link to="/phones" className="navigation__back">
-            <Icon className="icon">
+            <Icon>
               <ArrowIcon />
             </Icon>
             <span>Back</span>
@@ -200,9 +199,7 @@ export const ProductPage: React.FC = () => {
                 )}
                 onClick={toggleFavourite}
               >
-                <Icon className="icon">
-                  {isFavourite ? <HeartFilledIcon /> : <HeartIcon />}
-                </Icon>
+                <Icon>{isFavourite ? <HeartFilledIcon /> : <HeartIcon />}</Icon>
               </button>
             </div>
 
@@ -344,12 +341,12 @@ export const ProductPage: React.FC = () => {
             <h2 className="product__offers__head__title">You may also like</h2>
             <div className="product__offers__head__buttons">
               <button className="product__offers__head__button">
-                <Icon className="icon icon--grey">
+                <Icon color="secondary">
                   <ArrowIcon />
                 </Icon>
               </button>
               <button className="product__offers__head__button --active">
-                <Icon className="icon icon--arrow-right">
+                <Icon direction="right">
                   <ArrowIcon />
                 </Icon>
               </button>

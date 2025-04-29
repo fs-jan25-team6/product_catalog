@@ -5,7 +5,6 @@ import { Typography } from '../atoms/Typography';
 import './Dropdown.scss';
 import { ArrowIcon } from '../../assets/icons/arrow-icon';
 import { Icon } from '../../assets/icons/Icon/Icon';
-import classNames from 'classnames';
 
 export type Option = {
   value: string;
@@ -51,12 +50,7 @@ export const Dropdown: React.FC<Props> = ({
 
               return (
                 <div className={styles.dropdownIndicator}>
-                  <Icon
-                    className={classNames('icon icon--grey', {
-                      'icon--arrow-up': menuIsOpen,
-                      'icon--arrow-down': !menuIsOpen,
-                    })}
-                  >
+                  <Icon direction={menuIsOpen ? 'up' : 'down'}>
                     <ArrowIcon />
                   </Icon>
                 </div>
