@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { NAV_LINKS } from './constants';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
+import { SideMenu } from '../SIdeMenu';
+import { NAV_LINKS } from '../../constants/navigation';
 import { MenuIcon } from '../../assets/icons/menu-icon';
 import { ShoppingBagIcon } from '../../assets/icons/shopping-bag-icon';
 import { HeartIcon } from '../../assets/icons/heart-icon';
 import { Icon } from '../../assets/icons/Icon/Icon';
 
 export const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(prev => !prev);
+  const closeMenu = () => setIsMenuOpen(false);
+
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.header__link, {
       [styles['header__link--active']]: isActive,
@@ -59,18 +65,21 @@ export const Header: React.FC = () => {
             <ShoppingBagIcon />
           </Icon>
         </NavLink>
-        <NavLink
-          to="/burger_menu"
+        <button
           className={classNames(
             styles.header__icon,
             styles['header__icon--burger'],
           )}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
         >
           <Icon>
             <MenuIcon />
           </Icon>
-        </NavLink>
+        </button>
       </div>
+
+      <SideMenu isOpen={isMenuOpen} onClose={closeMenu} />
     </header>
   );
 };
