@@ -52,7 +52,7 @@ export const Dropdown: React.FC<Props> = ({
               return (
                 <div className={styles.dropdownIndicator}>
                   <Icon
-                    className={classNames('icon', {
+                    className={classNames('icon icon--grey', {
                       'icon--arrow-up': menuIsOpen,
                       'icon--arrow-down': !menuIsOpen,
                     })}
