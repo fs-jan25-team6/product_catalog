@@ -1,7 +1,6 @@
 import React from 'react';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
-import '../../assets/icons/Icon/Icon.scss';
 import classNames from 'classnames';
 import { HeartFilledIcon } from '../../assets/icons/heart-filled-icon';
 import { HeartIcon } from '../../assets/icons/heart-icon';
@@ -76,9 +75,7 @@ export const ProductCard: React.FC<Props> = ({
                 styles['card__button--fav'],
               )}
             >
-              <Icon className="icon">
-                {isFavorite ? <HeartFilledIcon /> : <HeartIcon />}
-              </Icon>
+              <Icon>{isFavorite ? <HeartFilledIcon /> : <HeartIcon />}</Icon>
             </button>
           </div>
         </div>
