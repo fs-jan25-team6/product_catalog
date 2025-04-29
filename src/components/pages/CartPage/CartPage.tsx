@@ -1,22 +1,20 @@
 import React from 'react';
 import './CartPage.scss';
+import '../../../assets/icons/Icon/Icon.scss';
 import { useNavigate } from 'react-router-dom';
 import { CartItem } from '../../organisms/CartItem/CartItem';
+import { ArrowIcon } from '../../../assets/icons/arrow-icon';
+import { Icon } from '../../../assets/icons/Icon/Icon';
 
 export const CartPage: React.FC = () => {
   const navigate = useNavigate();
   return (
     <>
-      {/* <h2>🛒 CartPage page</h2> */}
       <div className="cart">
-        {/* Back Link */}
-
         <button onClick={() => navigate('..')} className="cart__back-btn">
-          <img
-            className="cart__back-img"
-            src="/icons/arrow-left-icon.svg"
-            alt="Left button"
-          />
+          <Icon className="icon">
+            <ArrowIcon />
+          </Icon>
 
           <span className="cart__back-text">Back</span>
         </button>
