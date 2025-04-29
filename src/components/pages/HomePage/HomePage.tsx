@@ -55,44 +55,46 @@ export const HomePage: React.FC = () => {
       </div>
 
       <h3 className="home-page__title">Shop by category</h3>
-      <div className="categories">
-        <div className="categories__item">
-          <ResponsiveImage
-            alt="Phones category"
-            desktopSrc="/img/category-phones-desktop.png"
-            tabletSrc="/img/category-phones-tablet.png"
-            mobileSrc="/img/category-phones-mobile.png"
-          />
-          <NavLink to="/phones" className="categories__title">
-            Mobile phones
-          </NavLink>
-          <p className="categories__amount">95 models</p>
-        </div>
+      <div className="categories-container">
+        <div className="categories">
+          <div className="categories__item">
+            <ResponsiveImage
+              alt="Phones category"
+              desktopSrc="/img/category-phones-desktop.png"
+              tabletSrc="/img/category-phones-tablet.png"
+              mobileSrc="/img/category-phones-mobile.png"
+            />
+            <NavLink to="/phones" className="categories__title">
+              Mobile phones
+            </NavLink>
+            <p className="categories__amount">95 models</p>
+          </div>
 
-        <div className="categories__item">
-          <ResponsiveImage
-            alt="Tablets category"
-            desktopSrc="/img/category-tablets-desktop.png"
-            tabletSrc="/img/category-tablets-tablet.png"
-            mobileSrc="/img/category-tablets-mobile.png"
-          />
-          <NavLink to="/tablets" className="categories__title">
-            Tablets
-          </NavLink>
-          <p className="categories__amount">24 models</p>
-        </div>
+          <div className="categories__item">
+            <ResponsiveImage
+              alt="Tablets category"
+              desktopSrc="/img/category-tablets-desktop.png"
+              tabletSrc="/img/category-tablets-tablet.png"
+              mobileSrc="/img/category-tablets-mobile.png"
+            />
+            <NavLink to="/tablets" className="categories__title">
+              Tablets
+            </NavLink>
+            <p className="categories__amount">24 models</p>
+          </div>
 
-        <div className="categories__item">
-          <ResponsiveImage
-            alt="Accessories category"
-            desktopSrc="/img/category-accessories-desktop.png"
-            tabletSrc="/img/category-accessories-tablet.png"
-            mobileSrc="/img/category-accessories-mobile.png"
-          />
-          <NavLink to="/accessories" className="categories__title">
-            Accessories
-          </NavLink>
-          <p className="categories__amount">100 models</p>
+          <div className="categories__item">
+            <ResponsiveImage
+              alt="Accessories category"
+              desktopSrc="/img/category-accessories-desktop.png"
+              tabletSrc="/img/category-accessories-tablet.png"
+              mobileSrc="/img/category-accessories-mobile.png"
+            />
+            <NavLink to="/accessories" className="categories__title">
+              Accessories
+            </NavLink>
+            <p className="categories__amount">100 models</p>
+          </div>
         </div>
       </div>
 

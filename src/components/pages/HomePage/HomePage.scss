@@ -58,6 +58,7 @@
 
     @include on-tablet {
       display: flex;
+      justify-content: center;
       gap: 19px;
       margin-bottom: 64px;
     }
@@ -110,6 +111,11 @@
 
   @include on-small-desktop {
     margin-bottom: 80px;
+  }
+
+  &-container {
+    display: flex;
+    justify-content: center;
   }
 
   &__item {
