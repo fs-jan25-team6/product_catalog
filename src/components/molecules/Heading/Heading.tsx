@@ -16,6 +16,7 @@ export const Heading: React.FC<Props> = ({ title, subtitle }) => (
       <Typography
         variant="body"
         tag="span"
+        color="secondary"
         className={styles.heading__subtitle}
       >
         {subtitle}

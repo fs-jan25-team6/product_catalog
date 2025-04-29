@@ -1,11 +1,5 @@
 @use '/src/styles/utils/mixins.scss' as *;
 
-.page {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
 .controls {
   @include page-grid;
 
@@ -24,10 +18,4 @@
       grid-column: span 3;
     }
   }
-}
-
-.placeholder {
-  height: 32px;
-
-  background-color: greenyellow;
 }

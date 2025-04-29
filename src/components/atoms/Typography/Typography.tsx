@@ -15,11 +15,14 @@ type Variant =
   | 'small'
   | 'label';
 
+type Color = 'primary' | 'secondary';
+
 interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   tag: Tag;
   variant: Variant;
   children: React.ReactNode;
   className?: string;
+  color?: Color;
 }
 
 export const Typography: React.FC<TypographyProps> = ({
@@ -27,6 +30,7 @@ export const Typography: React.FC<TypographyProps> = ({
   variant,
   children,
   className,
+  color = 'primary',
   ...props
 }) => {
   const Tag = tag;
@@ -36,6 +40,7 @@ export const Typography: React.FC<TypographyProps> = ({
       className={classNames(
         styles.typography,
         styles[`typography--${variant}`],
+        styles[`typography--color--${color}`],
         className,
       )}
       {...props}

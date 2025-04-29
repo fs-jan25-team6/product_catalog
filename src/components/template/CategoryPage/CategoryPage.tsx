@@ -1,10 +1,10 @@
 import React from 'react';
-import { useAppSelector } from '../../app/store';
-import { ProductList } from '../ProductList/ProductList';
-import { Product } from '../../types/Product';
+import { useAppSelector } from '../../../app/store';
+import { ProductList } from '../../ProductList/ProductList';
+import { Product } from '../../../types/Product';
 import styles from './CategoryPage.module.scss';
-import { Dropdown } from '../Dropdown';
-import { Heading } from '../molecules/Heading/Heading';
+import { Heading } from '../../molecules/Heading/Heading';
+import { Controls } from './components';
 
 type Props = {
   title: string;
@@ -25,14 +25,7 @@ export const CategoryPage: React.FC<Props> = ({ title, category }) => {
         />
       </div>
 
-      <div className={styles.controls}>
-        <div className={styles.controls__sort}>
-          <Dropdown label="Sort by" />
-        </div>
-        <div className={styles.controls__quantity}>
-          <Dropdown label="Items per page" />
-        </div>
-      </div>
+      <Controls />
 
       <ProductList list={filtered} />
 
