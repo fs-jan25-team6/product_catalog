@@ -3,6 +3,9 @@ import styles from './DropdownLayout.module.scss';
 import Select from 'react-select';
 import { Typography } from '../atoms/Typography';
 import './Dropdown.scss';
+import { ArrowIcon } from '../../assets/icons/arrow-icon';
+import { Icon } from '../../assets/icons/Icon/Icon';
+import classNames from 'classnames';
 
 export type Option = {
   value: string;
@@ -48,7 +51,14 @@ export const Dropdown: React.FC<Props> = ({
 
               return (
                 <div className={styles.dropdownIndicator}>
-                  {menuIsOpen ? 'Λ' : 'V'}
+                  <Icon
+                    className={classNames('icon', {
+                      'icon--arrow-up': menuIsOpen,
+                      'icon--arrow-down': !menuIsOpen,
+                    })}
+                  >
+                    <ArrowIcon />
+                  </Icon>
                 </div>
               );
             },
