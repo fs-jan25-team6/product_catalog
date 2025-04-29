@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { NAV_LINKS } from './constants';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
+import { SideMenu } from '../SIdeMenu';
+import { NAV_LINKS } from '../../constants/navigation';
 
 export const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(prev => !prev);
+  const closeMenu = () => setIsMenuOpen(false);
+
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.header__link, {
       [styles['header__link--active']]: isActive,
@@ -51,16 +57,19 @@ export const Header: React.FC = () => {
         >
           <img src="./icons/shopping-bag-icon.svg" alt="Shopping bag" />
         </NavLink>
-        <NavLink
-          to="/burger_menu"
+        <button
           className={classNames(
             styles.header__icon,
             styles['header__icon--burger'],
           )}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
         >
-          <img src="./icons/menu-icon.svg" alt="Menu" />
-        </NavLink>
+          <img src="/icons/menu-icon.svg" alt="Menu" />
+        </button>
       </div>
+
+      <SideMenu isOpen={isMenuOpen} onClose={closeMenu} />
     </header>
   );
 };
