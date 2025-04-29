@@ -4,9 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import { CartItem } from '../../organisms/CartItem/CartItem';
 import { ArrowIcon } from '../../../assets/icons/arrow-icon';
 import { Icon } from '../../../assets/icons/Icon/Icon';
+import { useAppSelector } from '../../../hooks/hooks';
+import {
+  selectTotalItems,
+  selectTotalPrice,
+} from '../../../features/cartSlice';
 
 export const CartPage: React.FC = () => {
   const navigate = useNavigate();
+  const { cartItems } = useAppSelector(state => state.cart);
+  const totalItems = useAppSelector(selectTotalItems);
+  const totalPrice = useAppSelector(selectTotalPrice);
+
   return (
     <>
       <div className="cart">
@@ -25,18 +34,18 @@ export const CartPage: React.FC = () => {
         <div className="cart__content">
           <div className="cart__list">
             {/* {cartItems.map(item => <CartItem key={item.id} {...item} />)} */}
-            <CartItem />
-            <CartItem />
-            <CartItem />
+            {cartItems.map(item => (
+              <CartItem product={item} key={item.id} />
+            ))}
           </div>
 
           <div className="cart__total">
             <div className="cart__total-price">
-              <p className="cart__total-amount"> $2657 </p>
+              <p className="cart__total-amount"> ${totalPrice} </p>
 
               {/* {sum of cartItems.price} */}
 
-              <p className="cart__total-items">Total for 3 items</p>
+              <p className="cart__total-items">Total for {totalItems} items</p>
 
               {/* {Total for {cartItems.length} item(-s)} */}
             </div>
