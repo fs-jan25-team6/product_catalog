@@ -3,6 +3,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './SideMenu.scss';
 import { NAV_LINKS } from '../../constants/navigation';
+import { Icon } from '../../assets/icons/Icon/Icon';
+import { HeartIcon } from '../../assets/icons/heart-icon';
+import { ShoppingBagIcon } from '../../assets/icons/shopping-bag-icon';
+import { CloseIcon } from '../../assets/icons/close-icon';
 
 type Props = {
   onClose: () => void;
@@ -28,11 +32,9 @@ export const SideMenu: React.FC<Props> = ({ onClose, isOpen }: Props) => {
           onClick={onClose}
           aria-label="Close menu"
         >
-          <img
-            className="menu__close--img"
-            src="./icons/menu-close-icon.svg"
-            alt="Close"
-          />
+          <Icon>
+            <CloseIcon />
+          </Icon>
         </button>
       </div>
 
@@ -56,18 +58,14 @@ export const SideMenu: React.FC<Props> = ({ onClose, isOpen }: Props) => {
 
       <div className="menu__bottom">
         <NavLink to="/favourites" className="menu__icon" onClick={onClose}>
-          <img
-            className="menu__img--left"
-            src="./icons/heart-icon.svg"
-            alt="Favourites"
-          />
+          <Icon>
+            <HeartIcon />
+          </Icon>
         </NavLink>
         <NavLink to="/cart" className="menu__icon" onClick={onClose}>
-          <img
-            className="menu__img--right"
-            src="./icons/shopping-bag-icon.svg"
-            alt="Shopping bag"
-          />
+          <Icon>
+            <ShoppingBagIcon />
+          </Icon>
         </NavLink>
       </div>
     </aside>
