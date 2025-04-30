@@ -1,4 +1,5 @@
 @use './styles/utils/font.scss';
+@use './styles/utils/variables.scss' as *;
 @use 'normalize-scss' as *;
 @use './styles/utils/mixins.scss' as *;
 @include normalize();
@@ -10,7 +11,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: $main-background-color;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,9 +31,11 @@ body {
   :root {
     color: #213547;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
