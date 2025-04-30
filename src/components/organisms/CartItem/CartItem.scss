@@ -35,6 +35,7 @@
     align-items: center;
     background-color: $surface1-color;
     padding: 0;
+    cursor: pointer;
   }
 
   &__image {
@@ -74,6 +75,9 @@
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;
+    display: inline-block;
+    min-width: 6ch;
+    text-align: end;
   }
 }
 
@@ -92,8 +96,8 @@
     font-weight: 600;
   }
 
-  &__decrease,
-  &__increase {
+  &--disabled,
+  &--active {
     display: flex;
     justify-content: center;
     background-color: $surface1-color;
@@ -103,13 +107,14 @@
     width: 32px;
     align-items: center;
     padding: 0;
+    cursor: pointer;
   }
 
-  &__decrease {
+  &--disabled {
     border: 1px solid $elements-color;
   }
 
-  &__increase {
+  &--active {
     background-color: $surface2-color;
   }
 }

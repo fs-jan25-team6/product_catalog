@@ -1,21 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Product } from '../types/Product';
 import { fetchData } from '../helpers/fetchData';
+import { ProductDetails } from '../types/ProductDetails';
 
-type ProductsState = {
-  products: Product[];
+type TabletsState = {
+  productList: ProductDetails[];
   loading: boolean;
   error: string; // must be a new type ErrorType
 };
 
-const initialState: ProductsState = {
-  products: [],
+const initialState: TabletsState = {
+  productList: [],
   loading: false,
   error: '',
 };
 
-export const productsSlice = createSlice({
-  name: 'products',
+export const tabletsSlice = createSlice({
+  name: 'tablets',
   initialState,
   reducers: {},
   extraReducers: builder => {
@@ -24,7 +24,7 @@ export const productsSlice = createSlice({
     });
 
     builder.addCase(init.fulfilled, (state, action) => {
-      state.products = action.payload;
+      state.productList = action.payload;
       state.loading = false;
     });
 
@@ -35,8 +35,8 @@ export const productsSlice = createSlice({
   },
 });
 
-export default productsSlice.reducer;
+export default tabletsSlice.reducer;
 
-export const init = createAsyncThunk('products/fetch', () => {
-  return fetchData<Product[]>('/api/products.json');
+export const init = createAsyncThunk('tablets/fetch', () => {
+  return fetchData<ProductDetails[]>('/api/tablets.json');
 });
