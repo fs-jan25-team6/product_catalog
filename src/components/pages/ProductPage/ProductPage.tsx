@@ -43,20 +43,14 @@ export const ProductPage: React.FC = () => {
     product => product.namespaceId === productDetails?.namespaceId,
   );
 
-  const switchVariant = (newColor?: string, newCapacity?: string) => {
-    const targetVariant = productVariants.find(variant => {
-      const colorMatch = newColor ? variant.color === newColor : true;
-      const capacityMatch = newCapacity
-        ? variant.capacity === newCapacity
-        : true;
-      return colorMatch && capacityMatch;
-    });
+  const switchVariant = (newColor: string, newCapacity: string) => {
+    const newItemId =
+      `${productDetails.namespaceId}-${newCapacity}-${newColor}`.toLowerCase();
 
-    if (targetVariant && targetVariant.id !== productId) {
-      navigate(`/product/${targetVariant.id}`);
+    if (productVariants.find(product => product.id === newItemId)) {
+      navigate(`/product/${newItemId}`);
     }
   };
-
   const productModel = generateDeviceModel(productId!);
 
   const [selectedImage, setSelectedImage] = useState(productDetails?.images[0]);
@@ -163,7 +157,7 @@ export const ProductPage: React.FC = () => {
                           color === productDetails?.color ? '--active' : ''
                         }`}
                         onClick={() =>
-                          switchVariant(color, selectedProduct.capacity)
+                          switchVariant(color, productDetails.capacity)
                         }
                       >
                         <div
@@ -192,7 +186,7 @@ export const ProductPage: React.FC = () => {
                         capacity === productDetails?.capacity ? '--active' : ''
                       }`}
                       onClick={() =>
-                        switchVariant(selectedProduct.color, capacity)
+                        switchVariant(productDetails.color, capacity)
                       }
                     >
                       {capacity}
