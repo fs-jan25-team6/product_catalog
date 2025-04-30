@@ -8,9 +8,12 @@ import { MenuIcon } from '../../assets/icons/menu-icon';
 import { ShoppingBagIcon } from '../../assets/icons/shopping-bag-icon';
 import { HeartIcon } from '../../assets/icons/heart-icon';
 import { Icon } from '../../assets/icons/Icon/Icon';
+import { useAppSelector } from '../../hooks/hooks';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { favourites } = useAppSelector(state => state.favourites);
+  const { cartItems } = useAppSelector(state => state.cart);
 
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
   const closeMenu = () => setIsMenuOpen(false);
@@ -52,6 +55,11 @@ export const Header: React.FC = () => {
         >
           <Icon>
             <HeartIcon />
+            {favourites.length > 0 && (
+              <div className={styles.header__icon__counter}>
+                {favourites.length}
+              </div>
+            )}
           </Icon>
         </NavLink>
         <NavLink
@@ -63,6 +71,11 @@ export const Header: React.FC = () => {
         >
           <Icon>
             <ShoppingBagIcon />
+            {cartItems.length > 0 && (
+              <div className={styles.header__icon__counter}>
+                {cartItems.length}
+              </div>
+            )}
           </Icon>
         </NavLink>
         <button

@@ -40,6 +40,7 @@
       &__img {
         width: 100%;
         object-fit: contain;
+        animation: fadeIn 0.5s ease-out forwards;
       }
     }
 
@@ -59,6 +60,7 @@
         height: 50px;
         width: auto;
         object-fit: contain;
+        cursor: pointer;
 
         @include on-tablet {
           min-height: 35px;
@@ -119,6 +121,7 @@
           width: 28px;
           height: 28px;
           border-radius: 50%;
+          cursor: pointer;
 
           $colors: (
             'black': $black,
@@ -154,6 +157,7 @@
 
     &__id {
       color: $icons-color;
+      font-size: 10px;
     }
 
     &__breakline {
@@ -192,6 +196,7 @@
           font-weight: 400;
           font-size: 14px;
           line-height: 21px;
+          cursor: pointer;
 
           &.--active {
             background-color: $white-accent-color;
@@ -303,5 +308,16 @@
         color: $white-accent-color;
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }

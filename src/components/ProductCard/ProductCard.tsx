@@ -5,22 +5,42 @@ import classNames from 'classnames';
 import { HeartFilledIcon } from '../../assets/icons/heart-filled-icon';
 import { HeartIcon } from '../../assets/icons/heart-icon';
 import { Icon } from '../../assets/icons/Icon/Icon';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { toggleFavourite } from '../../features/favouritesSlice';
+import { add } from '../../features/cartSlice';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   product: Product;
-  isFavorite: boolean;
-  isInCart: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({
-  product,
-  isFavorite,
-  isInCart,
-}) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const isOnDiscount = product.price < product.fullPrice;
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { favourites } = useAppSelector(state => state.favourites);
+  const { cartItems } = useAppSelector(state => state.cart);
+
+  const handleToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    dispatch(toggleFavourite(product));
+  };
+  const addToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    dispatch(add(product));
+  };
+
+  const isInFavourites = favourites.some(fav => fav.itemId === product.itemId);
+  const isInCart = cartItems.some(
+    cartItem => cartItem.itemId === product.itemId,
+  );
+
+  const handleClick = () => {
+    navigate(`/product/${product.itemId}`);
+  };
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={handleClick}>
       <div className={styles.card__content}>
         <img
           src={product.image}
@@ -66,6 +86,8 @@ export const ProductCard: React.FC<Props> = ({
               className={classNames(styles['card__button'], {
                 [styles['card__button--cart']]: !isInCart,
               })}
+              disabled={isInCart}
+              onClick={addToCart}
             >
               {isInCart ? 'Added' : 'Add to cart'}
             </button>
@@ -74,8 +96,11 @@ export const ProductCard: React.FC<Props> = ({
                 styles['card__button'],
                 styles['card__button--fav'],
               )}
+              onClick={handleToggle}
             >
-              <Icon>{isFavorite ? <HeartFilledIcon /> : <HeartIcon />}</Icon>
+              <Icon>
+                {isInFavourites ? <HeartFilledIcon /> : <HeartIcon />}
+              </Icon>
             </button>
           </div>
         </div>

@@ -11,6 +11,9 @@
   gap: 16px;
   background-color: $main-background-color;
   border-bottom: 1px solid $elements-color;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
   @include on-small-desktop {
     height: 64px;
@@ -147,14 +150,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
     text-decoration: none;
     color: $white-accent-color;
     width: 48px;
+    height: 48px;
     cursor: pointer;
-    aspect-ratio: 1;
     border-left: 1px solid $elements-color;
-    height: 100%;
     position: relative;
+
+    &__counter {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 14px;
+      height: 14px;
+      background-color: $red-accent-color;
+      border-radius: 50%;
+      border: 1px solid $main-background-color;
+
+      font-weight: 600;
+      font-size: 9px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: center;
+    }
 
     &::after {
       content: '';
