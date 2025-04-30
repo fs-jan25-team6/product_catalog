@@ -1,6 +1,10 @@
 @use '/src/styles/utils/variables.scss' as *;
 @use '/src/styles/utils/mixins.scss' as *;
 
+body:has(.menu--open) {
+  overflow: hidden;
+}
+
 .menu {
   position: fixed;
   top: 0;
@@ -57,11 +61,6 @@
     border-left: 1px solid $elements-color;
     background-color: $main-background-color;
     height: 100%;
-
-    &--img {
-      width: 16px;
-      aspect-ratio: 1 / 1;
-    }
   }
 
   &__content {
