@@ -5,6 +5,10 @@
 @use './detailes.scss' as *;
 @use './offers.scss' as *;
 
+.loading-state {
+  min-height: 100vh;
+}
+
 .product-page {
   min-width: 320px;
   box-sizing: border-box;

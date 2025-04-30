@@ -1,10 +1,9 @@
 import React from 'react';
-import { useAppSelector } from '../../../app/store';
 import { ProductList } from '../../ProductList/ProductList';
-import { Product } from '../../../types/Product';
 import styles from './CategoryPage.module.scss';
 import { Heading } from '../../molecules/Heading/Heading';
 import { Controls } from './components';
+import { useAppSelector } from '../../../hooks/hooks';
 
 type Props = {
   title: string;
@@ -12,7 +11,8 @@ type Props = {
 };
 
 export const CategoryPage: React.FC<Props> = ({ title, category }) => {
-  const products = useAppSelector(state => state.products) as Product[];
+  const { products } = useAppSelector(state => state.products);
+
   const filtered = products.filter(product => product.category === category);
 
   return (
