@@ -68,11 +68,13 @@ export const ProductPage: React.FC = () => {
     product => product.itemId === productId,
   ) as Product;
 
-  const { productList } = useAppSelector(
-    state => state[selectedProduct.category],
+  const categoryState = useAppSelector(
+    state => state[selectedProduct?.category],
   );
 
-  const productDetails = productList.find(product => product.id === productId);
+  const productDetails = categoryState?.productList?.find(
+    product => product.id === productId,
+  );
 
   const [isFavourite, setIsFavourite] = useState(false);
   const [isInCart, setIsInCart] = useState(false);
@@ -87,6 +89,7 @@ export const ProductPage: React.FC = () => {
 
   return (
     <div className="product-page">
+      {!selectedProduct && <div>Product not found</div>}
       <div className="product-page__content">
         <section className="navigation">
           <div className="navigation__breadcrumbs">
