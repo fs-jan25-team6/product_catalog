@@ -9,17 +9,21 @@ export const Breadcrumbs: React.FC = () => {
   const { pathname } = useLocation();
   const pathnames = pathname.split('/').filter(x => x);
 
+  const isHomePage = pathname === '/';
+
   return (
     <div aria-label="Breadcrumb" className="breadcrumbs">
       <nav className="breadcrumbs__navigation">
         <ul className="breadcrumbs__list">
-          <li>
-            <NavLink to="/" className="home">
-              <Icon>
-                <HomeIcon />
-              </Icon>
-            </NavLink>
-          </li>
+          {!isHomePage && (
+            <li>
+              <NavLink to="/" className="home">
+                <Icon>
+                  <HomeIcon />
+                </Icon>
+              </NavLink>
+            </li>
+          )}
 
           {pathnames.map((name, index) => {
             const isLast = index === pathnames.length - 1;
