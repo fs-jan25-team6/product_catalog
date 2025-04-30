@@ -6,6 +6,9 @@ import { useAppDispatch } from '../../hooks/hooks';
 import { init as initProducts } from '../../features/productsSlice';
 import { init as initFavourites } from '../../features/favouritesSlice';
 import { init as initCart } from '../../features/cartSlice';
+import { init as initPhones } from '../../features/phonesSlice';
+import { init as initTablets } from '../../features/tabletsSlice';
+import { init as initAccessories } from '../../features/accessoriesSlices';
 
 export const AppLayout: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -14,6 +17,9 @@ export const AppLayout: React.FC = () => {
     dispatch(initProducts());
     dispatch(initFavourites());
     dispatch(initCart());
+    dispatch(initPhones());
+    dispatch(initTablets());
+    dispatch(initAccessories());
   }, [dispatch]);
 
   return (

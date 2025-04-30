@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-// import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './styles/ProductPage.scss';
 import { Link } from 'react-router-dom';
 
@@ -11,6 +11,8 @@ import classNames from 'classnames';
 import { HeartFilledIcon } from '../../../assets/icons/heart-filled-icon';
 import { HeartIcon } from '../../../assets/icons/heart-icon';
 import { Icon } from '../../../assets/icons/Icon/Icon';
+import { useAppSelector } from '../../../hooks/hooks';
+import { Product } from '../../../types/Product';
 
 const tempProduct = {
   id: 'apple-iphone-11-pro-max-64gb-gold',
@@ -59,7 +61,18 @@ const tempProduct = {
 };
 
 export const ProductPage: React.FC = () => {
-  // const { productId } = useParams();
+  const { productId } = useParams();
+  const { products } = useAppSelector(state => state.products);
+
+  const selectedProduct = products.find(
+    product => product.itemId === productId,
+  ) as Product;
+
+  const { productList } = useAppSelector(
+    state => state[selectedProduct.category],
+  );
+
+  const productDetails = productList.find(product => product.id === productId);
 
   const [isFavourite, setIsFavourite] = useState(false);
   const [isInCart, setIsInCart] = useState(false);
@@ -67,6 +80,10 @@ export const ProductPage: React.FC = () => {
   const toggleFavourite = () => setIsFavourite(!isFavourite);
 
   const toggleCart = () => setIsInCart(!isInCart);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [productId]);
 
   return (
     <div className="product-page">
@@ -89,7 +106,7 @@ export const ProductPage: React.FC = () => {
               <ArrowIcon />
             </Icon>
             <span className="navigation__breadcrumbs__product">
-              {tempProduct.name} (iMT9G2FS/A)
+              {productDetails?.name} (iMT9G2FS/A)
             </span>
           </div>
 
@@ -101,7 +118,7 @@ export const ProductPage: React.FC = () => {
           </Link>
         </section>
 
-        <h2 className="product__name">{tempProduct.name} (iMT9G2FS/A)</h2>
+        <h2 className="product__name">{productDetails?.name} (iMT9G2FS/A)</h2>
 
         <section className="product__main-info">
           <div className="product__main-info__images">
@@ -116,6 +133,7 @@ export const ProductPage: React.FC = () => {
             <div className="product__main-info__images__slider">
               {tempProduct.images.map(image => (
                 <img
+                  key={image}
                   className="product__main-info__images__slider__img"
                   src={image}
                   alt="iphone-img"
