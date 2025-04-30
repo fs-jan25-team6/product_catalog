@@ -4,335 +4,108 @@ import { NavLink } from 'react-router-dom';
 import { ResponsiveImage } from '../../atoms/ResponsiveImage/ResponsiveImage';
 import { Icon } from '../../../assets/icons/Icon/Icon';
 import { ArrowIcon } from '../../../assets/icons/arrow-icon';
+import { Product } from '../../../types/Product';
+import { Slider } from '../../organisms/Slider/Slider';
 
-const newModels = [
+
+const newModels: Product[] = [
   {
-    "id": "apple-iphone-11-128gb-black",
-    "namespaceId": "apple-iphone-11",
-    "name": "Apple iPhone 11 128GB Black",
-    "capacityAvailable": ["64GB", "128GB", "256GB"],
-    "capacity": "128GB",
-    "priceRegular": 1100,
-    "priceDiscount": 1050,
-    "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
+    "id": 1,
+    "category": "phones",
+    "itemId": "apple-iphone-7-32gb-black",
+    "name": "Apple iPhone 7 32GB Black",
+    "fullPrice": 400,
+    "price": 375,
+    "screen": "4.7' IPS",
+    "capacity": "32GB",
     "color": "black",
-    "images": [
-      "img/phones/apple-iphone-11/black/00.webp",
-      "img/phones/apple-iphone-11/black/01.webp",
-      "img/phones/apple-iphone-11/black/02.webp",
-      "img/phones/apple-iphone-11/black/03.webp",
-      "img/phones/apple-iphone-11/black/04.webp"
-    ],
-    "description": [
-      {
-        "title": "And then there was Pro",
-        "text": [
-          "A transformative triple-camera system that adds tons of capability without complexity.",
-          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
-        ]
-      },
-      {
-        "title": "Camera",
-        "text": [
-          "Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it."
-        ]
-      },
-      {
-        "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
-        "text": [
-          "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
-        ]
-      }
-    ],
-    "screen": "6.1' IPS",
-    "resolution": "1792x828",
-    "processor": "Apple A13 Bionic",
-    "ram": "4GB",
-    "camera": "12 Mp + 12 Mp + 12MP",
-    "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
+    "ram": "2GB",
+    "year": 2016,
+    "image": "img/phones/apple-iphone-7/black/00.webp"
   },
-
   {
-    "id": "apple-iphone-11-128gb-green",
-    "namespaceId": "apple-iphone-11",
-    "name": "Apple iPhone 11 128GB Green",
-    "capacityAvailable": ["64GB", "128GB", "256GB"],
-    "capacity": "128GB",
-    "priceRegular": 1100,
-    "priceDiscount": 1050,
-    "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
-    "color": "green",
-    "images": [
-      "img/phones/apple-iphone-11/green/00.webp",
-      "img/phones/apple-iphone-11/green/01.webp",
-      "img/phones/apple-iphone-11/green/02.webp",
-      "img/phones/apple-iphone-11/green/03.webp",
-      "img/phones/apple-iphone-11/green/04.webp"
-    ],
-    "description": [
-      {
-        "title": "And then there was Pro",
-        "text": [
-          "A transformative triple-camera system that adds tons of capability without complexity.",
-          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
-        ]
-      },
-      {
-        "title": "Camera",
-        "text": [
-          "Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it."
-        ]
-      },
-      {
-        "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
-        "text": [
-          "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
-        ]
-      }
-    ],
-    "screen": "6.1' IPS",
-    "resolution": "1792x828",
-    "processor": "Apple A13 Bionic",
-    "ram": "4GB",
-    "camera": "12 Mp + 12 Mp + 12MP",
-    "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
+    "id": 2,
+    "category": "phones",
+    "itemId": "apple-iphone-7-plus-32gb-black",
+    "name": "Apple iPhone 7 Plus 32GB Black",
+    "fullPrice": 540,
+    "price": 500,
+    "screen": "5.5' IPS",
+    "capacity": "32GB",
+    "color": "black",
+    "ram": "3GB",
+    "year": 2016,
+    "image": "img/phones/apple-iphone-7-plus/black/00.webp"
   },
-
   {
-    "id": "apple-iphone-11-128gb-purple",
-    "namespaceId": "apple-iphone-11",
-    "name": "Apple iPhone 11 128GB Purple",
-    "capacityAvailable": ["64GB", "128GB", "256GB"],
-    "capacity": "128GB",
-    "priceRegular": 1100,
-    "priceDiscount": 1050,
-    "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
-    "color": "purple",
-    "images": [
-      "img/phones/apple-iphone-11/purple/00.webp",
-      "img/phones/apple-iphone-11/purple/01.webp",
-      "img/phones/apple-iphone-11/purple/02.webp",
-      "img/phones/apple-iphone-11/purple/03.webp",
-      "img/phones/apple-iphone-11/purple/04.webp"
-    ],
-    "description": [
-      {
-        "title": "And then there was Pro",
-        "text": [
-          "A transformative triple-camera system that adds tons of capability without complexity.",
-          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
-        ]
-      },
-      {
-        "title": "Camera",
-        "text": [
-          "Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it."
-        ]
-      },
-      {
-        "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
-        "text": [
-          "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
-        ]
-      }
-    ],
-    "screen": "6.1' IPS",
-    "resolution": "1792x828",
-    "processor": "Apple A13 Bionic",
-    "ram": "4GB",
-    "camera": "12 Mp + 12 Mp + 12MP",
-    "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
+    "id": 3,
+    "category": "phones",
+    "itemId": "apple-iphone-8-64gb-gold",
+    "name": "Apple iPhone 8 64GB Gold",
+    "fullPrice": 600,
+    "price": 550,
+    "screen": "4.7' IPS",
+    "capacity": "64GB",
+    "color": "gold",
+    "ram": "2GB",
+    "year": 2017,
+    "image": "img/phones/apple-iphone-8/gold/00.webp"
   },
-
   {
-    "id": "apple-iphone-11-128gb-red",
-    "namespaceId": "apple-iphone-11",
-    "name": "Apple iPhone 11 128GB Red",
-    "capacityAvailable": ["64GB", "128GB", "256GB"],
-    "capacity": "128GB",
-    "priceRegular": 1100,
-    "priceDiscount": 1050,
-    "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
-    "color": "red",
-    "images": [
-      "img/phones/apple-iphone-11/red/00.webp",
-      "img/phones/apple-iphone-11/red/01.webp",
-      "img/phones/apple-iphone-11/red/02.webp",
-      "img/phones/apple-iphone-11/red/03.webp",
-      "img/phones/apple-iphone-11/red/04.webp"
-    ],
-    "description": [
-      {
-        "title": "And then there was Pro",
-        "text": [
-          "A transformative triple-camera system that adds tons of capability without complexity.",
-          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
-        ]
-      },
-      {
-        "title": "Camera",
-        "text": [
-          "Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it."
-        ]
-      },
-      {
-        "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
-        "text": [
-          "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
-        ]
-      }
-    ],
+    "id": 4,
+    "category": "phones",
+    "itemId": "apple-iphone-11-64gb-black",
+    "name": "Apple iPhone 11 64GB Black",
+    "fullPrice": 932,
+    "price": 880,
     "screen": "6.1' IPS",
-    "resolution": "1792x828",
-    "processor": "Apple A13 Bionic",
+    "capacity": "64GB",
+    "color": "black",
     "ram": "4GB",
-    "camera": "12 Mp + 12 Mp + 12MP",
-    "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
+    "year": 2019,
+    "image": "img/phones/apple-iphone-11/black/00.webp"
   },
-
   {
-    "id": "apple-iphone-11-128gb-white",
-    "namespaceId": "apple-iphone-11",
-    "name": "Apple iPhone 11 128GB White",
-    "capacityAvailable": ["64GB", "128GB", "256GB"],
-    "capacity": "128GB",
-    "priceRegular": 1100,
-    "priceDiscount": 1050,
-    "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
-    "color": "white",
-    "images": [
-      "img/phones/apple-iphone-11/white/00.webp",
-      "img/phones/apple-iphone-11/white/01.webp",
-      "img/phones/apple-iphone-11/white/02.webp",
-      "img/phones/apple-iphone-11/white/03.webp",
-      "img/phones/apple-iphone-11/white/04.webp"
-    ],
-    "description": [
-      {
-        "title": "And then there was Pro",
-        "text": [
-          "A transformative triple-camera system that adds tons of capability without complexity.",
-          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
-        ]
-      },
-      {
-        "title": "Camera",
-        "text": [
-          "Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it."
-        ]
-      },
-      {
-        "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
-        "text": [
-          "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
-        ]
-      }
-    ],
-    "screen": "6.1' IPS",
-    "resolution": "1792x828",
-    "processor": "Apple A13 Bionic",
-    "ram": "4GB",
-    "camera": "12 Mp + 12 Mp + 12MP",
-    "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
-  },
-
-  {
-    "id": "apple-iphone-11-128gb-yellow",
-    "namespaceId": "apple-iphone-11",
+    "id": 5,
+    "category": "phones",
+    "itemId": "apple-iphone-11-128gb-yellow",
     "name": "Apple iPhone 11 128GB Yellow",
-    "capacityAvailable": ["64GB", "128GB", "256GB"],
+    "fullPrice": 1100,
+    "price": 1050,
+    "screen": "6.1' IPS",
     "capacity": "128GB",
-    "priceRegular": 1100,
-    "priceDiscount": 1050,
-    "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "yellow",
-    "images": [
-      "img/phones/apple-iphone-11/yellow/00.webp",
-      "img/phones/apple-iphone-11/yellow/01.webp",
-      "img/phones/apple-iphone-11/yellow/02.webp",
-      "img/phones/apple-iphone-11/yellow/03.webp",
-      "img/phones/apple-iphone-11/yellow/04.webp"
-    ],
-    "description": [
-      {
-        "title": "And then there was Pro",
-        "text": [
-          "A transformative triple-camera system that adds tons of capability without complexity.",
-          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
-        ]
-      },
-      {
-        "title": "Camera",
-        "text": [
-          "Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it."
-        ]
-      },
-      {
-        "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
-        "text": [
-          "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
-        ]
-      }
-    ],
-    "screen": "6.1' IPS",
-    "resolution": "1792x828",
-    "processor": "Apple A13 Bionic",
     "ram": "4GB",
-    "camera": "12 Mp + 12 Mp + 12MP",
-    "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
+    "year": 2019,
+    "image": "img/phones/apple-iphone-11/yellow/00.webp"
   },
-
   {
-    "id": "apple-iphone-11-256gb-black",
-    "namespaceId": "apple-iphone-11",
-    "name": "Apple iPhone 11 256GB Black",
-    "capacityAvailable": ["64GB", "128GB", "256GB"],
-    "capacity": "256GB",
-    "priceRegular": 1172,
-    "priceDiscount": 1115,
-    "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
-    "color": "black",
-    "images": [
-      "img/phones/apple-iphone-11/black/00.webp",
-      "img/phones/apple-iphone-11/black/01.webp",
-      "img/phones/apple-iphone-11/black/02.webp",
-      "img/phones/apple-iphone-11/black/03.webp",
-      "img/phones/apple-iphone-11/black/04.webp"
-    ],
-    "description": [
-      {
-        "title": "And then there was Pro",
-        "text": [
-          "A transformative triple-camera system that adds tons of capability without complexity.",
-          "An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro."
-        ]
-      },
-      {
-        "title": "Camera",
-        "text": [
-          "Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it."
-        ]
-      },
-      {
-        "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
-        "text": [
-          "iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with."
-        ]
-      }
-    ],
+    "id": 6,
+    "category": "phones",
+    "itemId": "apple-iphone-11-256gb-green",
+    "name": "Apple iPhone 11 256GB Green",
+    "fullPrice": 1172,
+    "price": 1115,
     "screen": "6.1' IPS",
-    "resolution": "1792x828",
-    "processor": "Apple A13 Bionic",
+    "capacity": "256GB",
+    "color": "green",
     "ram": "4GB",
-    "camera": "12 Mp + 12 Mp + 12MP",
-    "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
+    "year": 2019,
+    "image": "img/phones/apple-iphone-11/green/00.webp"
+  },
+  {
+    "id": 7,
+    "category": "phones",
+    "itemId": "apple-iphone-11-pro-64gb-gold",
+    "name": "Apple iPhone 11 Pro 64GB Gold",
+    "fullPrice": 1312,
+    "price": 1270,
+    "screen": "5.8' OLED",
+    "capacity": "64GB",
+    "color": "gold",
+    "ram": "4GB",
+    "year": 2019,
+    "image": "img/phones/apple-iphone-11-pro/gold/00.webp"
   },
 ];
 
@@ -371,26 +144,7 @@ export const HomePage: React.FC = () => {
         </button>
       </div>
 
-      <div className="home-page__recomendation">
-        <h3 className="home-page__title home-page__title--recomendation home-page__title--recomendation--hide-br">
-          Brand new <br /> models
-        </h3>
-        <div className="slider-btn">
-          <button className="slider-btn__left">
-            <Icon className="slider-btn__left--svg">
-              <ArrowIcon />
-            </Icon>
-          </button>
-          <button className="slider-btn__right">
-            <Icon className="slider-btn__right--svg" direction="right">
-              <ArrowIcon />
-            </Icon>
-          </button>
-        </div>
-      </div>
-      <div className="home-page__recomendation-content">
-        Component with phones wich you can slide
-      </div>
+      <Slider title={'Brand new models'} productsList={newModels} id={1} />
 
       <h3 className="home-page__title">Shop by category</h3>
       <div className="categories-container">
@@ -436,26 +190,7 @@ export const HomePage: React.FC = () => {
         </div>
       </div>
 
-      <div className="home-page__recomendation">
-        <h3 className="home-page__title home-page__title--recomendation">
-          Hot prices
-        </h3>
-        <div className="slider-btn">
-          <button className="slider-btn__left">
-            <Icon>
-              <ArrowIcon />
-            </Icon>
-          </button>
-          <button className="slider-btn__right">
-            <Icon direction="right">
-              <ArrowIcon />
-            </Icon>
-          </button>
-        </div>
-      </div>
-      <div className="home-page__recomendation-content">
-        Component with phones wich you can slide
-      </div>
+      <Slider title={'Hot prices'} productsList={newModels} id={2} />
     </>
   );
 };

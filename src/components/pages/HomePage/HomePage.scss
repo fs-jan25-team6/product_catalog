@@ -26,16 +26,6 @@
       font-size: 32px;
     }
 
-    &--recomendation {
-      margin-bottom: 0;
-
-      &--hide-br br {
-        @include on-tablet {
-          display: none;
-        }
-      }
-    }
-
     &--bigger {
       font-size: 32px;
       margin-bottom: 24px;
@@ -71,29 +61,6 @@
       flex-direction: column;
       align-items: center;
       gap: 18px;
-    }
-  }
-
-  &__recomendation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-  }
-
-  &__recomendation-content {
-    width: 220px;
-    height: 440px;
-    background-color: $surface1-color;
-    margin-inline: auto;
-    margin-bottom: 57px;
-
-    @include on-tablet {
-      margin-bottom: 64px;
-    }
-
-    @include on-small-desktop {
-      margin-bottom: 80px;
     }
   }
 }
@@ -166,13 +133,6 @@
   }
 
   &__left {
-    &--svg {
-      color: $surface2-color;
-
-      &--active {
-        color: $white-accent-color;
-      }
-    }
 
     &--big {
       display: none;
@@ -192,11 +152,6 @@
   }
 
   &__right {
-    background-color: $surface2-color;
-
-    &--svg {
-      color: $white-accent-color;
-    }
 
     &--big {
       display: none;
@@ -229,5 +184,20 @@
     &:first-child {
       background-color: $white-accent-color;
     }
+  }
+}
+
+.swiper-size {
+  max-width: 212px;
+  max-height: 439px;
+
+  @include on-tablet {
+    max-width: 237px;
+    max-height: 512px;
+  }
+
+  @include on-small-desktop {
+    max-width: 272px;
+    max-height: 506px;
   }
 }
