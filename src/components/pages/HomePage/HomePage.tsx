@@ -1,9 +1,9 @@
 import React from 'react';
 import './HomePage.scss';
-import ArrowLeftIcon from '../../../../public/icons/arrow-left-icon.svg?react';
-import ArrowRightIcon from '../../../../public/icons/arrow-right-icon.svg?react';
 import { NavLink } from 'react-router-dom';
 import { ResponsiveImage } from '../../atoms/ResponsiveImage/ResponsiveImage';
+import { Icon } from '../../../assets/icons/Icon/Icon';
+import { ArrowIcon } from '../../../assets/icons/arrow-icon';
 
 export const HomePage: React.FC = () => {
   return (
@@ -14,7 +14,9 @@ export const HomePage: React.FC = () => {
 
       <div className="home-page__slider">
         <button className="slider-btn__left slider-btn__left--big">
-          <ArrowLeftIcon className="slider-btn__left--svg slider-btn__left--svg--active" />
+          <Icon>
+            <ArrowIcon />
+          </Icon>
         </button>
 
         <div className="home-page__slider-content">
@@ -32,10 +34,11 @@ export const HomePage: React.FC = () => {
         </div>
 
         <button className="slider-btn__right slider-btn__right--big">
-          <ArrowRightIcon className="slider-btn__right--svg" />
+          <Icon direction="right">
+            <ArrowIcon />
+          </Icon>
         </button>
       </div>
-
 
       <div className="home-page__recomendation">
         <h3 className="home-page__title home-page__title--recomendation home-page__title--recomendation--hide-br">
@@ -43,10 +46,14 @@ export const HomePage: React.FC = () => {
         </h3>
         <div className="slider-btn">
           <button className="slider-btn__left">
-            <ArrowLeftIcon className="slider-btn__left--svg" />
+            <Icon className="slider-btn__left--svg">
+              <ArrowIcon />
+            </Icon>
           </button>
           <button className="slider-btn__right">
-            <ArrowRightIcon className="slider-btn__right--svg" />
+            <Icon className="slider-btn__right--svg" direction="right">
+              <ArrowIcon />
+            </Icon>
           </button>
         </div>
       </div>
@@ -99,13 +106,19 @@ export const HomePage: React.FC = () => {
       </div>
 
       <div className="home-page__recomendation">
-        <h3 className="home-page__title home-page__title--recomendation">Hot prices</h3>
+        <h3 className="home-page__title home-page__title--recomendation">
+          Hot prices
+        </h3>
         <div className="slider-btn">
           <button className="slider-btn__left">
-            <ArrowLeftIcon className="slider-btn__left--svg" />
+            <Icon>
+              <ArrowIcon />
+            </Icon>
           </button>
           <button className="slider-btn__right">
-            <ArrowRightIcon className="slider-btn__right--svg" />
+            <Icon direction="right">
+              <ArrowIcon />
+            </Icon>
           </button>
         </div>
       </div>

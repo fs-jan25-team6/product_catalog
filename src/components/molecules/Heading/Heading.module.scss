@@ -1,0 +1,7 @@
+@use '/src/styles/utils/variables.scss' as *;
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

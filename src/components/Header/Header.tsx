@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { NAV_LINKS } from './constants';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
+import { SideMenu } from '../SIdeMenu';
+import { NAV_LINKS } from '../../constants/navigation';
+import { MenuIcon } from '../../assets/icons/menu-icon';
+import { ShoppingBagIcon } from '../../assets/icons/shopping-bag-icon';
+import { HeartIcon } from '../../assets/icons/heart-icon';
+import { Icon } from '../../assets/icons/Icon/Icon';
 
 export const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(prev => !prev);
+  const closeMenu = () => setIsMenuOpen(false);
+
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.header__link, {
       [styles['header__link--active']]: isActive,
@@ -40,7 +50,9 @@ export const Header: React.FC = () => {
             styles['header__icon--favourites'],
           )}
         >
-          <img src="./icons/heart-icon.svg" alt="Favourites" />
+          <Icon>
+            <HeartIcon />
+          </Icon>
         </NavLink>
         <NavLink
           to="/cart"
@@ -49,18 +61,25 @@ export const Header: React.FC = () => {
             styles['header__icon--cart'],
           )}
         >
-          <img src="./icons/shopping-bag-icon.svg" alt="Shopping bag" />
+          <Icon>
+            <ShoppingBagIcon />
+          </Icon>
         </NavLink>
-        <NavLink
-          to="/burger_menu"
+        <button
           className={classNames(
             styles.header__icon,
             styles['header__icon--burger'],
           )}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
         >
-          <img src="./icons/menu-icon.svg" alt="Menu" />
-        </NavLink>
+          <Icon>
+            <MenuIcon />
+          </Icon>
+        </button>
       </div>
+
+      <SideMenu isOpen={isMenuOpen} onClose={closeMenu} />
     </header>
   );
 };

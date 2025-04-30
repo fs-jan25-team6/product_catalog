@@ -2,8 +2,9 @@ import React from 'react';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
 import classNames from 'classnames';
-import HeartIcon from './../../../public/icons/heart-icon.svg?react';
-import FilledHeartIcon from './../../../public/icons/heart-filled-icon.svg?react';
+import { HeartFilledIcon } from '../../assets/icons/heart-filled-icon';
+import { HeartIcon } from '../../assets/icons/heart-icon';
+import { Icon } from '../../assets/icons/Icon/Icon';
 
 type Props = {
   product: Product;
@@ -74,7 +75,7 @@ export const ProductCard: React.FC<Props> = ({
                 styles['card__button--fav'],
               )}
             >
-              {isFavorite ? <FilledHeartIcon /> : <HeartIcon />}
+              <Icon>{isFavorite ? <HeartFilledIcon /> : <HeartIcon />}</Icon>
             </button>
           </div>
         </div>

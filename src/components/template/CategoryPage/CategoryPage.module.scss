@@ -1,0 +1,7 @@
+@use '/src/styles/utils/mixins.scss' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

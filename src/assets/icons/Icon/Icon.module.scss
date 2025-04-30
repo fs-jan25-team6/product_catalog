@@ -1,0 +1,31 @@
+@use '/src/styles/utils/variables.scss' as *;
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--color {
+    &--primary {
+      color: $white-accent-color;
+    }
+    &--secondary {
+      color: $icons-color;
+    }
+  }
+
+  &--arrow-left {
+    transform: rotate(0deg);
+  }
+  &--arrow-up {
+    transform: rotate(90deg);
+  }
+  &--arrow-right {
+    transform: rotate(180deg);
+  }
+  &--arrow-down {
+    transform: rotate(270deg);
+  }
+}

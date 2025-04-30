@@ -1,0 +1,66 @@
+@use '/src/styles/utils/variables.scss' as *;
+
+$bold-weight: 800;
+$semibold-weight: 600;
+$regular-weight: 400;
+$control-height: 40px;
+$border-radius: 0;
+$border-width: 1px;
+$menu-padding-block: 8px;
+$padding-inline: 12px;
+
+.Dropdown-component .Dropdown {
+  &__value-container * {
+    color: $white-accent-color;
+    font-weight: $bold-weight;
+    line-height: 21px;
+    font-size: 14px;
+  }
+
+  &__single-value {
+    padding-right: 12px;
+  }
+  &__control {
+    background-color: $surface2-color;
+    height: $control-height;
+    border: none;
+    box-sizing: border-box;
+    padding-right: 12px;
+    border-radius: $border-radius;
+
+    &--is-focused {
+      box-shadow: none;
+    }
+
+    &--menu-is-open {
+      box-shadow: inset 0 0 0 $border-width $purple-accent-color;
+    }
+  }
+
+  &__menu {
+    box-shadow: 0px 2px 15px 0px #0000000d;
+    box-sizing: border-box;
+    border: $border-width solid $elements-color;
+    padding-block: $menu-padding-block;
+    background-color: $main-background-color;
+    border-radius: $border-radius;
+  }
+  &__option {
+    display: flex;
+    align-items: center;
+    height: 32px;
+
+    background-color: $main-background-color;
+    font-weight: $semibold-weight;
+    color: $secondary-color;
+    padding-inline: $padding-inline;
+
+    &--is-focused {
+      background-color: $surface2-color;
+      color: $white-accent-color;
+    }
+  }
+  &__indicator-separator {
+    display: none;
+  }
+}

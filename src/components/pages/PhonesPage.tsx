@@ -1,5 +1,5 @@
 import React from 'react';
-import { CategoryPage } from '../templates/CategoryPage';
+import { CategoryPage } from '../template/CategoryPage/CategoryPage';
 import { Category } from '../../enums/Category';
 
 export const PhonesPage: React.FC = () => {
