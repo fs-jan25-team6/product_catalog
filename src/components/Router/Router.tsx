@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { AppLayout } from '../pages/Layout';
-import { HomePage } from '../pages/HomePage';
+import { HomePage } from '../pages/HomePage/HomePage';
 import { PhonesPage } from '../pages/PhonesPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { TabletsPage } from '../pages/TabletsPage';
