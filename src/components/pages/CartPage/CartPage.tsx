@@ -1,6 +1,5 @@
 import React from 'react';
 import './CartPage.scss';
-import '../../../assets/icons/Icon/Icon.scss';
 import { useNavigate } from 'react-router-dom';
 import { CartItem } from '../../organisms/CartItem/CartItem';
 import { ArrowIcon } from '../../../assets/icons/arrow-icon';
@@ -12,7 +11,7 @@ export const CartPage: React.FC = () => {
     <>
       <div className="cart">
         <button onClick={() => navigate('..')} className="cart__back-btn">
-          <Icon className="icon">
+          <Icon>
             <ArrowIcon />
           </Icon>
 

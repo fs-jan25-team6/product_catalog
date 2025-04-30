@@ -165,6 +165,7 @@
       height: 3px;
       opacity: 0;
       background-color: $white-accent-color;
+      transition: opacity 0.2s ease;
     }
 
     &:focus::after,
@@ -186,6 +187,9 @@
     }
 
     &--burger {
+      background-color: $main-background-color;
+      border-bottom: 1px solid $elements-color;
+
       @include on-tablet {
         display: none;
       }

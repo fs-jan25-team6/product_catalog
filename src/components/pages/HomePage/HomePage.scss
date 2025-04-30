@@ -24,7 +24,6 @@
 
     @include on-tablet {
       font-size: 32px;
-
     }
 
     &--recomendation {
@@ -179,7 +178,7 @@
       display: none;
 
       @include on-tablet {
-        display: block;
+        display: flex;
         width: 32px;
         height: 189px;
 
@@ -203,7 +202,7 @@
       display: none;
 
       @include on-tablet {
-        display: block;
+        display: flex;
         width: 32px;
         height: 189px;
       }

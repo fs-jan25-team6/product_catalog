@@ -1,14 +1,24 @@
 @use '/src/styles/utils/variables.scss' as *;
 
 .icon {
-  color: $white-accent-color;
   width: 16px;
   height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  &--grey {
-    color: $icons-color;
+  &--color {
+    &--primary {
+      color: $white-accent-color;
+    }
+    &--secondary {
+      color: $icons-color;
+    }
   }
 
+  &--arrow-left {
+    transform: rotate(0deg);
+  }
   &--arrow-up {
     transform: rotate(90deg);
   }

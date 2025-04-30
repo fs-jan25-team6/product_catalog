@@ -1,6 +1,5 @@
 import React from 'react';
 import './CartItem.scss';
-import '../../../assets/icons/Icon/Icon.scss';
 import { CloseIcon } from '../../../assets/icons/close-icon';
 import { MinusIcon } from '../../../assets/icons/minus-icon';
 import { PlusIcon } from '../../../assets/icons/plus-icon';
@@ -27,7 +26,7 @@ export const CartItem: React.FC = () => {
       <div className="cart-item">
         <div className="cart-item__body">
           <button className="cart-item__close-btn">
-            <Icon className="icon icon--grey">
+            <Icon color="secondary">
               <CloseIcon />
             </Icon>
           </button>
@@ -42,13 +41,13 @@ export const CartItem: React.FC = () => {
         <div className="cart-item__footer">
           <div className="counter">
             <button className="counter__decrease">
-              <Icon className="icon icon--grey">
+              <Icon color="secondary">
                 <MinusIcon />
               </Icon>
             </button>
             <p className="counter__amount"> 1 </p>
             <button className="counter__increase">
-              <Icon className="icon">
+              <Icon>
                 <PlusIcon />
               </Icon>
             </button>
