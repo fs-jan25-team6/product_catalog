@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './styles/ProductPage.scss';
 import classNames from 'classnames';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { generateDeviceModel } from '../../../helpers/generateDeviceModel';
@@ -16,10 +16,13 @@ import { Icon } from '../../../assets/icons/Icon/Icon';
 
 import { toggleFavourite } from '../../../features/favouritesSlice';
 import { add } from '../../../features/cartSlice';
+import { Image } from '../../../assets/Image';
+import { ProductDetails } from '../../../types/ProductDetails';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { products } = useAppSelector(state => state.products);
   const { favourites } = useAppSelector(state => state.favourites);
   const { cartItems } = useAppSelector(state => state.cart);
@@ -34,14 +37,38 @@ export const ProductPage: React.FC = () => {
 
   const productDetails = categoryState?.productList?.find(
     product => product.id === productId,
+  ) as ProductDetails;
+
+  const productVariants = categoryState?.productList?.filter(
+    product => product.namespaceId === productDetails?.namespaceId,
   );
+
+  const switchVariant = (newColor?: string, newCapacity?: string) => {
+    const targetVariant = productVariants.find(variant => {
+      const colorMatch = newColor ? variant.color === newColor : true;
+      const capacityMatch = newCapacity
+        ? variant.capacity === newCapacity
+        : true;
+      return colorMatch && capacityMatch;
+    });
+
+    if (targetVariant && targetVariant.id !== productId) {
+      navigate(`/product/${targetVariant.id}`);
+    }
+  };
 
   const productModel = generateDeviceModel(productId!);
 
   const [selectedImage, setSelectedImage] = useState(productDetails?.images[0]);
 
-  const handleToggle = () => dispatch(toggleFavourite(selectedProduct));
-  const addToCart = () => dispatch(add(selectedProduct));
+  const handleToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    dispatch(toggleFavourite(selectedProduct));
+  };
+  const addToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    dispatch(add(selectedProduct));
+  };
 
   const isInFavourites = favourites.some(
     fav => fav.itemId === selectedProduct?.itemId,
@@ -53,6 +80,10 @@ export const ProductPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [productId]);
+
+  useEffect(() => {
+    setSelectedImage(productDetails?.images[0]);
+  }, [productDetails?.images]);
 
   return (
     <div className="product-page">
@@ -97,10 +128,10 @@ export const ProductPage: React.FC = () => {
           <section className="product__main-info">
             <div className="product__main-info__images">
               <div className="product__main-info__images__main-image">
-                <img
+                <Image
                   className="product__main-info__images__main-image__img"
                   key={selectedImage}
-                  src={selectedImage || productDetails?.images[0]}
+                  src={selectedImage}
                   alt="iphone-img"
                 />
               </div>
@@ -108,7 +139,7 @@ export const ProductPage: React.FC = () => {
               <div className="product__main-info__images__slider">
                 {productDetails?.images.map(image => (
                   <div key={image} onClick={() => setSelectedImage(image)}>
-                    <img
+                    <Image
                       className="product__main-info__images__slider__img"
                       src={image}
                       alt="iphone-img"
@@ -125,15 +156,18 @@ export const ProductPage: React.FC = () => {
                     Available colors
                   </span>
                   <div className="product__main-info__features__colors__list">
-                    {productDetails?.colorsAvailable.map(col => (
+                    {productDetails?.colorsAvailable.map(color => (
                       <div
-                        key={col}
+                        key={color}
                         className={`product__main-info__features__colors__list__outline ${
-                          col === productDetails?.color ? '--active' : ''
+                          color === productDetails?.color ? '--active' : ''
                         }`}
+                        onClick={() =>
+                          switchVariant(color, selectedProduct.capacity)
+                        }
                       >
                         <div
-                          className={`product__main-info__features__colors__list__item --${col}`}
+                          className={`product__main-info__features__colors__list__item --${color}`}
                         />
                       </div>
                     ))}
@@ -151,16 +185,18 @@ export const ProductPage: React.FC = () => {
                   Select capacity
                 </span>
                 <div className="product__main-info__features__capacity__list">
-                  {productDetails?.capacityAvailable.map(cap => (
-                    <a
-                      key={cap}
-                      href="#"
+                  {productDetails?.capacityAvailable.map(capacity => (
+                    <div
+                      key={capacity}
                       className={`product__main-info__features__capacity__list__memory ${
-                        cap === productDetails?.capacity ? '--active' : ''
+                        capacity === productDetails?.capacity ? '--active' : ''
                       }`}
+                      onClick={() =>
+                        switchVariant(selectedProduct.color, capacity)
+                      }
                     >
-                      {cap}
-                    </a>
+                      {capacity}
+                    </div>
                   ))}
                 </div>
               </div>

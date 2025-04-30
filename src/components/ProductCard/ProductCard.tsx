@@ -21,8 +21,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const { favourites } = useAppSelector(state => state.favourites);
   const { cartItems } = useAppSelector(state => state.cart);
 
-  const handleToggle = () => dispatch(toggleFavourite(product));
-  const addToCart = () => dispatch(add(product));
+  const handleToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    dispatch(toggleFavourite(product));
+  };
+  const addToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    dispatch(add(product));
+  };
 
   const isInFavourites = favourites.some(fav => fav.itemId === product.itemId);
   const isInCart = cartItems.some(

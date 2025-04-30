@@ -121,6 +121,7 @@
           width: 28px;
           height: 28px;
           border-radius: 50%;
+          cursor: pointer;
 
           $colors: (
             'black': $black,
@@ -195,6 +196,7 @@
           font-weight: 400;
           font-size: 14px;
           line-height: 21px;
+          cursor: pointer;
 
           &.--active {
             background-color: $white-accent-color;
