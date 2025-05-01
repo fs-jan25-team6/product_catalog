@@ -9,6 +9,7 @@ import { init as initCart } from '../../features/cartSlice';
 import { init as initPhones } from '../../features/phonesSlice';
 import { init as initTablets } from '../../features/tabletsSlice';
 import { init as initAccessories } from '../../features/accessoriesSlices';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 export const AppLayout: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ export const AppLayout: React.FC = () => {
   return (
     <div className="content">
       <Header />
+      <Breadcrumbs />
       <main className="main">
         <section className="container">
           <Outlet />

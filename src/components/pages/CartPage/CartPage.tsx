@@ -33,7 +33,6 @@ export const CartPage: React.FC = () => {
 
         <div className="cart__content">
           <div className="cart__list">
-            {/* {cartItems.map(item => <CartItem key={item.id} {...item} />)} */}
             {cartItems.map(item => (
               <CartItem product={item} key={item.id} />
             ))}
@@ -42,12 +41,7 @@ export const CartPage: React.FC = () => {
           <div className="cart__total">
             <div className="cart__total-price">
               <p className="cart__total-amount"> ${totalPrice} </p>
-
-              {/* {sum of cartItems.price} */}
-
               <p className="cart__total-items">Total for {totalItems} items</p>
-
-              {/* {Total for {cartItems.length} item(-s)} */}
             </div>
 
             <hr className="cart__divider" />
