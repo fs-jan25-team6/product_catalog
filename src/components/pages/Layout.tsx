@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from '../Header';
 import { Footer } from '../Footer/Footer';
-import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { useAppDispatch } from '../../hooks/hooks';
 import { init as initProducts } from '../../features/productsSlice';
 import { init as initFavourites } from '../../features/favouritesSlice';
