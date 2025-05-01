@@ -9,6 +9,7 @@ import {
   selectTotalItems,
   selectTotalPrice,
 } from '../../../features/cartSlice';
+import { CartEmptyPage } from './CartEmptyPage';
 
 export const CartPage: React.FC = () => {
   const navigate = useNavigate();
@@ -27,28 +28,32 @@ export const CartPage: React.FC = () => {
           <span className="cart__back-text">Back</span>
         </button>
 
-        {/* add logic <Navigate to='..' /> */}
-
         <h1 className="cart__title">Cart</h1>
 
-        <div className="cart__content">
-          <div className="cart__list">
-            {cartItems.map(item => (
-              <CartItem product={item} key={item.id} />
-            ))}
-          </div>
-
-          <div className="cart__total">
-            <div className="cart__total-price">
-              <p className="cart__total-amount"> ${totalPrice} </p>
-              <p className="cart__total-items">Total for {totalItems} items</p>
+        {cartItems.length > 0 ? (
+          <div className="cart__content">
+            <div className="cart__list">
+              {cartItems.map(item => (
+                <CartItem product={item} key={item.id} />
+              ))}
             </div>
 
-            <hr className="cart__divider" />
+            <div className="cart__total">
+              <div className="cart__total-price">
+                <p className="cart__total-amount"> ${totalPrice} </p>
+                <p className="cart__total-items">
+                  Total for {totalItems} items
+                </p>
+              </div>
 
-            <button className="cart__checkout-btn">Checkout</button>
+              <hr className="cart__divider" />
+
+              <button className="cart__checkout-btn">Checkout</button>
+            </div>
           </div>
-        </div>
+        ) : (
+          <CartEmptyPage />
+        )}
       </div>
     </>
   );
