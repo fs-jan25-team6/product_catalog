@@ -6,6 +6,15 @@ import { Icon } from '../../../assets/icons/Icon/Icon';
 import { ArrowIcon } from '../../../assets/icons/arrow-icon';
 import { Product } from '../../../types/Product';
 import { Slider } from '../../organisms/Slider/Slider';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+// @ts-ignore
+import 'swiper/css';
+// @ts-ignore
+import 'swiper/css/navigation';
+// @ts-ignore
+import 'swiper/css/pagination';
+// import './CustomSlider.scss';
 
 
 const newModels: Product[] = [
@@ -124,17 +133,50 @@ export const HomePage: React.FC = () => {
         </button>
 
         <div className="home-page__slider-content">
-          <ResponsiveImage
-            alt="Phone advertisement"
-            desktopSrc="/img/baner-slider-desktop.png"
-            tabletSrc="/img/baner-slider-tablet.png"
-            mobileSrc="/img/baner-slider-mobile.png"
-          />
-          <div className="slider">
-            <div className="slider__item"></div>
-            <div className="slider__item"></div>
-            <div className="slider__item"></div>
-          </div>
+          <Swiper
+            modules={[Navigation, Pagination]}
+            slidesPerView={1}
+            navigation={{
+              nextEl: '.slider-btn__right--big',
+              prevEl: '.slider-btn__left--big',
+            }}
+            pagination={{
+              el: '.custom-pagination',
+              clickable: true,
+              renderBullet: (index, className) => {
+                return `<span class="${className} custom-bullet"></span>`;
+              },
+            }}
+            rewind
+            className='home-page__slider-swiper'
+          >
+            <SwiperSlide>
+              <ResponsiveImage
+                alt="Phone advertisement"
+                desktopSrc="/img/baner-slider-desktop.png"
+                tabletSrc="/img/baner-slider-tablet.png"
+                mobileSrc="/img/baner-slider-mobile.png"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <ResponsiveImage
+                alt="Phone advertisement"
+                desktopSrc="/img/baner-slider-desktop.png"
+                tabletSrc="/img/baner-slider-tablet.png"
+                mobileSrc="/img/baner-slider-mobile.png"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <ResponsiveImage
+                alt="Phone advertisement"
+                desktopSrc="/img/baner-slider-desktop.png"
+                tabletSrc="/img/baner-slider-tablet.png"
+                mobileSrc="/img/baner-slider-mobile.png"
+              />
+            </SwiperSlide>
+
+          </Swiper>
+          <div className="custom-pagination"></div>
         </div>
 
         <button className="slider-btn__right slider-btn__right--big">
