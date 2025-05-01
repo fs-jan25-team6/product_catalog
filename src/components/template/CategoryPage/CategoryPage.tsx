@@ -5,6 +5,7 @@ import { Heading } from '../../molecules/Heading/Heading';
 import { Controls } from './components';
 import { useAppSelector } from '../../../hooks/hooks';
 import { Loader } from '../../Loader/Loader';
+import { ErrorPage } from '../../pages/ErrorPage/ErrorPage';
 
 type Props = {
   title: string;
@@ -12,7 +13,7 @@ type Props = {
 };
 
 export const CategoryPage: React.FC<Props> = ({ title, category }) => {
-  const { products, loading } = useAppSelector(state => state.products);
+  const { products, loading, error } = useAppSelector(state => state.products);
 
   const filtered = products.filter(product => product.category === category);
 
@@ -39,6 +40,7 @@ export const CategoryPage: React.FC<Props> = ({ title, category }) => {
           <div className={styles.page__pagination}>pagination placeholder</div>
         </>
       )}
+      {error && <ErrorPage />}
     </div>
   );
 };
