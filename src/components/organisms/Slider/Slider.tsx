@@ -57,15 +57,11 @@ export const Slider: React.FC<Props> = ({
             nextEl: '.slider-btn__right--' + id,
             prevEl: '.slider-btn__left--' + id,
           }}
-          breakpoints={{
-            320: { slidesPerView: 1.5 },
-            640: { slidesPerView: 2.5 },
-            1200: { slidesPerView: 4 },
-          }}
+          slidesPerView="auto"
         >
           {productsList.map(product => (
             <SwiperSlide key={product.id} className='swiper-size'>
-              <ProductCard product={product} isFavorite={false} isInCart={false} />
+              <ProductCard product={product} />
             </SwiperSlide>
           ))}
         </Swiper>
