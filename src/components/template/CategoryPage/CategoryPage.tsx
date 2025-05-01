@@ -2,8 +2,16 @@ import React from 'react';
 import { ProductList } from '../../ProductList/ProductList';
 import styles from './CategoryPage.module.scss';
 import { Heading } from '../../molecules/Heading/Heading';
-import { Controls } from './components';
+
 import { useAppSelector } from '../../../hooks/hooks';
+import { Controls } from './components/Controls';
+import { ProductListPagination } from './components/Pagination';
+import { useFilteredProducts } from '../../../hooks/useFilteredProducts';
+import { usePaginatedProducts } from '../../../hooks/usePaginatedProducts';
+import { ItemPerPage } from '../../../enums/ItemsPerPage';
+import { useSearchParams } from 'react-router-dom';
+import { SearchParam } from '../../../enums/SearchFields';
+import { DefaultValues } from '../../../enums/DefaultValues';
 
 type Props = {
   title: string;
@@ -12,8 +20,21 @@ type Props = {
 
 export const CategoryPage: React.FC<Props> = ({ title, category }) => {
   const { products } = useAppSelector(state => state.products);
+  const [searchParams] = useSearchParams();
 
-  const filtered = products.filter(product => product.category === category);
+  const query = searchParams.get(SearchParam.Query) || DefaultValues.Query;
+  const sortBy = searchParams.get(SearchParam.Sort) || DefaultValues.Sort;
+  const perPage =
+    searchParams.get(SearchParam.PerPage) || DefaultValues.PerPage;
+  const page = +(searchParams.get(SearchParam.Page) || DefaultValues.Page);
+
+  const filtered = useFilteredProducts(products, category, query, sortBy);
+
+  const { paginated, totalPages } = usePaginatedProducts(
+    filtered,
+    perPage === ItemPerPage.All ? ItemPerPage.All : parseInt(perPage, 10),
+    page,
+  );
 
   return (
     <div className={styles.page}>
@@ -27,9 +48,11 @@ export const CategoryPage: React.FC<Props> = ({ title, category }) => {
 
       <Controls />
 
-      <ProductList list={filtered} />
+      <ProductList list={paginated} />
 
-      <div className={styles.page__pagination}>pagination placeholder</div>
+      <div className={styles.page__pagination}>
+        <ProductListPagination currentPage={page} totalPages={totalPages} />
+      </div>
     </div>
   );
 };

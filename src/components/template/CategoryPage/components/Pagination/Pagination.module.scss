@@ -1,0 +1,17 @@
+@use '/src/styles/utils/variables.scss' as *;
+
+$gap: 8px;
+
+.container {
+  display: flex;
+  gap: $gap;
+
+  justify-content: center;
+
+  &__pages {
+    display: flex;
+    gap: $gap;
+
+    justify-content: space-between;
+  }
+}
