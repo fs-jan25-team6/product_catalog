@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import './Slider.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -25,6 +25,10 @@ export const Slider: React.FC<Props> = ({
 ) => {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+
+  const randomizedList = useMemo(() => {
+    return [...productsList].sort(() => Math.random() < 0.5 ? -1 : 1).slice(0, 10);
+  }, [productsList]);
 
   return (
     <>
@@ -59,7 +63,7 @@ export const Slider: React.FC<Props> = ({
           }}
           slidesPerView="auto"
         >
-          {productsList.map(product => (
+          {randomizedList.map(product => (
             <SwiperSlide key={product.id} className='swiper-size'>
               <ProductCard product={product} />
             </SwiperSlide>

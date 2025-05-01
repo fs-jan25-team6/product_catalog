@@ -14,7 +14,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 // @ts-ignore
 import 'swiper/css/pagination';
-// import './CustomSlider.scss';
 
 
 const newModels: Product[] = [
@@ -143,7 +142,7 @@ export const HomePage: React.FC = () => {
             pagination={{
               el: '.custom-pagination',
               clickable: true,
-              renderBullet: (index, className) => {
+              renderBullet: (_, className) => {
                 return `<span class="${className} custom-bullet"></span>`;
               },
             }}
