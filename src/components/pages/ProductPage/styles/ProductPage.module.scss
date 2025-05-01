@@ -1,15 +1,15 @@
 @use '/src/styles/utils/variables.scss' as *;
 @use '/src/styles/utils/mixins.scss' as *;
-@use './navigation.scss' as *;
-@use './main-info.scss' as *;
-@use './detailes.scss' as *;
-@use './offers.scss' as *;
+@use './Navigation.module.scss' as *;
+@use './Main-info.module.scss' as *;
+@use './Detailes.module.scss' as *;
+@use './Offers.module.scss' as *;
 
-.loading-state {
+.loading{
   min-height: 100vh;
 }
 
-.product-page {
+.page {
   min-width: 320px;
   box-sizing: border-box;
   background-color: $main-background-color;
@@ -27,7 +27,7 @@
   }
 }
 
-.product__name {
+.name {
   margin-top: 16px;
   margin-bottom: 32px;
   font-weight: 800;

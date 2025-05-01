@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './styles/ProductPage.scss';
+import styles from './styles/ProductPage.module.scss';
 import classNames from 'classnames';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -18,6 +18,8 @@ import { toggleFavourite } from '../../../features/favouritesSlice';
 import { add } from '../../../features/cartSlice';
 import { Image } from '../../../assets/Image';
 import { ProductDetails } from '../../../types/ProductDetails';
+import { MainInfoSpecification } from './specifications/MainInfoSpecification';
+import { DetailesSpecification } from './specifications/DetailesSpecification';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
@@ -80,13 +82,13 @@ export const ProductPage: React.FC = () => {
   }, [productDetails?.images]);
 
   return (
-    <div className="product-page">
+    <div className={styles.page}>
       {!selectedProduct ? (
-        <div className="loading-state"></div>
+        <div className={styles.loading}></div>
       ) : (
-        <div className="product-page__content">
-          <section className="navigation">
-            <div className="navigation__breadcrumbs">
+        <>
+          <section className={styles.navigation}>
+            <div className={styles.breadcrumbs}>
               <Link to="/">
                 <Icon>
                   <HomeIcon />
@@ -96,18 +98,18 @@ export const ProductPage: React.FC = () => {
               <Icon color="secondary" direction="right">
                 <ArrowIcon />
               </Icon>
-              <Link to="/phones" className="navigation__breadcrumbs__category">
+              <Link to="/phones" className={styles.category}>
                 {selectedProduct.category}
               </Link>
               <Icon color="secondary" direction="right">
                 <ArrowIcon />
               </Icon>
-              <span className="navigation__breadcrumbs__product">
+              <span className={styles.product}>
                 {productDetails?.name} ({productModel})
               </span>
             </div>
 
-            <Link to="/phones" className="navigation__back">
+            <Link to="/phones" className={styles.back}>
               <Icon>
                 <ArrowIcon />
               </Icon>
@@ -115,26 +117,26 @@ export const ProductPage: React.FC = () => {
             </Link>
           </section>
 
-          <h2 className="product__name">
+          <h2 className={styles.name}>
             {productDetails?.name} ({productModel})
           </h2>
 
-          <section className="product__main-info">
-            <div className="product__main-info__images">
-              <div className="product__main-info__images__main-image">
+          <section className={styles.main_info}>
+            <div className={styles.images}>
+              <div className={styles.images__main}>
                 <Image
-                  className="product__main-info__images__main-image__img"
+                  className={styles.images__main__img}
                   key={selectedImage}
                   src={selectedImage}
                   alt="iphone-img"
                 />
               </div>
 
-              <div className="product__main-info__images__slider">
+              <div className={styles.images__slider}>
                 {productDetails?.images.map(image => (
                   <div key={image} onClick={() => setSelectedImage(image)}>
                     <Image
-                      className="product__main-info__images__slider__img"
+                      className={styles.images__slider__img}
                       src={image}
                       alt="iphone-img"
                     />
@@ -143,48 +145,47 @@ export const ProductPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="product__main-info__features">
-              <div className="product__main-info__features__head">
-                <div className="product__main-info__features__colors">
-                  <span className="product__main-info__features__colors__label">
-                    Available colors
-                  </span>
-                  <div className="product__main-info__features__colors__list">
+            <div className={styles.features}>
+              <div className={styles.features__head}>
+                <div className={styles.colors}>
+                  <span className={styles.colors__label}>Available colors</span>
+                  <div className={styles.colors__list}>
                     {productDetails?.colorsAvailable.map(color => (
                       <div
                         key={color}
-                        className={`product__main-info__features__colors__list__outline ${
-                          color === productDetails?.color ? '--active' : ''
-                        }`}
+                        className={classNames(styles.colors__outline, {
+                          [styles.active]: color === productDetails?.color,
+                        })}
                         onClick={() =>
                           switchVariant(color, productDetails.capacity)
                         }
                       >
                         <div
-                          className={`product__main-info__features__colors__list__item --${color}`}
+                          className={classNames(
+                            styles.colors__item,
+                            styles[color],
+                          )}
                         />
                       </div>
                     ))}
                   </div>
                 </div>
-                <span className="product__main-info__features__id">
+                <span className={styles.productId}>
                   ID: {idToNumberHash(productDetails?.id)}
                 </span>
               </div>
 
-              <div className="product__main-info__features__breakline"></div>
+              <div className={styles.features__breakline}></div>
 
-              <div className="product__main-info__features__capacity">
-                <span className="product__main-info__features__capacity__label">
-                  Select capacity
-                </span>
-                <div className="product__main-info__features__capacity__list">
+              <div className={styles.capacity}>
+                <span className={styles.capacity__label}>Select capacity</span>
+                <div className={styles.capacity__list}>
                   {productDetails?.capacityAvailable.map(capacity => (
                     <div
                       key={capacity}
-                      className={`product__main-info__features__capacity__list__memory ${
-                        capacity === productDetails?.capacity ? '--active' : ''
-                      }`}
+                      className={classNames(styles.capacity__memory, {
+                        [styles.active]: capacity === productDetails?.capacity,
+                      })}
                       onClick={() =>
                         switchVariant(productDetails.color, capacity)
                       }
@@ -195,33 +196,31 @@ export const ProductPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="product__main-info__features__breakline"></div>
+              <div className={styles.features__breakline}></div>
 
-              <div className="product__main-info__features__prices">
-                <span className="product__main-info__features__prices__discount">
+              <div className={styles.prices}>
+                <span className={styles.prices__discount}>
                   ${productDetails?.priceDiscount}
                 </span>
-                <span className="product__main-info__features__prices__regular">
+                <span className={styles.prices__regular}>
                   ${productDetails?.priceRegular}
                 </span>
               </div>
 
-              <div className="product__main-info__features__buttons">
+              <div className={styles.buttons}>
                 <button
-                  className={classNames(
-                    'product__main-info__features__buttons__cart',
-                    { '--added': isInCart },
-                  )}
+                  className={classNames(styles.cart, {
+                    [styles.added]: isInCart,
+                  })}
                   onClick={addToCart}
                   disabled={isInCart}
                 >
                   {isInCart ? 'Added' : 'Add to cart'}
                 </button>
                 <button
-                  className={classNames(
-                    'product__main-info__features__buttons__favourites',
-                    { '--added': isInFavourites },
-                  )}
+                  className={classNames(styles.favourites, {
+                    [styles.added]: isInFavourites,
+                  })}
                   onClick={handleToggle}
                 >
                   <Icon>
@@ -230,62 +229,46 @@ export const ProductPage: React.FC = () => {
                 </button>
               </div>
 
-              <div className="product__main-info__features__descriptions">
-                <div className="product__main-info__features__description">
-                  <span className="product__main-info__features__description__label">
-                    Screen
-                  </span>
-                  <span className="product__main-info__features__description__value">
-                    {productDetails?.screen}
-                  </span>
-                </div>
-                <div className="product__main-info__features__description">
-                  <span className="product__main-info__features__description__label">
-                    Resolution
-                  </span>
-                  <span className="product__main-info__features__description__value">
-                    {productDetails?.resolution}
-                  </span>
-                </div>
-                <div className="product__main-info__features__description">
-                  <span className="product__main-info__features__description__label">
-                    Processor
-                  </span>
-                  <span className="product__main-info__features__description__value">
-                    {productDetails?.processor}
-                  </span>
-                </div>
-                <div className="product__main-info__features__description">
-                  <span className="product__main-info__features__description__label">
-                    RAM
-                  </span>
-                  <span className="product__main-info__features__description__value">
-                    {productDetails?.ram}
-                  </span>
-                </div>
+              <div className={styles.descriptions}>
+                <MainInfoSpecification
+                  label="Screen"
+                  value={productDetails?.screen}
+                />
+                <MainInfoSpecification
+                  label="Resolution"
+                  value={productDetails?.resolution}
+                />
+                <MainInfoSpecification
+                  label="Processor"
+                  value={productDetails?.processor}
+                />
+                <MainInfoSpecification
+                  label="RAM"
+                  value={productDetails?.ram}
+                />
               </div>
             </div>
           </section>
 
-          <section className="product__detailes">
-            <div className="product__detailes__about">
-              <h3 className="product__detailes__about__title">About</h3>
+          <section className={styles.detailes}>
+            <div className={styles.about}>
+              <h3 className={styles.about__title}>About</h3>
 
-              <div className="product__detailes__breakline"></div>
+              <div className={styles.detailes__breakline}></div>
 
-              <div className="product__detailes__about__content">
+              <div className={styles.about__content}>
                 {productDetails?.description.map(article => (
                   <article
                     key={article.title}
-                    className="product__detailes__about__article"
+                    className={styles.about__article}
                   >
-                    <h4 className="product__detailes__about__article__title">
+                    <h4 className={styles.about__article__title}>
                       {article.title}
                     </h4>
                     {article.text.map(paragragh => (
                       <p
                         key={paragragh}
-                        className="product__detailes__about__article__description"
+                        className={styles.about__article__description}
                       >
                         {paragragh}
                       </p>
@@ -295,94 +278,63 @@ export const ProductPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="product__detailes__tech-specs">
-              <h3 className="product__detailes__tech-specs__title">
-                Tech specs
-              </h3>
+            <div className={styles['tech-specs']}>
+              <h3 className={styles['tech-specs__title']}>Tech specs</h3>
 
-              <div className="product__detailes__breakline"></div>
+              <div className={styles.detailes__breakline}></div>
 
-              <div className="product__detailes__tech-specs__features">
-                <div className="product__detailes__tech-specs__feature">
-                  <span className="product__detailes__tech-specs__feature__label">
-                    Screen
-                  </span>
-                  <span className="product__detailes__tech-specs__feature__value">
-                    {productDetails?.screen}
-                  </span>
-                </div>
-                <div className="product__detailes__tech-specs__feature">
-                  <span className="product__detailes__tech-specs__feature__label">
-                    Resolution
-                  </span>
-                  <span className="product__detailes__tech-specs__feature__value">
-                    {productDetails?.resolution}
-                  </span>
-                </div>
-                <div className="product__detailes__tech-specs__feature">
-                  <span className="product__detailes__tech-specs__feature__label">
-                    Processor
-                  </span>
-                  <span className="product__detailes__tech-specs__feature__value">
-                    {productDetails?.processor}
-                  </span>
-                </div>
-                <div className="product__detailes__tech-specs__feature">
-                  <span className="product__detailes__tech-specs__feature__label">
-                    RAM
-                  </span>
-                  <span className="product__detailes__tech-specs__feature__value">
-                    {productDetails?.ram}
-                  </span>
-                </div>
-                <div className="product__detailes__tech-specs__feature">
-                  <span className="product__detailes__tech-specs__feature__label">
-                    Built in memory
-                  </span>
-                  <span className="product__detailes__tech-specs__feature__value">
-                    {productDetails?.capacity}
-                  </span>
-                </div>
-                <div className="product__detailes__tech-specs__feature">
-                  <span className="product__detailes__tech-specs__feature__label">
-                    Camera
-                  </span>
-                  <span className="product__detailes__tech-specs__feature__value">
-                    {productDetails?.camera} (Triple)
-                  </span>
-                </div>
-                <div className="product__detailes__tech-specs__feature">
-                  <span className="product__detailes__tech-specs__feature__label">
-                    Zoom
-                  </span>
-                  <span className="product__detailes__tech-specs__feature__value">
-                    {productDetails?.zoom}
-                  </span>
-                </div>
-                <div className="product__detailes__tech-specs__feature">
-                  <span className="product__detailes__tech-specs__feature__label">
-                    Cell
-                  </span>
-                  <span className="product__detailes__tech-specs__feature__value">
-                    {productDetails?.cell.join(', ')}
-                  </span>
-                </div>
+              <div className={styles['tech-specs__features']}>
+                <DetailesSpecification
+                  label="Screen"
+                  value={productDetails?.screen}
+                />
+                <DetailesSpecification
+                  label="Resolution"
+                  value={productDetails?.resolution}
+                />
+                <DetailesSpecification
+                  label="Processor"
+                  value={productDetails?.processor}
+                />
+                <DetailesSpecification
+                  label="RAM"
+                  value={productDetails?.ram}
+                />
+                <DetailesSpecification
+                  label="Built in memory"
+                  value={productDetails?.capacity}
+                />
+                <DetailesSpecification
+                  label="Camera"
+                  value={productDetails?.camera}
+                />
+                <DetailesSpecification
+                  label="Zoom"
+                  value={productDetails?.zoom}
+                />
+                <DetailesSpecification
+                  label="Cell"
+                  value={productDetails?.cell.join(', ')}
+                />
               </div>
             </div>
           </section>
 
-          <section className="product__offers">
-            <div className="product__offers__head">
-              <h2 className="product__offers__head__title">
-                You may also like
-              </h2>
-              <div className="product__offers__head__buttons">
-                <button className="product__offers__head__button">
+          <section className={styles.offers}>
+            <div className={styles.offers__head}>
+              <h2 className={styles.offers__head__title}>You may also like</h2>
+              <div className={styles.offers__head__buttons}>
+                <button className={styles.offers__head__button}>
                   <Icon color="secondary">
                     <ArrowIcon />
                   </Icon>
                 </button>
-                <button className="product__offers__head__button --active">
+                <button
+                  className={classNames(
+                    styles.offers__head__button,
+                    styles['--active'],
+                  )}
+                >
                   <Icon direction="right">
                     <ArrowIcon />
                   </Icon>
@@ -390,14 +342,14 @@ export const ProductPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="product__offers__catalog">
-              <div className="product__offers__catalog__card"></div>
-              <div className="product__offers__catalog__card"></div>
-              <div className="product__offers__catalog__card"></div>
-              <div className="product__offers__catalog__card"></div>
+            <div className={styles.offers__catalog}>
+              <div className={styles.offers__catalog__card}></div>
+              <div className={styles.offers__catalog__card}></div>
+              <div className={styles.offers__catalog__card}></div>
+              <div className={styles.offers__catalog__card}></div>
             </div>
           </section>
-        </div>
+        </>
       )}
     </div>
   );

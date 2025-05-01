@@ -1,0 +1,42 @@
+@use '/src/styles/utils/variables.scss' as *;
+@use '/src/styles/utils/mixins.scss' as *;
+@use '/src/styles/utils/normalize.scss' as *;
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 100%;
+  color: $white-accent-color;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.category {
+  text-transform: capitalize;
+}
+
+.product {
+  color: $secondary-color;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
