@@ -126,7 +126,7 @@ export const HomePage: React.FC = () => {
       </h2>
 
       <div className="home-page__slider">
-        <button className="slider-btn__left slider-btn__left--big">
+        <button className="home-page__slider-button swiper-prev">
           <Icon>
             <ArrowIcon />
           </Icon>
@@ -137,8 +137,8 @@ export const HomePage: React.FC = () => {
             modules={[Navigation, Pagination]}
             slidesPerView={1}
             navigation={{
-              nextEl: '.slider-btn__right--big',
-              prevEl: '.slider-btn__left--big',
+              nextEl: '.swiper-next',
+              prevEl: '.swiper-prev',
             }}
             pagination={{
               el: '.custom-pagination',
@@ -176,15 +176,16 @@ export const HomePage: React.FC = () => {
             </SwiperSlide>
 
           </Swiper>
-          <div className="custom-pagination"></div>
+
         </div>
 
-        <button className="slider-btn__right slider-btn__right--big">
+        <button className="home-page__slider-button swiper-next">
           <Icon direction="right">
             <ArrowIcon />
           </Icon>
         </button>
       </div>
+      <div className="custom-pagination"></div>
 
       <Slider title={'Brand new models'} productsList={newModels} id={1} />
 
