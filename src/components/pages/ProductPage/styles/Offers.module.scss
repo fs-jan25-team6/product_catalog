@@ -2,7 +2,7 @@
 @use '/src/styles/utils/mixins.scss' as *;
 @use '/src/styles/utils/normalize.scss' as *;
 
-.product__offers {
+.offers {
   display: flex;
   flex-direction: column;
   gap: 24px;

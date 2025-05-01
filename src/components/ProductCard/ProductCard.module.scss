@@ -1,21 +1,14 @@
-$divider-color: #3b3e4a;
-$grey-color: #75767f;
-$greywhite-color: #f1f2f9;
-$grey-surface0-color: #0f1121;
-$grey-surface1-color: #161827;
-$grey-surface2-color: #323542;
-$purple-accent-color: #905bff;
-$purple-accent-hover-color: #a378ff;
-
+@use '/src/styles/utils/variables.scss' as *;
 @use '/src/styles/utils/mixins.scss' as *;
 
 .card {
-  color: $greywhite-color;
+  color: $white-accent-color;
   height: 100%;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 
-  background-color: $grey-surface1-color;
+  background-color: $surface1-color;
 
   &__content {
     flex: 1;
@@ -60,7 +53,7 @@ $purple-accent-hover-color: #a378ff;
 
       &--strikethrough {
         text-decoration: line-through;
-        color: $grey-color;
+        color: $secondary-color;
         font-weight: 600;
       }
     }
@@ -68,7 +61,7 @@ $purple-accent-hover-color: #a378ff;
 
   &__divider {
     height: 1px;
-    background-color: $divider-color;
+    background-color: $elements-color;
   }
 
   &__specs {
@@ -88,7 +81,7 @@ $purple-accent-hover-color: #a378ff;
     }
 
     &__label {
-      color: $grey-color;
+      color: $secondary-color;
     }
   }
 
@@ -100,7 +93,7 @@ $purple-accent-hover-color: #a378ff;
 
   &__button {
     height: 100%;
-    background-color: $grey-surface2-color;
+    background-color: $surface2-color;
 
     display: flex;
     justify-content: center;
@@ -119,7 +112,7 @@ $purple-accent-hover-color: #a378ff;
     &--cart {
       background-color: $purple-accent-color;
 
-      @include hover(background-color, $purple-accent-hover-color);
+      @include hover(background-color, $purple-hover-color);
     }
 
     &--fav {
