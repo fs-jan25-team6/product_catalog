@@ -23,9 +23,6 @@ export const CategoryPage: React.FC<Props> = ({ title, category }) => {
         <Loader />
       ) : (
         <>
-          <div className={styles.page__breadcrumbs}>
-            breadcrumbs placeholder
-          </div>
           <div className={styles.page__title}>
             <Heading
               title={title}
