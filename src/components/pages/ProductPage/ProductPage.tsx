@@ -21,6 +21,7 @@ import { DetailesSpecification } from './specifications/DetailesSpecification';
 import { Slider } from '../../organisms/Slider/Slider';
 import { ErrorPage } from '../ErrorPage/ErrorPage';
 import { Loader } from '../../Loader/Loader';
+import { getVariantOptions } from '../../../helpers/getAvailabilityProducts';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
@@ -82,6 +83,11 @@ export const ProductPage: React.FC = () => {
     setSelectedImage(productDetails?.images[0]);
   }, [productDetails?.images]);
 
+  const { colorOptions, capacityOptions } = getVariantOptions(
+    productDetails || {},
+    products || [],
+  );
+
   return (
     <div className={styles.page}>
       {!selectedProduct ? (
@@ -121,11 +127,12 @@ export const ProductPage: React.FC = () => {
                 <div className={styles.colors}>
                   <span className={styles.colors__label}>Available colors</span>
                   <div className={styles.colors__list}>
-                    {productDetails?.colorsAvailable.map(color => (
+                    {colorOptions.map(({ color, available }) => (
                       <div
                         key={color}
                         className={classNames(styles.colors__outline, {
                           [styles.active]: color === productDetails?.color,
+                          [styles['variant--unavailable']]: !available,
                         })}
                         onClick={() =>
                           switchVariant(color, productDetails.capacity)
@@ -151,11 +158,12 @@ export const ProductPage: React.FC = () => {
               <div className={styles.capacity}>
                 <span className={styles.capacity__label}>Select capacity</span>
                 <div className={styles.capacity__list}>
-                  {productDetails?.capacityAvailable.map(capacity => (
+                  {capacityOptions.map(({ capacity, available }) => (
                     <div
                       key={capacity}
                       className={classNames(styles.capacity__memory, {
                         [styles.active]: capacity === productDetails?.capacity,
+                        [styles['variant--unavailable']]: !available,
                       })}
                       onClick={() =>
                         switchVariant(productDetails.color, capacity)
