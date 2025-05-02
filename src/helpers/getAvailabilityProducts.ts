@@ -15,6 +15,13 @@ export const getVariantOptions = (
   details: ProductDetails,
   products: Product[],
 ): VariantOptions => {
+  if (
+    !Array.isArray(details.colorsAvailable) ||
+    !Array.isArray(details.capacityAvailable) ||
+    !products.length
+  ) {
+    return { colorOptions: [], capacityOptions: [] };
+  }
   const productMap = new Map(products.map(p => [p.itemId.toLowerCase(), p]));
 
   const variantEntries: VariantEntry[] = [];
