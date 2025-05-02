@@ -20,12 +20,14 @@ import { Image } from '../../../assets/Image';
 import { ProductDetails } from '../../../types/ProductDetails';
 import { MainInfoSpecification } from './specifications/MainInfoSpecification';
 import { DetailesSpecification } from './specifications/DetailesSpecification';
+import { ErrorPage } from '../ErrorPage/ErrorPage';
+import { Loader } from '../../Loader/Loader';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { products } = useAppSelector(state => state.products);
+  const { products, error } = useAppSelector(state => state.products);
   const { favourites } = useAppSelector(state => state.favourites);
   const { cartItems } = useAppSelector(state => state.cart);
 
@@ -84,7 +86,7 @@ export const ProductPage: React.FC = () => {
   return (
     <div className={styles.page}>
       {!selectedProduct ? (
-        <div className={styles.loading}></div>
+        <Loader />
       ) : (
         <>
           <section className={styles.navigation}>
@@ -351,6 +353,8 @@ export const ProductPage: React.FC = () => {
           </section>
         </>
       )}
+
+      {error && <ErrorPage />}
     </div>
   );
 };

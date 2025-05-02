@@ -5,7 +5,7 @@ function wait(delay: number) {
 }
 
 export const fetchData = async <T>(url: string): Promise<T> => {
-  await wait(300);
+  await wait(1800);
 
   const response = await fetch(url);
 
