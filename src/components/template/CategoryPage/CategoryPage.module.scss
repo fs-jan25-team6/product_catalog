@@ -1,10 +1,6 @@
 @use '/src/styles/utils/mixins.scss' as *;
 
 .page {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-
   padding-bottom: 56px;
 
   @include on-tablet {
@@ -14,4 +10,18 @@
   @include on-small-desktop {
     padding-bottom: 80px;
   }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
 }

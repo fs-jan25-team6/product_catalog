@@ -48,21 +48,26 @@ export const CategoryPage: React.FC<Props> = ({ title, category }) => {
         <Loader />
       ) : (
         <>
-          <div className={styles.page__title}>
-            <Heading
-              title={title}
-              subtitle={`${filtered.length} item${filtered.length === 1 ? '' : 's'}`}
-            />
-          </div>
+          <div className={styles.content}>
+            <div className={styles.page__title}>
+              <Heading
+                title={title}
+                subtitle={`${filtered.length} item${filtered.length === 1 ? '' : 's'}`}
+              />
+            </div>
 
-          <Controls />
+            <Controls />
 
-          <div>
-            <ProductList list={paginated} />
-          </div>
+            <div>
+              <ProductList list={paginated} />
+            </div>
 
-          <div className={styles.page__pagination}>
-            <ProductListPagination currentPage={page} totalPages={totalPages} />
+            <div className={styles.page__pagination}>
+              <ProductListPagination
+                currentPage={page}
+                totalPages={totalPages}
+              />
+            </div>
           </div>
         </>
       )}
