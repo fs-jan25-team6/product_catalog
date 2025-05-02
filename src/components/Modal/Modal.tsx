@@ -87,7 +87,8 @@ export const Modal: React.FC<ModalProps> = ({
               color="primary"
               className={styles.modal__text}
             >
-              Checkout is not implemented yet. Do you want to clear the Cart?
+              Checkout is not implemented yet. <br></br> Do you want to clear
+              the Cart?
             </Typography>
             <div className={styles.modal__actions}>
               <button

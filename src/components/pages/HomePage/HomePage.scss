@@ -1,19 +1,6 @@
 @use '../../../styles/utils/variables' as *;
 @use '../../../styles/utils/mixins' as *;
 
-.container {
-  @include content-padding-inline;
-  padding-top: 24px;
-
-  @include on-tablet {
-    padding-top: 32px;
-  }
-
-  @include on-small-desktop {
-    padding-top: 56px;
-  }
-}
-
 .home-page {
   &__title {
     font-size: 22px;
@@ -80,6 +67,7 @@
     border-radius: 0;
     box-sizing: border-box;
     padding: 0;
+    cursor: pointer;
 
     display: none;
 

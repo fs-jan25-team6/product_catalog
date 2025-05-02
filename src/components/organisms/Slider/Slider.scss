@@ -21,18 +21,6 @@
   }
 }
 
-.recomendation-content {
-  margin-bottom: 57px;
-
-  @include on-tablet {
-    margin-bottom: 64px;
-  }
-
-  @include on-small-desktop {
-    margin-bottom: 80px;
-  }
-}
-
 .slider-btn {
   display: flex;
   gap: 16px;
@@ -49,6 +37,7 @@
     height: 32px;
     width: 32px;
     padding: 0;
+    cursor: pointer;
   }
 }
 

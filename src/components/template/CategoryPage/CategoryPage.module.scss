@@ -1,17 +1,5 @@
 @use '/src/styles/utils/mixins.scss' as *;
 
-.page {
-  padding-bottom: 56px;
-
-  @include on-tablet {
-    padding-bottom: 64px;
-  }
-
-  @include on-small-desktop {
-    padding-bottom: 80px;
-  }
-}
-
 @keyframes fadeIn {
   to {
     opacity: 1;
