@@ -14,6 +14,7 @@ import { ItemPerPage } from '../../../enums/ItemsPerPage';
 import { useSearchParams } from 'react-router-dom';
 import { SearchParam } from '../../../enums/SearchFields';
 import { DefaultValues } from '../../../enums/DefaultValues';
+import { Breadcrumbs } from '../../Breadcrumbs';
 
 type Props = {
   title: string;
@@ -48,11 +49,12 @@ export const CategoryPage: React.FC<Props> = ({ title, category }) => {
         <Loader />
       ) : (
         <>
+          <Breadcrumbs />
           <div className={styles.content}>
             <div className={styles.page__title}>
               <Heading
                 title={title}
-                subtitle={`${filtered.length} item${filtered.length === 1 ? '' : 's'}`}
+                subtitle={`${filtered.length} model${filtered.length === 1 ? '' : 's'}`}
               />
             </div>
 

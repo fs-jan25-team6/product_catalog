@@ -70,13 +70,14 @@ body.modal--open {
 
 .container {
   @include content-padding-inline;
-  padding-block: 24px 56px;
+  padding-top: 24px;
+  padding-bottom: 56px;
 
   @include on-tablet {
-    padding-block: 32px 64px;
+    padding-bottom: 64px;
   }
 
   @include on-small-desktop {
-    padding-block: 56px 80px;
+    padding-bottom: 80px;
   }
 }

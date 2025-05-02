@@ -21,6 +21,8 @@ import { DetailesSpecification } from './specifications/DetailesSpecification';
 import { Slider } from '../../organisms/Slider/Slider';
 import { ErrorPage } from '../ErrorPage/ErrorPage';
 import { Loader } from '../../Loader/Loader';
+import { Back } from '../../Breadcrumbs/Back/Back';
+import { Breadcrumbs } from '../../Breadcrumbs';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
@@ -88,6 +90,8 @@ export const ProductPage: React.FC = () => {
         <Loader />
       ) : (
         <>
+          <Breadcrumbs />
+          <Back />
           <h2 className={styles.name}>
             {productDetails?.name} ({productModel})
           </h2>
@@ -279,13 +283,13 @@ export const ProductPage: React.FC = () => {
                   }
                   value={productDetails?.capacity}
                 />
-                {productDetails.camera && (
+                {productDetails?.camera && (
                   <DetailesSpecification
                     label="Camera"
                     value={productDetails?.camera}
                   />
                 )}
-                {productDetails.zoom && (
+                {productDetails?.zoom && (
                   <DetailesSpecification
                     label="Zoom"
                     value={productDetails?.zoom}
