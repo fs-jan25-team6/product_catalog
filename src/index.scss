@@ -45,8 +45,20 @@ body.modal--open {
   }
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}
+
+
 .footer {
-  margin-top: 100px;
+  margin-top: auto;
+  // margin-top: 100px;
 }
 
 .stack {
