@@ -1,0 +1,93 @@
+@use '/src/styles/utils/mixins.scss' as *;
+@use '/src/styles/utils/variables.scss' as *;
+
+.notFoundPage {
+  @include content-padding-inline;
+}
+
+.navBack {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: $main-background-color;
+  cursor: pointer;
+}
+
+.back {
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.content {
+  @include page-grid;
+  height: 100%;
+  color: $white-accent-color;
+  row-gap: 12px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+    row-gap: 24px;
+  }
+  @include on-small-desktop {
+    padding-bottom: 80px;
+  }
+}
+.notFoundImage {
+  grid-column: 1 / -1;
+  height: auto;
+  max-height: 464px;
+  width: 100%;
+  max-width: 464px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    grid-column: 3 / 11;
+  }
+  @include on-small-desktop {
+    max-height: 568px;
+    max-width: 568px;
+    grid-column: 7 / 19;
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.errorMessage {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  text-align: center;
+  color: $purple-accent-color;
+}
+
+.error404 {
+  display: inline-block;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 100%;
+
+  @include on-small-desktop {
+    font-size: 108px;
+  }
+}
+
+.message {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 100%;
+  color: #512f99;
+
+  @include on-small-desktop {
+    font-size: 48px;
+  }
+}

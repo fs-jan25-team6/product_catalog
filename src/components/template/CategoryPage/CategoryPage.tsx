@@ -4,6 +4,8 @@ import styles from './CategoryPage.module.scss';
 import { Heading } from '../../molecules/Heading/Heading';
 import { Controls } from './components';
 import { useAppSelector } from '../../../hooks/hooks';
+import { Loader } from '../../Loader/Loader';
+import { ErrorPage } from '../../pages/ErrorPage/ErrorPage';
 
 type Props = {
   title: string;
@@ -11,24 +13,31 @@ type Props = {
 };
 
 export const CategoryPage: React.FC<Props> = ({ title, category }) => {
-  const { products } = useAppSelector(state => state.products);
+  const { products, loading, error } = useAppSelector(state => state.products);
 
   const filtered = products.filter(product => product.category === category);
 
   return (
     <div className={styles.page}>
-      <div className={styles.page__title}>
-        <Heading
-          title={title}
-          subtitle={`${filtered.length} item${filtered.length === 1 ? '' : 's'}`}
-        />
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className={styles.page__title}>
+            <Heading
+              title={title}
+              subtitle={`${filtered.length} item${filtered.length === 1 ? '' : 's'}`}
+            />
+          </div>
 
-      <Controls />
+          <Controls />
 
-      <ProductList list={filtered} />
+          <ProductList list={filtered} />
 
-      <div className={styles.page__pagination}>pagination placeholder</div>
+          <div className={styles.page__pagination}>pagination placeholder</div>
+        </>
+      )}
+      {error && <ErrorPage />}
     </div>
   );
 };
