@@ -21,6 +21,7 @@ $padding-inline: 12px;
     padding-right: 12px;
   }
   &__control {
+    cursor: pointer;
     background-color: $surface2-color;
     height: $control-height;
     border: none;
@@ -46,6 +47,8 @@ $padding-inline: 12px;
     border-radius: $border-radius;
   }
   &__option {
+    cursor: pointer;
+
     display: flex;
     align-items: center;
     height: 32px;
