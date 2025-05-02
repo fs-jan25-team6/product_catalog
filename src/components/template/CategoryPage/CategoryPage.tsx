@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ProductList } from '../../ProductList/ProductList';
 import styles from './CategoryPage.module.scss';
 import { Heading } from '../../molecules/Heading/Heading';
@@ -23,6 +23,7 @@ type Props = {
 export const CategoryPage: React.FC<Props> = ({ title, category }) => {
   const { products, loading, error } = useAppSelector(state => state.products);
   const [searchParams] = useSearchParams();
+  const listRef = useRef<HTMLDivElement>(null);
 
   const query = searchParams.get(SearchParam.Query) || DefaultValues.Query;
   const sortBy = searchParams.get(SearchParam.Sort) || DefaultValues.Sort;
@@ -38,8 +39,12 @@ export const CategoryPage: React.FC<Props> = ({ title, category }) => {
     page,
   );
 
+  useEffect(() => {
+    listRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [page]);
+
   return (
-    <div className={styles.page}>
+    <div className={styles.page} ref={listRef}>
       {loading ? (
         <Loader />
       ) : (
@@ -53,7 +58,9 @@ export const CategoryPage: React.FC<Props> = ({ title, category }) => {
 
           <Controls />
 
-          <ProductList list={paginated} />
+          <div>
+            <ProductList list={paginated} />
+          </div>
 
           <div className={styles.page__pagination}>
             <ProductListPagination currentPage={page} totalPages={totalPages} />
