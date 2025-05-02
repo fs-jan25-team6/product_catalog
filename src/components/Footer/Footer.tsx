@@ -24,7 +24,10 @@ export const Footer: React.FC = () => {
         ))}
       </nav>
 
-      <button className={styles.footer__back}>
+      <button
+        className={styles.footer__back}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
         <span className={styles.footer__text}>Back to top</span>
         <div className={styles.footer__btn}>
           <Icon direction="up">

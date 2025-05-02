@@ -27,6 +27,10 @@ body {
   min-height: 100vh;
 }
 
+body.modal--open {
+  overflow: hidden;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -41,8 +45,20 @@ body {
   }
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}
+
+
 .footer {
-  margin-top: 100px;
+  margin-top: auto;
+  // margin-top: 100px;
 }
 
 .stack {

@@ -1,0 +1,27 @@
+.content {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.astronaut {
+  animation: flyUp 2.2s ease-in-out forwards;
+  height: 480px;
+  width: 480px;
+}
+
+@keyframes flyUp {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
