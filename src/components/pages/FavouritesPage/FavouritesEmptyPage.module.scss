@@ -43,9 +43,9 @@
     max-width: 600px;
   }
 
-   @include on-small-desktop {
+  @include on-small-desktop {
     max-width: 100%;
-   }
+  }
 }
 
 .error {
