@@ -1,0 +1,40 @@
+@use '/src/styles/utils/mixins.scss' as *;
+@use '/src/styles/utils/variables.scss' as *;
+
+.content {
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-small-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.title {
+  margin-top: 24px;
+  margin-bottom: 8px;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: $white-accent-color;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.counter {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: $secondary-color;
+
+  margin-bottom: 40px;
+}
