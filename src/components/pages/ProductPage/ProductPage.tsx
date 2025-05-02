@@ -20,6 +20,8 @@ import { Image } from '../../../assets/Image';
 import { ProductDetails } from '../../../types/ProductDetails';
 import { MainInfoSpecification } from './specifications/MainInfoSpecification';
 import { DetailesSpecification } from './specifications/DetailesSpecification';
+
+import { Slider } from '../../organisms/Slider/Slider';
 import { ErrorPage } from '../ErrorPage/ErrorPage';
 import { Loader } from '../../Loader/Loader';
 
@@ -322,35 +324,8 @@ export const ProductPage: React.FC = () => {
             </div>
           </section>
 
-          <section className={styles.offers}>
-            <div className={styles.offers__head}>
-              <h2 className={styles.offers__head__title}>You may also like</h2>
-              <div className={styles.offers__head__buttons}>
-                <button className={styles.offers__head__button}>
-                  <Icon color="secondary">
-                    <ArrowIcon />
-                  </Icon>
-                </button>
-                <button
-                  className={classNames(
-                    styles.offers__head__button,
-                    styles['--active'],
-                  )}
-                >
-                  <Icon direction="right">
-                    <ArrowIcon />
-                  </Icon>
-                </button>
-              </div>
-            </div>
+          <Slider title={'Hot prices'} productsList={products} id={3} />
 
-            <div className={styles.offers__catalog}>
-              <div className={styles.offers__catalog__card}></div>
-              <div className={styles.offers__catalog__card}></div>
-              <div className={styles.offers__catalog__card}></div>
-              <div className={styles.offers__catalog__card}></div>
-            </div>
-          </section>
         </>
       )}
 

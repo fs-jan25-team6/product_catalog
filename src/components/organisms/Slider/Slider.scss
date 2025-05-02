@@ -1,0 +1,75 @@
+@use '../../../styles/utils/variables' as *;
+@use '../../../styles/utils/mixins' as *;
+
+.recomendation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  &__title {
+    display: block;
+    width: 136px;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 41px;
+
+    @include on-tablet {
+      font-size: 32px;
+      width: 400px;
+    }
+  }
+}
+
+.recomendation-content {
+  margin-bottom: 57px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-small-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.slider-btn {
+  display: flex;
+  gap: 16px;
+
+  &__left,
+  &__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $surface2-color;
+    border-color: $surface2-color;
+    border-radius: 0;
+    box-sizing: border-box;
+    height: 32px;
+    width: 32px;
+    padding: 0;
+  }
+}
+
+button:disabled {
+  border: 1px solid $surface2-color;
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: $surface1-color;
+}
+
+.swiper-size {
+  max-width: 212px;
+  max-height: 439px;
+
+  @include on-tablet {
+    max-width: 237px;
+    max-height: 512px;
+  }
+
+  @include on-small-desktop {
+    max-width: 272px;
+    max-height: 506px;
+  }
+}
