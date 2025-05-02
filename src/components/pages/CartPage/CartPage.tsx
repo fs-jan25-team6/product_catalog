@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CartPage.scss';
 import { useNavigate } from 'react-router-dom';
 import { CartItem } from '../../organisms/CartItem/CartItem';
@@ -6,15 +6,21 @@ import { ArrowIcon } from '../../../assets/icons/arrow-icon';
 import { Icon } from '../../../assets/icons/Icon/Icon';
 import { useAppSelector } from '../../../hooks/hooks';
 import {
+  clearCart,
   selectTotalItems,
   selectTotalPrice,
 } from '../../../features/cartSlice';
+import { Modal } from '../../Modal/Modal';
+import { useDispatch } from 'react-redux';
 
 export const CartPage: React.FC = () => {
   const navigate = useNavigate();
   const { cartItems } = useAppSelector(state => state.cart);
   const totalItems = useAppSelector(selectTotalItems);
   const totalPrice = useAppSelector(selectTotalPrice);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -46,7 +52,22 @@ export const CartPage: React.FC = () => {
 
             <hr className="cart__divider" />
 
-            <button className="cart__checkout-btn">Checkout</button>
+            <button
+              className="cart__checkout-btn"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Checkout
+            </button>
+            {isModalOpen && (
+              <Modal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                onConfirm={() => {
+                  dispatch(clearCart());
+                  setIsModalOpen(false);
+                }}
+              />
+            )}
           </div>
         </div>
       </div>
