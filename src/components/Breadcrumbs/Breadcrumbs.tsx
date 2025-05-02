@@ -1,9 +1,11 @@
 import React from 'react';
-import { NavLink, useLocation, Link } from 'react-router-dom';
+import { NavLink, useLocation, Link, useParams } from 'react-router-dom';
 import { Icon } from '../../assets/icons/Icon/Icon';
 import { HomeIcon } from '../../assets/icons/home-icon';
 import { ArrowIcon } from '../../assets/icons/arrow-icon';
 import './Breadcrumbs.scss';
+import { useAppSelector } from '../../hooks/hooks';
+import { generateDeviceModel } from '../../helpers/generateDeviceModel';
 
 export const Breadcrumbs: React.FC = () => {
   const { pathname } = useLocation();
@@ -11,12 +13,24 @@ export const Breadcrumbs: React.FC = () => {
 
   const isHomePage = pathname === '/';
 
+  const { productId } = useParams();
+
+  const { products } = useAppSelector(state => state.products);
+  const product = products?.find(product => product?.itemId === productId);
+  const category = product?.category || '';
+
+  const productModel = generateDeviceModel(productId || '');
+
+  if (['/cart', '/favourites'].includes(pathname)) {
+    return null;
+  }
+
   return (
     <div aria-label="Breadcrumb" className="breadcrumbs">
       <nav className="breadcrumbs__navigation">
         <ul className="breadcrumbs__list">
           {!isHomePage && (
-            <li>
+            <li className="breadcrumbs__item">
               <NavLink to="/" className="home">
                 <Icon>
                   <HomeIcon />
@@ -25,27 +39,52 @@ export const Breadcrumbs: React.FC = () => {
             </li>
           )}
 
-          {pathnames.map((name, index) => {
-            const isLast = index === pathnames.length - 1;
-            const to = `/${pathnames.slice(0, index + 1).join('/')}`;
-
-            return (
-              <li key={to} className="breadcrumbs__item">
+          {product ? (
+            <>
+              <li className="breadcrumbs__item">
                 <Icon className="breadcrumbs__arrow">
                   <ArrowIcon />
                 </Icon>
-                {isLast ? (
-                  <span className="breadcrumbs__text breadcrumbs__text--current">
-                    {name.charAt(0).toUpperCase() + name.slice(1)}
-                  </span>
-                ) : (
-                  <Link to={to} className="breadcrumbs__text">
-                    {name.charAt(0).toUpperCase() + name.slice(1)}
-                  </Link>
-                )}
+
+                <Link to={`${category}`} className="breadcrumbs__text">
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </Link>
               </li>
-            );
-          })}
+              <li className="breadcrumbs__item">
+                <Icon className="breadcrumbs__arrow">
+                  <ArrowIcon />
+                </Icon>
+
+                <span className="breadcrumbs__text breadcrumbs__text--current">
+                  {product?.name} ({productModel})
+                </span>
+              </li>
+            </>
+          ) : (
+            <>
+              {pathnames.map((name, index) => {
+                const isLast = index === pathnames.length - 1;
+                const to = `/${pathnames.slice(0, index + 1).join('/')}`;
+
+                return (
+                  <li key={to} className="breadcrumbs__item">
+                    <Icon className="breadcrumbs__arrow">
+                      <ArrowIcon />
+                    </Icon>
+                    {isLast ? (
+                      <span className="breadcrumbs__text breadcrumbs__text--current">
+                        {name.charAt(0).toUpperCase() + name.slice(1)}
+                      </span>
+                    ) : (
+                      <Link to={to} className="breadcrumbs__text">
+                        {name.charAt(0).toUpperCase() + name.slice(1)}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
+            </>
+          )}
         </ul>
       </nav>
     </div>
