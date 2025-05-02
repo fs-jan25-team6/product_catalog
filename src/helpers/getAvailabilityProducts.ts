@@ -12,17 +12,22 @@ type VariantOptions = {
 };
 
 export const getVariantOptions = (
-  details: ProductDetails,
+  details: ProductDetails = {} as ProductDetails,
   products: Product[],
 ): VariantOptions => {
-  const productMap = new Map(products.map(p => [p.itemId.toLowerCase(), p]));
+  const colors = Array.isArray(details.colorsAvailable)
+    ? details.colorsAvailable
+    : [];
+  const capacities = Array.isArray(details.capacityAvailable)
+    ? details.capacityAvailable
+    : [];
 
+  const productMap = new Map(products.map(p => [p.itemId, p]));
   const variantEntries: VariantEntry[] = [];
 
-  for (const color of details.colorsAvailable) {
-    for (const capacity of details.capacityAvailable) {
-      const itemId =
-        `${details.namespaceId}-${capacity}-${color}`.toLowerCase();
+  for (const color of colors) {
+    for (const capacity of capacities) {
+      const itemId = `${details.namespaceId}-${capacity.toLowerCase()}-${color}`;
       const existingProduct = productMap.get(itemId);
       variantEntries.push({
         product: existingProduct ?? { itemId, color, capacity },
@@ -31,7 +36,7 @@ export const getVariantOptions = (
     }
   }
 
-  const colorOptions = details.colorsAvailable.map(color => {
+  const colorOptions = colors.map(color => {
     const available = variantEntries.some(
       v =>
         v.product.color === color &&
@@ -41,7 +46,7 @@ export const getVariantOptions = (
     return { color, available };
   });
 
-  const capacityOptions = details.capacityAvailable.map(capacity => {
+  const capacityOptions = capacities.map(capacity => {
     const available = variantEntries.some(
       v =>
         v.product.capacity === capacity &&
