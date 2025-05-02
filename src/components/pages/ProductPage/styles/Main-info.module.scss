@@ -101,6 +101,25 @@
   }
 }
 
+.variant {
+  &--unavailable {
+    position: relative;
+    opacity: 0.7;
+    pointer-events: none;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      background-color: red;
+      height: 2px;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+  }
+}
 .colors {
   &__label {
     color: $secondary-color;
