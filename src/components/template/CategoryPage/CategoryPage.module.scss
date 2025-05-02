@@ -4,4 +4,14 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-small-desktop {
+    padding-bottom: 80px;
+  }
 }

@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styles from './styles/ProductPage.module.scss';
 import classNames from 'classnames';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { generateDeviceModel } from '../../../helpers/generateDeviceModel';
 import idToNumberHash from '../../../helpers/getHashed';
 import { Product } from '../../../types/Product';
 
-import { HomeIcon } from '../../../assets/icons/home-icon';
 import { ArrowIcon } from '../../../assets/icons/arrow-icon';
 import { HeartFilledIcon } from '../../../assets/icons/heart-filled-icon';
 import { HeartIcon } from '../../../assets/icons/heart-icon';
@@ -91,36 +89,6 @@ export const ProductPage: React.FC = () => {
         <Loader />
       ) : (
         <>
-          <section className={styles.navigation}>
-            <div className={styles.breadcrumbs}>
-              <Link to="/">
-                <Icon>
-                  <HomeIcon />
-                </Icon>
-              </Link>
-
-              <Icon color="secondary" direction="right">
-                <ArrowIcon />
-              </Icon>
-              <Link to="/phones" className={styles.category}>
-                {selectedProduct.category}
-              </Link>
-              <Icon color="secondary" direction="right">
-                <ArrowIcon />
-              </Icon>
-              <span className={styles.product}>
-                {productDetails?.name} ({productModel})
-              </span>
-            </div>
-
-            <Link to="/phones" className={styles.back}>
-              <Icon>
-                <ArrowIcon />
-              </Icon>
-              <span>Back</span>
-            </Link>
-          </section>
-
           <h2 className={styles.name}>
             {productDetails?.name} ({productModel})
           </h2>
