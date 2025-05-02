@@ -49,7 +49,7 @@ export const Breadcrumbs: React.FC = () => {
                     <ArrowIcon />
                   </Icon>
 
-                  <Link to={`${category}`} className="breadcrumbs__text">
+                  <Link to={`/${category}`} className="breadcrumbs__text">
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </Link>
                 </li>

@@ -22,9 +22,9 @@ import { Slider } from '../../organisms/Slider/Slider';
 import { ErrorPage } from '../ErrorPage/ErrorPage';
 import { Loader } from '../../Loader/Loader';
 
-import { Back } from '../../Breadcrumbs/Back/Back';
 import { Breadcrumbs } from '../../Breadcrumbs';
 import { getVariantOptions } from '../../../helpers/getAvailabilityProducts';
+import { ArrowIcon } from '../../../assets/icons/arrow-icon';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
@@ -98,7 +98,15 @@ export const ProductPage: React.FC = () => {
       ) : (
         <>
           <Breadcrumbs />
-          <Back />
+          <button
+            className={styles.back}
+            onClick={() => navigate(`/${selectedProduct?.category}`)}
+          >
+            <Icon>
+              <ArrowIcon />
+            </Icon>
+            <span className={styles.text}>Back</span>
+          </button>
           <h2 className={styles.name}>
             {productDetails?.name} ({productModel})
           </h2>
