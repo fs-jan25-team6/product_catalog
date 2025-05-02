@@ -24,13 +24,17 @@ export const AppLayout: React.FC = () => {
 
   return (
     <div className="content">
-      <Header />
+      <header className="header">
+        <Header />
+      </header>
       <main className="main">
         <section className="container">
           <Outlet />
         </section>
       </main>
-      <Footer />
+      <footer className="footer">
+        <Footer />
+      </footer>
     </div>
   );
 };

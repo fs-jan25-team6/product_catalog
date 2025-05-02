@@ -8,7 +8,7 @@ export const Back = () => {
   const navigate = useNavigate();
 
   return (
-    <button className={styles.back} onClick={() => navigate('..')}>
+    <button className={styles.back} onClick={() => navigate(-1)}>
       <Icon>
         <ArrowIcon />
       </Icon>

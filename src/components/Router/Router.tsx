@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { AppLayout } from '../pages/Layout';
 import { HomePage } from '../pages/HomePage/HomePage';
 import { PhonesPage } from '../pages/PhonesPage';
@@ -20,9 +20,8 @@ export const Router: React.FC = () => (
         <Route path="/accessories" element={<AccessoriesPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/favourites" element={<FavouritesPage />} />
-        <Route path="/not-found" element={<NotFoundPage />} />
         <Route path="/product/:productId" element={<ProductPage />} />
-        <Route path="*" element={<Navigate to="/not-found" />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   </HashRouter>

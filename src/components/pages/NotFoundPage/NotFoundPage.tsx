@@ -1,20 +1,11 @@
 import React from 'react';
 import styles from './NotFoundPage.module.scss';
-import { Icon } from '../../../assets/icons/Icon/Icon';
-import { ArrowIcon } from '../../../assets/icons/arrow-icon';
-import { useNavigate } from 'react-router-dom';
+import { Back } from '../../Breadcrumbs/Back/Back';
 
 export const NotFoundPage: React.FC = () => {
-  const navigate = useNavigate();
-
   return (
     <div className={styles.NotFoundPage}>
-      <button className={styles.navBack} onClick={() => navigate('..')}>
-        <Icon>
-          <ArrowIcon />
-        </Icon>
-        <span className={styles.back}>Back</span>
-      </button>
+      <Back />
       <div className={styles.content}>
         <div className={styles.notFoundImage}>
           <img
