@@ -55,9 +55,15 @@ body.modal--open {
   flex: 1;
 }
 
+.header {
+  flex-shrink: 0;
+  z-index: 10;
+  position: sticky;
+  top: 0;
+}
+
 .footer {
-  margin-top: auto;
-  // margin-top: 100px;
+  flex-shrink: 0;
 }
 
 .stack {
@@ -70,13 +76,14 @@ body.modal--open {
 
 .container {
   @include content-padding-inline;
-  padding-block: 24px 56px;
+  padding-top: 24px;
+  padding-bottom: 56px;
 
   @include on-tablet {
-    padding-block: 32px 64px;
+    padding-bottom: 64px;
   }
 
   @include on-small-desktop {
-    padding-block: 56px 80px;
+    padding-bottom: 80px;
   }
 }

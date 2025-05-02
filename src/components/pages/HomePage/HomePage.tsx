@@ -15,6 +15,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 // @ts-ignore
 import 'swiper/css/pagination';
+import { useAppSelector } from '../../../hooks/hooks';
 
 const newModels: Product[] = [
   {
@@ -118,8 +119,13 @@ const newModels: Product[] = [
 ];
 
 export const HomePage: React.FC = () => {
+  const { productList: phones } = useAppSelector(state => state.phones);
+  const { productList: tablets } = useAppSelector(state => state.tablets);
+  const { productList: accessories } = useAppSelector(
+    state => state.accessories,
+  );
   return (
-    <>
+    <div className="home-page">
       <h2 className="home-page__title--bigger">
         Welcome to Nice Gadgets store!
       </h2>
@@ -187,50 +193,49 @@ export const HomePage: React.FC = () => {
       <Slider title={'Brand new models'} productsList={newModels} id={1} />
 
       <h3 className="home-page__title">Shop by category</h3>
-      <div className="categories-container">
-        <div className="categories">
-          <div className="categories__item">
-            <ResponsiveImage
-              alt="Phones category"
-              desktopSrc="/img/category-phones-desktop.png"
-              tabletSrc="/img/category-phones-tablet.png"
-              mobileSrc="/img/category-phones-mobile.png"
-            />
-            <NavLink to="/phones" className="categories__title">
-              Mobile phones
-            </NavLink>
-            <p className="categories__amount">95 models</p>
-          </div>
 
-          <div className="categories__item">
-            <ResponsiveImage
-              alt="Tablets category"
-              desktopSrc="/img/category-tablets-desktop.png"
-              tabletSrc="/img/category-tablets-tablet.png"
-              mobileSrc="/img/category-tablets-mobile.png"
-            />
-            <NavLink to="/tablets" className="categories__title">
-              Tablets
-            </NavLink>
-            <p className="categories__amount">24 models</p>
-          </div>
+      <div className="categories">
+        <div className="categories__item">
+          <ResponsiveImage
+            alt="Phones category"
+            desktopSrc="/img/category-phones-desktop.png"
+            tabletSrc="/img/category-phones-tablet.png"
+            mobileSrc="/img/category-phones-mobile.png"
+          />
+          <NavLink to="/phones" className="categories__title">
+            Mobile phones
+          </NavLink>
+          <p className="categories__amount">{phones.length} models</p>
+        </div>
 
-          <div className="categories__item">
-            <ResponsiveImage
-              alt="Accessories category"
-              desktopSrc="/img/category-accessories-desktop.png"
-              tabletSrc="/img/category-accessories-tablet.png"
-              mobileSrc="/img/category-accessories-mobile.png"
-            />
-            <NavLink to="/accessories" className="categories__title">
-              Accessories
-            </NavLink>
-            <p className="categories__amount">100 models</p>
-          </div>
+        <div className="categories__item">
+          <ResponsiveImage
+            alt="Tablets category"
+            desktopSrc="/img/category-tablets-desktop.png"
+            tabletSrc="/img/category-tablets-tablet.png"
+            mobileSrc="/img/category-tablets-mobile.png"
+          />
+          <NavLink to="/tablets" className="categories__title">
+            Tablets
+          </NavLink>
+          <p className="categories__amount">{tablets.length} models</p>
+        </div>
+
+        <div className="categories__item">
+          <ResponsiveImage
+            alt="Accessories category"
+            desktopSrc="/img/category-accessories-desktop.png"
+            tabletSrc="/img/category-accessories-tablet.png"
+            mobileSrc="/img/category-accessories-mobile.png"
+          />
+          <NavLink to="/accessories" className="categories__title">
+            Accessories
+          </NavLink>
+          <p className="categories__amount">{accessories.length} models</p>
         </div>
       </div>
 
       <Slider title={'Hot prices'} productsList={newModels} id={2} />
-    </>
+    </div>
   );
 };

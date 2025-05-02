@@ -2,6 +2,14 @@
 @use '../../../styles/utils/mixins' as *;
 
 .home-page {
+  @include on-tablet {
+    padding-top: 8px;
+  }
+
+  @include on-small-desktop {
+    padding-top: 32px;
+  }
+
   &__title {
     font-size: 22px;
     font-weight: 800;
@@ -85,8 +93,6 @@
 
 .categories {
   @include page-grid;
-  row-gap: 32px;
-
   margin-bottom: 56px;
 
   @include on-tablet {
@@ -107,6 +113,7 @@
     flex-direction: column;
 
     grid-column: span 4;
+    margin: 0 auto;
 
     @include on-small-desktop {
       grid-column: span 8;
