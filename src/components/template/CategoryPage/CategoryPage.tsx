@@ -4,6 +4,8 @@ import styles from './CategoryPage.module.scss';
 import { Heading } from '../../molecules/Heading/Heading';
 
 import { useAppSelector } from '../../../hooks/hooks';
+import { Loader } from '../../Loader/Loader';
+import { ErrorPage } from '../../pages/ErrorPage/ErrorPage';
 import { Controls } from './components/Controls';
 import { ProductListPagination } from './components/Pagination';
 import { useFilteredProducts } from '../../../hooks/useFilteredProducts';
@@ -19,7 +21,7 @@ type Props = {
 };
 
 export const CategoryPage: React.FC<Props> = ({ title, category }) => {
-  const { products } = useAppSelector(state => state.products);
+  const { products, loading, error } = useAppSelector(state => state.products);
   const [searchParams] = useSearchParams();
 
   const query = searchParams.get(SearchParam.Query) || DefaultValues.Query;
@@ -38,21 +40,27 @@ export const CategoryPage: React.FC<Props> = ({ title, category }) => {
 
   return (
     <div className={styles.page}>
-      <div className={styles.page__breadcrumbs}>breadcrumbs placeholder</div>
-      <div className={styles.page__title}>
-        <Heading
-          title={title}
-          subtitle={`${filtered.length} item${filtered.length === 1 ? '' : 's'}`}
-        />
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className={styles.page__title}>
+            <Heading
+              title={title}
+              subtitle={`${filtered.length} item${filtered.length === 1 ? '' : 's'}`}
+            />
+          </div>
 
-      <Controls />
+          <Controls />
 
-      <ProductList list={paginated} />
+          <ProductList list={paginated} />
 
-      <div className={styles.page__pagination}>
-        <ProductListPagination currentPage={page} totalPages={totalPages} />
-      </div>
+          <div className={styles.page__pagination}>
+            <ProductListPagination currentPage={page} totalPages={totalPages} />
+          </div>
+        </>
+      )}
+      {error && <ErrorPage />}
     </div>
   );
 };
