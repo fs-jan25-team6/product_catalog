@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useMemo, useState } from 'react';
 import './Slider.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -17,32 +18,35 @@ type Props = {
   title: string;
   productsList: Product[];
   id: number;
-}
+};
 
-export const Slider: React.FC<Props> = ({
-  title, productsList, id,
-}
-) => {
+export const Slider: React.FC<Props> = ({ title, productsList, id }) => {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
   const randomizedList = useMemo(() => {
-    return [...productsList].sort(() => Math.random() < 0.5 ? -1 : 1).slice(0, 10);
+    return [...productsList]
+      .sort(() => (Math.random() < 0.5 ? -1 : 1))
+      .slice(0, 10);
   }, [productsList]);
 
   return (
     <>
       <div className="recomendation">
-        <h3 className="recomendation__title">
-          {title}
-        </h3>
+        <h3 className="recomendation__title">{title}</h3>
         <div className="slider-btn">
-          <button className={`slider-btn__left slider-btn__left--${id}`} disabled={isBeginning}>
+          <button
+            className={`slider-btn__left slider-btn__left--${id}`}
+            disabled={isBeginning}
+          >
             <Icon>
               <ArrowIcon />
             </Icon>
           </button>
-          <button className={`slider-btn__right slider-btn__right--${id}`} disabled={isEnd}>
+          <button
+            className={`slider-btn__right slider-btn__right--${id}`}
+            disabled={isEnd}
+          >
             <Icon direction="right">
               <ArrowIcon />
             </Icon>
@@ -52,7 +56,7 @@ export const Slider: React.FC<Props> = ({
       <div className="recomendation-content">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          onSlideChange={(swiper) => {
+          onSlideChange={swiper => {
             setIsBeginning(swiper.isBeginning);
             setIsEnd(swiper.isEnd);
           }}
@@ -64,7 +68,7 @@ export const Slider: React.FC<Props> = ({
           slidesPerView="auto"
         >
           {randomizedList.map(product => (
-            <SwiperSlide key={product.id} className='swiper-size'>
+            <SwiperSlide key={product.id} className="swiper-size">
               <ProductCard product={product} />
             </SwiperSlide>
           ))}

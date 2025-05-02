@@ -7,7 +7,6 @@ import { generateDeviceModel } from '../../../helpers/generateDeviceModel';
 import idToNumberHash from '../../../helpers/getHashed';
 import { Product } from '../../../types/Product';
 
-import { ArrowIcon } from '../../../assets/icons/arrow-icon';
 import { HeartFilledIcon } from '../../../assets/icons/heart-filled-icon';
 import { HeartIcon } from '../../../assets/icons/heart-icon';
 import { Icon } from '../../../assets/icons/Icon/Icon';
@@ -273,17 +272,25 @@ export const ProductPage: React.FC = () => {
                   value={productDetails?.ram}
                 />
                 <DetailesSpecification
-                  label="Built in memory"
+                  label={
+                    selectedProduct.category === 'accessories'
+                      ? 'Capacity'
+                      : 'Built in memory'
+                  }
                   value={productDetails?.capacity}
                 />
-                <DetailesSpecification
-                  label="Camera"
-                  value={productDetails?.camera}
-                />
-                <DetailesSpecification
-                  label="Zoom"
-                  value={productDetails?.zoom}
-                />
+                {productDetails.camera && (
+                  <DetailesSpecification
+                    label="Camera"
+                    value={productDetails?.camera}
+                  />
+                )}
+                {productDetails.zoom && (
+                  <DetailesSpecification
+                    label="Zoom"
+                    value={productDetails?.zoom}
+                  />
+                )}
                 <DetailesSpecification
                   label="Cell"
                   value={productDetails?.cell.join(', ')}
@@ -292,8 +299,7 @@ export const ProductPage: React.FC = () => {
             </div>
           </section>
 
-          <Slider title={'Hot prices'} productsList={products} id={3} />
-
+          <Slider title={'You may also like'} productsList={products} id={3} />
         </>
       )}
 
