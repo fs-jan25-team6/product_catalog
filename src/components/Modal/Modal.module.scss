@@ -23,10 +23,9 @@
     z-index: 1001;
     color: $white-accent-color;
 
-
-  @include on-tablet {
-    margin-inline: 48px;
-  }
+    @include on-tablet {
+      margin-inline: 48px;
+    }
   }
 
   &__loader {
