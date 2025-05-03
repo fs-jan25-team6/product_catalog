@@ -164,18 +164,3 @@
   display: block;
   transition: background-color 0.3s;
 }
-
-.swiper-size {
-  max-width: 212px;
-  max-height: 439px;
-
-  @include on-tablet {
-    max-width: 237px;
-    max-height: 512px;
-  }
-
-  @include on-small-desktop {
-    max-width: 272px;
-    max-height: 506px;
-  }
-}
