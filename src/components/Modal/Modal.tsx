@@ -5,6 +5,7 @@ import { CloseIcon } from '../../assets/icons/close-icon';
 import { Icon } from '../../assets/icons/Icon/Icon';
 import classNames from 'classnames';
 import { Typography } from '../atoms/Typography';
+import { useTranslation } from 'react-i18next';
 
 type ModalProps = {
   isOpen: boolean;
@@ -62,6 +63,8 @@ export const Modal: React.FC<ModalProps> = ({
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
+  const { t } = useTranslation();
+
   return ReactDOM.createPortal(
     <div className={styles.modal} onClick={handleBackdropClick}>
       <div className={styles.modal__content} onClick={handleModalClick}>
@@ -87,8 +90,7 @@ export const Modal: React.FC<ModalProps> = ({
               color="primary"
               className={styles.modal__text}
             >
-              Checkout is not implemented yet. <br></br> Do you want to clear
-              the Cart?
+              {t('cart.notImplemented')} <br></br> {t('cart.question')}
             </Typography>
             <div className={styles.modal__actions}>
               <button
@@ -98,7 +100,7 @@ export const Modal: React.FC<ModalProps> = ({
                 )}
                 onClick={onConfirm}
               >
-                Yes
+                {t('buttons.actions.yes')}
               </button>
 
               <button
@@ -108,7 +110,7 @@ export const Modal: React.FC<ModalProps> = ({
                 )}
                 onClick={onClose}
               >
-                Cancel
+                {t('buttons.actions.cancel')}
               </button>
             </div>
           </>
