@@ -3,6 +3,7 @@ import { Icon } from '../../../assets/icons/Icon/Icon';
 import { ArrowIcon } from '../../../assets/icons/arrow-icon';
 import React from 'react';
 import styles from './Back.module.scss';
+import { t } from 'i18next';
 
 export const Back = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export const Back = () => {
       <Icon>
         <ArrowIcon />
       </Icon>
-      <span className={styles.text}>Back</span>
+      <span className={styles.text}>{t('buttons.actions.back')}</span>
     </button>
   );
 };

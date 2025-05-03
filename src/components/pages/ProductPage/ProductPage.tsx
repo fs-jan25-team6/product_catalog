@@ -22,9 +22,10 @@ import { Slider } from '../../organisms/Slider/Slider';
 import { ErrorPage } from '../ErrorPage/ErrorPage';
 import { Loader } from '../../Loader/Loader';
 
+import { Back } from '../../Breadcrumbs/Back/Back';
 import { Breadcrumbs } from '../../Breadcrumbs';
 import { getVariantOptions } from '../../../helpers/getAvailabilityProducts';
-import { ArrowIcon } from '../../../assets/icons/arrow-icon';
+import { t } from 'i18next';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
@@ -98,15 +99,7 @@ export const ProductPage: React.FC = () => {
       ) : (
         <>
           <Breadcrumbs />
-          <button
-            className={styles.back}
-            onClick={() => navigate(`/${selectedProduct?.category}`)}
-          >
-            <Icon>
-              <ArrowIcon />
-            </Icon>
-            <span className={styles.text}>Back</span>
-          </button>
+          <Back />
           <h2 className={styles.name}>
             {productDetails?.name} ({productModel})
           </h2>
@@ -138,7 +131,9 @@ export const ProductPage: React.FC = () => {
             <div className={styles.features}>
               <div className={styles.features__head}>
                 <div className={styles.colors}>
-                  <span className={styles.colors__label}>Available colors</span>
+                  <span className={styles.colors__label}>
+                    {t('buttons.actions.product.colors')}
+                  </span>
                   <div className={styles.colors__list}>
                     {colorOptions.map(({ color, available }) => (
                       <div
@@ -169,7 +164,9 @@ export const ProductPage: React.FC = () => {
               <div className={styles.features__breakline}></div>
 
               <div className={styles.capacity}>
-                <span className={styles.capacity__label}>Select capacity</span>
+                <span className={styles.capacity__label}>
+                  {t('buttons.actions.product.capacity')}
+                </span>
                 <div className={styles.capacity__list}>
                   {capacityOptions.map(({ capacity, available }) => (
                     <div
@@ -207,7 +204,7 @@ export const ProductPage: React.FC = () => {
                   onClick={addToCart}
                   disabled={isInCart}
                 >
-                  {isInCart ? 'Added' : 'Add to cart'}
+                  {t(`buttons.actions.${isInCart ? 'inCart' : 'toCart'}`)}
                 </button>
                 <button
                   className={classNames(styles.favourites, {
@@ -223,19 +220,19 @@ export const ProductPage: React.FC = () => {
 
               <div className={styles.descriptions}>
                 <MainInfoSpecification
-                  label="Screen"
+                  label={t('product.specifications.screen')}
                   value={productDetails?.screen}
                 />
                 <MainInfoSpecification
-                  label="Resolution"
+                  label={t('product.specifications.resolution')}
                   value={productDetails?.resolution}
                 />
                 <MainInfoSpecification
-                  label="Processor"
+                  label={t('product.specifications.processor')}
                   value={productDetails?.processor}
                 />
                 <MainInfoSpecification
-                  label="RAM"
+                  label={t('product.specifications.ram')}
                   value={productDetails?.ram}
                 />
               </div>
@@ -244,7 +241,9 @@ export const ProductPage: React.FC = () => {
 
           <section className={styles.detailes}>
             <div className={styles.about}>
-              <h3 className={styles.about__title}>About</h3>
+              <h3 className={styles.about__title}>
+                {t('product.about.title')}
+              </h3>
 
               <div className={styles.detailes__breakline}></div>
 
@@ -271,56 +270,62 @@ export const ProductPage: React.FC = () => {
             </div>
 
             <div className={styles['tech-specs']}>
-              <h3 className={styles['tech-specs__title']}>Tech specs</h3>
+              <h3 className={styles['tech-specs__title']}>
+                {t('product.specifications.label')}
+              </h3>
 
               <div className={styles.detailes__breakline}></div>
 
               <div className={styles['tech-specs__features']}>
                 <DetailesSpecification
-                  label="Screen"
+                  label={t('product.specifications.screen')}
                   value={productDetails?.screen}
                 />
                 <DetailesSpecification
-                  label="Resolution"
+                  label={t('product.specifications.resolution')}
                   value={productDetails?.resolution}
                 />
                 <DetailesSpecification
-                  label="Processor"
+                  label={t('product.specifications.processor')}
                   value={productDetails?.processor}
                 />
                 <DetailesSpecification
-                  label="RAM"
+                  label={t('product.specifications.ram')}
                   value={productDetails?.ram}
                 />
                 <DetailesSpecification
-                  label={
+                  label={t(
                     selectedProduct.category === 'accessories'
-                      ? 'Capacity'
-                      : 'Built in memory'
-                  }
+                      ? 'product.specifications.capacity'
+                      : 'product.specifications.builtInMemory',
+                  )}
                   value={productDetails?.capacity}
                 />
                 {productDetails?.camera && (
                   <DetailesSpecification
-                    label="Camera"
+                    label={t('product.specifications.camera')}
                     value={productDetails?.camera}
                   />
                 )}
                 {productDetails?.zoom && (
                   <DetailesSpecification
-                    label="Zoom"
+                    label={t('product.specifications.zoom')}
                     value={productDetails?.zoom}
                   />
                 )}
                 <DetailesSpecification
-                  label="Cell"
+                  label={t('product.specifications.cell')}
                   value={productDetails?.cell.join(', ')}
                 />
               </div>
             </div>
           </section>
 
-          <Slider title={'You may also like'} productsList={products} id={3} />
+          <Slider
+            title={t('slider.title.products.random')}
+            productsList={products}
+            id={3}
+          />
         </>
       )}
 

@@ -8,6 +8,7 @@ import { init as initTablets } from '../../../features/tabletsSlice';
 import { init as initAccessories } from '../../../features/accessoriesSlices';
 import { useAppDispatch } from '../../../hooks/hooks';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { t } from 'i18next';
 
 export const ErrorPage = () => {
   const dispatch = useAppDispatch();
@@ -34,10 +35,10 @@ export const ErrorPage = () => {
         />
       </div>
       <div className={styles.errorMessage}>
-        <span className={styles.error}>Something went wrong 🥺</span>
+        <span className={styles.error}>{t('error.unknown')}</span>
       </div>
       <button className={styles.button} onClick={dispatchData}>
-        Try again
+        {t('error.retry')}
       </button>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './FavouritesEmptyPage.module.scss';
+import { t } from 'i18next';
 
 export const FavouritesEmptyPage = () => (
   <div className={styles.content}>
@@ -11,7 +12,7 @@ export const FavouritesEmptyPage = () => (
       />
     </div>
     <div className={styles.errorMessage}>
-      <span className={styles.error}>You don't have favourites yet 💔</span>
+      <span className={styles.error}>{t('favourites.empty')}</span>
     </div>
   </div>
 );

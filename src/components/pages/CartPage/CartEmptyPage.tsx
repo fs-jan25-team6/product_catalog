@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './CartEmptyPage.module.scss';
+import { t } from 'i18next';
 
 export const CartEmptyPage = () => (
   <div className={styles.content}>
@@ -11,7 +12,7 @@ export const CartEmptyPage = () => (
       />
     </div>
     <div className={styles.errorMessage}>
-      <span className={styles.error}>Your cart is empty</span>
+      <span className={styles.error}>{t('cart.empty')}</span>
     </div>
   </div>
 );

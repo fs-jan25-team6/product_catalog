@@ -8,9 +8,18 @@ import { SortBy } from '../../../../../enums/SortBy';
 import { ItemPerPage } from '../../../../../enums/ItemsPerPage';
 import { SearchParam } from '../../../../../enums/SearchFields';
 import { DefaultValues } from '../../../../../enums/DefaultValues';
+import { t } from 'i18next';
 
-const optionsSort: Option[] = enumToDropdownOptions(SortBy);
-const optionsProdPerPage: Option[] = enumToDropdownOptions(ItemPerPage);
+const optionsSort: Option[] = enumToDropdownOptions(
+  SortBy,
+  t,
+  'catalog.dropdown.sortBy.options',
+);
+const optionsProdPerPage: Option[] = enumToDropdownOptions(
+  ItemPerPage,
+  t,
+  'catalog.dropdown.sortBy.options',
+);
 
 export const Controls: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -48,7 +57,7 @@ export const Controls: React.FC = () => {
     <div className={styles.controls}>
       <div className={styles.controls__sort}>
         <Dropdown
-          label="Sort by"
+          label={t('catalog.dropdown.sortBy.label')}
           options={optionsSort}
           value={selectedSortBy}
           onChange={handleSortByChange}
@@ -56,7 +65,7 @@ export const Controls: React.FC = () => {
       </div>
       <div className={styles.controls__quantity}>
         <Dropdown
-          label="Items on page"
+          label={t('catalog.dropdown.perPage.label')}
           options={optionsProdPerPage}
           value={selectedPerPage}
           onChange={handlePerPageChange}

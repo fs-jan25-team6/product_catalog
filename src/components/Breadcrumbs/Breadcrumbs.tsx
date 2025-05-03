@@ -6,6 +6,7 @@ import { ArrowIcon } from '../../assets/icons/arrow-icon';
 import './Breadcrumbs.scss';
 import { useAppSelector } from '../../hooks/hooks';
 import { generateDeviceModel } from '../../helpers/generateDeviceModel';
+import { t } from 'i18next';
 
 export const Breadcrumbs: React.FC = () => {
   const { pathname } = useLocation();
@@ -50,7 +51,7 @@ export const Breadcrumbs: React.FC = () => {
                   </Icon>
 
                   <Link to={`/${category}`} className="breadcrumbs__text">
-                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                    {t(`${category}.title`)}
                   </Link>
                 </li>
                 <li className="breadcrumbs__item">
@@ -76,11 +77,11 @@ export const Breadcrumbs: React.FC = () => {
                       </Icon>
                       {isLast ? (
                         <span className="breadcrumbs__text breadcrumbs__text--current">
-                          {name.charAt(0).toUpperCase() + name.slice(1)}
+                          {t(`${name}.title`)}
                         </span>
                       ) : (
                         <Link to={to} className="breadcrumbs__text">
-                          {name.charAt(0).toUpperCase() + name.slice(1)}
+                          {t(`${name}.title`)}
                         </Link>
                       )}
                     </li>

@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { toggleFavourite } from '../../features/favouritesSlice';
 import { add } from '../../features/cartSlice';
 import { useNavigate } from 'react-router-dom';
+import { t } from 'i18next';
 
 type Props = {
   product: Product;
@@ -67,17 +68,23 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <div className={styles.card__divider}></div>
           <div className={styles.card__specs}>
             <div className={styles.card__specs__field}>
-              <div className={styles.card__specs__label}>Screen</div>
+              <div className={styles.card__specs__label}>
+                {t('product.specifications.screen')}
+              </div>
               <div className={styles.card__specs__value}>{product.screen}</div>
             </div>
             <div className={styles.card__specs__field}>
-              <div className={styles.card__specs__label}>Capacity</div>
+              <div className={styles.card__specs__label}>
+                {t('product.specifications.capacity')}
+              </div>
               <div className={styles.card__specs__value}>
                 {product.capacity}
               </div>
             </div>
             <div className={styles.card__specs__field}>
-              <div className={styles.card__specs__label}>RAM</div>
+              <div className={styles.card__specs__label}>
+                {t('product.specifications.ram')}
+              </div>
               <div className={styles.card__specs__value}>{product.ram}</div>
             </div>
           </div>
@@ -89,7 +96,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
               disabled={isInCart}
               onClick={addToCart}
             >
-              {isInCart ? 'Added' : 'Add to cart'}
+              {t(`buttons.actions.${isInCart ? 'inCart' : 'toCart'}`)}
             </button>
             <button
               className={classNames(

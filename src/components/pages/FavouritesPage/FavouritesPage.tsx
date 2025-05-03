@@ -6,6 +6,7 @@ import styles from './FavouritesPage.module.scss';
 import { Loader } from '../../Loader/Loader';
 import { ErrorPage } from '../ErrorPage/ErrorPage';
 import { Breadcrumbs } from '../../Breadcrumbs';
+import { t } from 'i18next';
 
 export const FavouritesPage: React.FC = () => {
   const { favourites, loading, errorMessage } = useAppSelector(
@@ -19,13 +20,14 @@ export const FavouritesPage: React.FC = () => {
         <>
           <Breadcrumbs />
           <div className={styles.content}>
-            <h2 className={styles.title}>Favourites</h2>
+            <h2 className={styles.title}>{t('favourites.title')}</h2>
 
             {favourites.length > 0 ? (
               <>
                 <span className={styles.counter}>
-                  {favourites.length}{' '}
-                  {favourites.length === 1 ? 'item' : 'items'}
+                  {t('catalog.subtitle.items', {
+                    count: favourites.length,
+                  })}
                 </span>
                 <ProductList list={favourites} />
               </>

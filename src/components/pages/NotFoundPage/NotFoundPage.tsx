@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './NotFoundPage.module.scss';
 import { Back } from '../../Breadcrumbs/Back/Back';
+import { t } from 'i18next';
 
 export const NotFoundPage: React.FC = () => {
   return (
@@ -15,8 +16,8 @@ export const NotFoundPage: React.FC = () => {
           />
         </div>
         <div className={styles.errorMessage}>
-          <span className={styles.error404}>Error 404</span>
-          <span className={styles.message}>Page not found</span>
+          <span className={styles.error404}>{t('404.title')}</span>
+          <span className={styles.message}>{t('404.subtitle')}</span>
         </div>
       </div>
     </div>

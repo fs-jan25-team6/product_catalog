@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../hooks/hooks';
 import { Language } from '../../enums/Language';
 import { setLanguage } from '../../features/i18nSlice';
+import { t } from 'i18next';
+
+const langs = [Language.EN, Language.UA];
 
 export const LanguageSwitcher: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,18 +17,14 @@ export const LanguageSwitcher: React.FC = () => {
 
   return (
     <div>
-      <button
-        onClick={() => handleLanguageChange(Language.EN)}
-        disabled={currentLang === Language.EN}
-      >
-        English
-      </button>
-      <button
-        onClick={() => handleLanguageChange(Language.UA)}
-        disabled={currentLang === Language.UA}
-      >
-        Українська
-      </button>
+      {langs.map(lang => (
+        <button
+          onClick={() => handleLanguageChange(lang)}
+          disabled={currentLang === lang}
+        >
+          {t(`languages.title.${lang}`)}
+        </button>
+      ))}
     </div>
   );
 };
