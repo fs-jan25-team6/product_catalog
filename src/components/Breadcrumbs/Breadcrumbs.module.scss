@@ -1,0 +1,108 @@
+@use '/src/styles/utils/variables.scss' as *;
+@use '/src/styles/utils/mixins.scss' as *;
+
+.breadcrumbs {
+  background-color: $main-background-color;
+  margin-bottom: 40px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 16px;
+  max-width: 100%;
+}
+
+.list,
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+}
+
+.list {
+  overflow: hidden;
+}
+
+.item {
+  flex-shrink: 0;
+
+  &:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-shrink: 1;
+  }
+}
+
+.arrow {
+  transform: rotate(180deg);
+  display: inline-flex;
+  align-items: center;
+  color: $icons-color;
+}
+
+.text {
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 100%;
+  text-decoration: none;
+  color: $white-accent-color;
+  white-space: nowrap;
+}
+
+.currentText {
+  font-weight: 600;
+  cursor: default;
+  color: $secondary-color;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.home {
+  display: inline-flex;
+  align-items: center;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  min-width: 80px;
+  max-width: 180px;
+  flex-grow: 0;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: $main-background-color;
+  border: 1px solid $icons-color;
+  border-radius: 10px;
+  align-items: center;
+  padding-inline: 8px;
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: 10px;
+    color: $secondary-color;
+
+    @include on-tablet {
+      font-size: 12px;
+    }
+  }
+}
