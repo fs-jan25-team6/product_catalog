@@ -10,6 +10,7 @@ import { HeartIcon } from '../../assets/icons/heart-icon';
 import { Icon } from '../../assets/icons/Icon/Icon';
 import { useAppSelector } from '../../hooks/hooks';
 import { selectTotalItems } from '../../features/cartSlice';
+import { MoonIcon } from '../../assets/icons/moon-icon';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,6 +49,29 @@ export const Header: React.FC = () => {
       </nav>
 
       <div className={styles.header__icons}>
+        <div className={styles.langSwitcher}>
+          <button
+            className={classNames(
+              styles.langOption,
+              styles['langOption--active'],
+            )}
+          >
+            en
+          </button>
+          <span> / </span>
+          <button className={styles.langOption}>ua</button>
+        </div>
+        <button
+          className={classNames(
+            styles.header__icon,
+            styles['header__icon--theme'],
+          )}
+        >
+          <Icon>
+            <MoonIcon />
+          </Icon>
+        </button>
+
         <NavLink
           to="/favourites"
           className={classNames(
