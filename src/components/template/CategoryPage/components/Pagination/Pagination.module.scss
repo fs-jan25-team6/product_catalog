@@ -14,4 +14,8 @@ $gap: 8px;
 
     justify-content: space-between;
   }
+
+  &__arrow {
+    background-color: $surface2-color !important;
+  }
 }
