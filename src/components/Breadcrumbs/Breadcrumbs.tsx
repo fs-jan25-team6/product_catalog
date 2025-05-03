@@ -7,6 +7,7 @@ import styles from './Breadcrumbs.module.scss';
 import { useAppSelector } from '../../hooks/hooks';
 import { generateDeviceModel } from '../../helpers/generateDeviceModel';
 import classNames from 'classnames';
+import { SearchIcon } from '../../assets/icons/search-icon';
 
 export const Breadcrumbs: React.FC = () => {
   const { pathname } = useLocation();
@@ -95,6 +96,16 @@ export const Breadcrumbs: React.FC = () => {
               </>
             )}
           </ul>
+          <div className={styles.search}>
+            <Icon color="secondary">
+              <SearchIcon />
+            </Icon>
+            <input
+              type="text"
+              placeholder="Search..."
+              className={styles.input}
+            />
+          </div>
         </nav>
       )}
     </div>
