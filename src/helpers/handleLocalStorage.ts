@@ -1,7 +1,11 @@
 import { localStorageKey } from '../enums/localStorageKey';
+import { wait } from './fetchData';
 
-export function loadFromLocalStorage<T>(key: localStorageKey): T {
+export async function loadFromLocalStorage<T>(
+  key: localStorageKey,
+): Promise<T> {
   try {
+    await wait(1800);
     const item = localStorage.getItem(key);
     return item ? (JSON.parse(item) as T) : ([] as T);
   } catch (error) {
