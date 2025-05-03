@@ -53,3 +53,12 @@
     padding-inline: 152px;
   }
 }
+
+@mixin span-columns($count, $total, $gap: 16px) {
+  $gap-count: $total - 1;
+  $total-gap: $gap-count * $gap;
+
+  width: calc(
+    (100% - #{$total-gap}) / #{$total} * #{$count} + (#{$count - 1} * #{$gap})
+  );
+}
