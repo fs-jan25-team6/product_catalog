@@ -40,114 +40,129 @@ export const HomePage: React.FC = () => {
             Welcome to Nice Gadgets store!
           </h2>
 
-          <div className={styles.slider}>
-            <button className={`${styles.sliderButton} swiper-prev`}>
-              <Icon>
-                <ArrowIcon />
-              </Icon>
-            </button>
+          <div className={styles.home_content}>
+            <div className={styles.home_content__item}>
+              <div className={styles.slider}>
+                <button className={`${styles.sliderButton} swiper-prev`}>
+                  <Icon>
+                    <ArrowIcon />
+                  </Icon>
+                </button>
 
-            <div className={styles.sliderContent}>
-              <Swiper
-                modules={[Navigation, Pagination]}
-                slidesPerView={1}
-                navigation={{
-                  nextEl: '.swiper-next',
-                  prevEl: '.swiper-prev',
-                }}
-                pagination={{
-                  el: `.${styles.customPagination}`,
-                  clickable: true,
-                  renderBullet: (_, className) => {
-                    return `<span class="${className} ${styles.customBullet}"></span>`;
-                  },
-                }}
-                rewind
-                className={styles.swiper}
-              >
-                <SwiperSlide>
-                  <ResponsiveImage
-                    alt="Phone advertisement"
-                    desktopSrc="/src/assets/banners/banner-slider-1-desktop.png"
-                    tabletSrc="/src/assets/banners/banner-slider-1-desktop.png"
-                    mobileSrc="/src/assets/banners/banner-slider-1-mobile.png"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <ResponsiveImage
-                    alt="Phone advertisement"
-                    desktopSrc="/src/assets/banners/banner-slider-2-desktop.png"
-                    tabletSrc="/src/assets/banners/banner-slider-2-desktop.png"
-                    mobileSrc="/src/assets/banners/banner-slider-2-mobile.png"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <ResponsiveImage
-                    alt="Phone advertisement"
-                    desktopSrc="/src/assets/banners/banner-slider-3-desktop.png"
-                    tabletSrc="/src/assets/banners/banner-slider-3-desktop.png"
-                    mobileSrc="/src/assets/banners/banner-slider-3-mobile.png"
-                  />
-                </SwiperSlide>
-              </Swiper>
+                <div className={styles.sliderContent}>
+                  <Swiper
+                    modules={[Navigation, Pagination]}
+                    slidesPerView={1}
+                    navigation={{
+                      nextEl: '.swiper-next',
+                      prevEl: '.swiper-prev',
+                    }}
+                    pagination={{
+                      el: `.${styles.customPagination}`,
+                      clickable: true,
+                      renderBullet: (_, className) => {
+                        return `<span class="${className} ${styles.customBullet}"></span>`;
+                      },
+                    }}
+                    rewind
+                    className={styles.swiper}
+                  >
+                    <SwiperSlide>
+                      <ResponsiveImage
+                        alt="Phone advertisement"
+                        desktopSrc="/src/assets/banners/banner-slider-1-desktop.png"
+                        tabletSrc="/src/assets/banners/banner-slider-1-desktop.png"
+                        mobileSrc="/src/assets/banners/banner-slider-1-mobile.png"
+                      />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <ResponsiveImage
+                        alt="Phone advertisement"
+                        desktopSrc="/src/assets/banners/banner-slider-2-desktop.png"
+                        tabletSrc="/src/assets/banners/banner-slider-2-desktop.png"
+                        mobileSrc="/src/assets/banners/banner-slider-2-mobile.png"
+                      />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <ResponsiveImage
+                        alt="Phone advertisement"
+                        desktopSrc="/src/assets/banners/banner-slider-3-desktop.png"
+                        tabletSrc="/src/assets/banners/banner-slider-3-desktop.png"
+                        mobileSrc="/src/assets/banners/banner-slider-3-mobile.png"
+                      />
+                    </SwiperSlide>
+                  </Swiper>
+                </div>
+
+                <button className={`${styles.sliderButton} swiper-next`}>
+                  <Icon direction="right">
+                    <ArrowIcon />
+                  </Icon>
+                </button>
+              </div>
+              <div className={styles.customPagination}></div>
             </div>
+            <div className={styles.home_content__item}>
+              <Slider
+                title={'Brand new models'}
+                productsList={brandNew}
+                id={1}
+              />
+            </div>
+            <div className={styles.home_content__item}>
+              <h3 className={styles.title}>Shop by category</h3>
 
-            <button className={`${styles.sliderButton} swiper-next`}>
-              <Icon direction="right">
-                <ArrowIcon />
-              </Icon>
-            </button>
+              <div className={styles.categories}>
+                <div className={styles.category}>
+                  <ResponsiveImage
+                    alt="Phones category"
+                    desktopSrc="/src/assets/categories/category-phones-desktop.png"
+                    tabletSrc="/src/assets/categories/category-phones-desktop.png"
+                    mobileSrc="/src/assets/categories/category-phones-desktop.png"
+                  />
+                  <NavLink to="/phones" className={styles.categoryTitle}>
+                    Mobile phones
+                  </NavLink>
+                  <p className={styles.categoryAmount}>
+                    {phones.length} models
+                  </p>
+                </div>
+
+                <div className={styles.category}>
+                  <ResponsiveImage
+                    alt="Tablets category"
+                    desktopSrc="/src/assets/categories/category-tablets-desktop.png"
+                    tabletSrc="/src/assets/categories/category-tablets-desktop.png"
+                    mobileSrc="/src/assets/categories/category-tablets-desktop.png"
+                  />
+                  <NavLink to="/tablets" className={styles.categoryTitle}>
+                    Tablets
+                  </NavLink>
+                  <p className={styles.categoryAmount}>
+                    {tablets.length} models
+                  </p>
+                </div>
+
+                <div className={styles.category}>
+                  <ResponsiveImage
+                    alt="Accessories category"
+                    desktopSrc="/src/assets/categories/category-accessories-desktop.png"
+                    tabletSrc="/src/assets/categories/category-accessories-desktop.png"
+                    mobileSrc="/src/assets/categories/category-accessories-desktop.png"
+                  />
+                  <NavLink to="/accessories" className={styles.categoryTitle}>
+                    Accessories
+                  </NavLink>
+                  <p className={styles.categoryAmount}>
+                    {accessories.length} models
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className={styles.home_content__item}>
+              <Slider title={'Hot prices'} productsList={hotPrices} id={2} />
+            </div>
           </div>
-          <div className={styles.customPagination}></div>
-
-          <Slider title={'Brand new models'} productsList={brandNew} id={1} />
-
-          <h3 className={styles.title}>Shop by category</h3>
-
-          <div className={styles.categories}>
-            <div className={styles.category}>
-              <ResponsiveImage
-                alt="Phones category"
-                desktopSrc="/src/assets/categories/category-phones-desktop.png"
-                tabletSrc="/src/assets/categories/category-phones-desktop.png"
-                mobileSrc="/src/assets/categories/category-phones-desktop.png"
-              />
-              <NavLink to="/phones" className={styles.categoryTitle}>
-                Mobile phones
-              </NavLink>
-              <p className={styles.categoryAmount}>{phones.length} models</p>
-            </div>
-
-            <div className={styles.category}>
-              <ResponsiveImage
-                alt="Tablets category"
-                desktopSrc="/src/assets/categories/category-tablets-desktop.png"
-                tabletSrc="/src/assets/categories/category-tablets-desktop.png"
-                mobileSrc="/src/assets/categories/category-tablets-desktop.png"
-              />
-              <NavLink to="/tablets" className={styles.categoryTitle}>
-                Tablets
-              </NavLink>
-              <p className={styles.categoryAmount}>{tablets.length} models</p>
-            </div>
-
-            <div className={styles.category}>
-              <ResponsiveImage
-                alt="Accessories category"
-                desktopSrc="/src/assets/categories/category-accessories-desktop.png"
-                tabletSrc="/src/assets/categories/category-accessories-desktop.png"
-                mobileSrc="/src/assets/categories/category-accessories-desktop.png"
-              />
-              <NavLink to="/accessories" className={styles.categoryTitle}>
-                Accessories
-              </NavLink>
-              <p className={styles.categoryAmount}>
-                {accessories.length} models
-              </p>
-            </div>
-          </div>
-
-          <Slider title={'Hot prices'} productsList={hotPrices} id={2} />
         </div>
       )}
     </div>
