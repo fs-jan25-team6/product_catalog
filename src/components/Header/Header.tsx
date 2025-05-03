@@ -10,7 +10,7 @@ import { HeartIcon } from '../../assets/icons/heart-icon';
 import { Icon } from '../../assets/icons/Icon/Icon';
 import { useAppSelector } from '../../hooks/hooks';
 import { selectTotalItems } from '../../features/cartSlice';
-import { LanguageSwitcher } from '../LanguageSwitch';
+import { MoonIcon } from '../../assets/icons/moon-icon';
 import { useTranslation } from 'react-i18next';
 
 export const Header: React.FC = () => {
@@ -52,17 +52,34 @@ export const Header: React.FC = () => {
       </nav>
 
       <div className={styles.header__icons}>
-        <LanguageSwitcher
+        <div className={styles.langSwitcher}>
+          <button
+            className={classNames(
+              styles.langOption,
+              styles['langOption--active'],
+            )}
+          >
+            en
+          </button>
+          <span> / </span>
+          <button className={styles.langOption}>ua</button>
+        </div>
+        <button
           className={classNames(
             styles.header__icon,
-            styles['header__icon--button'],
+            styles['header__icon--theme'],
           )}
-        />
+        >
+          <Icon>
+            <MoonIcon />
+          </Icon>
+        </button>
+
         <NavLink
           to="/favourites"
           className={classNames(
             styles.header__icon,
-            styles['header__icon--button'],
+            styles['header__icon--favourites'],
           )}
         >
           <Icon>
@@ -78,7 +95,7 @@ export const Header: React.FC = () => {
           to="/cart"
           className={classNames(
             styles.header__icon,
-            styles['header__icon--button'],
+            styles['header__icon--cart'],
           )}
         >
           <Icon>
