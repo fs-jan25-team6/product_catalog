@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './SideMenu.scss';
+import styles from './SideMenu.module.scss';
 import { NAV_LINKS } from '../../constants/navigation';
 import { Icon } from '../../assets/icons/Icon/Icon';
 import { HeartIcon } from '../../assets/icons/heart-icon';
@@ -17,24 +17,24 @@ type Props = {
 
 export const SideMenu: React.FC<Props> = ({ onClose, isOpen }: Props) => {
   const getMenuNavLinkClass = ({ isActive }: { isActive: boolean }) =>
-    classNames('menu__link', { 'menu__link--active': isActive });
+    classNames(styles.link, { [styles.activeLink]: isActive });
 
   const { favourites } = useAppSelector(state => state.favourites);
   const { cartItems } = useAppSelector(state => state.cart);
   const totalItems = useAppSelector(selectTotalItems);
 
   return (
-    <aside className={classNames('menu', { 'menu--open': isOpen })}>
-      <div className="menu__top">
-        <NavLink to="/" className="menu__logo" onClick={onClose}>
+    <aside className={classNames(styles.menu, { [styles.menuOpen]: isOpen })}>
+      <div className={styles.top}>
+        <NavLink to="/" className={styles.logo} onClick={onClose}>
           <img
-            className="menu__logo--img"
+            className={styles.logoImage}
             src="./icons/logo-icon.svg"
             alt="logo"
           />
         </NavLink>
         <button
-          className="menu__close"
+          className={styles.close}
           onClick={onClose}
           aria-label="Close menu"
         >
@@ -44,11 +44,11 @@ export const SideMenu: React.FC<Props> = ({ onClose, isOpen }: Props) => {
         </button>
       </div>
 
-      <div className="menu__content">
-        <nav className="menu__nav">
-          <ul className="menu__list">
+      <div className={styles.content}>
+        <nav>
+          <ul className={styles.list}>
             {NAV_LINKS.map(({ label, path }) => (
-              <li key={label} className="menu__item">
+              <li key={label}>
                 <NavLink
                   to={path}
                   className={getMenuNavLinkClass}
@@ -60,22 +60,34 @@ export const SideMenu: React.FC<Props> = ({ onClose, isOpen }: Props) => {
             ))}
           </ul>
         </nav>
+        <div className={styles.langSwitcher}>
+          <button
+            className={classNames(
+              styles.langOption,
+              styles['langOption--active'],
+            )}
+          >
+            en
+          </button>
+          <span> / </span>
+          <button className={styles.langOption}>ua</button>
+        </div>
       </div>
 
-      <div className="menu__bottom">
-        <NavLink to="/favourites" className="menu__icon" onClick={onClose}>
+      <div className={styles.bottom}>
+        <NavLink to="/favourites" className={styles.icon} onClick={onClose}>
           <Icon>
             <HeartIcon />
             {favourites.length > 0 && (
-              <div className="menu__icon__counter">{favourites.length}</div>
+              <div className={styles.counter}>{favourites.length}</div>
             )}
           </Icon>
         </NavLink>
-        <NavLink to="/cart" className="menu__icon" onClick={onClose}>
+        <NavLink to="/cart" className={styles.icon} onClick={onClose}>
           <Icon>
             <ShoppingBagIcon />
             {cartItems.length > 0 && (
-              <div className="menu__icon__counter">{totalItems}</div>
+              <div className={styles.counter}>{totalItems}</div>
             )}
           </Icon>
         </NavLink>
