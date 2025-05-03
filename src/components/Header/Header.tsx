@@ -10,6 +10,7 @@ import { HeartIcon } from '../../assets/icons/heart-icon';
 import { Icon } from '../../assets/icons/Icon/Icon';
 import { useAppSelector } from '../../hooks/hooks';
 import { selectTotalItems } from '../../features/cartSlice';
+import { LanguageSwitcher } from '../LanguageSwitch';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,6 +49,7 @@ export const Header: React.FC = () => {
       </nav>
 
       <div className={styles.header__icons}>
+        <LanguageSwitcher />
         <NavLink
           to="/favourites"
           className={classNames(
