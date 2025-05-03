@@ -7,11 +7,22 @@ import { Loader } from '../../Loader/Loader';
 import { ErrorPage } from '../ErrorPage/ErrorPage';
 import { Breadcrumbs } from '../../Breadcrumbs';
 import { useTranslation } from 'react-i18next';
+import { useFilteredProducts } from '../../../hooks/useFilteredProducts';
+import { useSearchParams } from 'react-router-dom';
+import { SearchParam } from '../../../enums/SearchFields';
+import { DefaultValues } from '../../../enums/DefaultValues';
 
 export const FavouritesPage: React.FC = () => {
-  const { favourites, loading, errorMessage } = useAppSelector(
-    state => state.favourites,
-  );
+  const {
+    favourites: products,
+    loading,
+    errorMessage,
+  } = useAppSelector(state => state.favourites);
+  const [searchParams] = useSearchParams();
+
+  const query = searchParams.get(SearchParam.Query) || DefaultValues.Query;
+  const favourites = useFilteredProducts(products, '', query, '');
+
   const { t } = useTranslation();
 
   return (
