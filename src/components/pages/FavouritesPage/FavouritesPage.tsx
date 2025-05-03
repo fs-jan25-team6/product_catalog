@@ -22,7 +22,7 @@ export const FavouritesPage: React.FC = () => {
           <div className={styles.content}>
             <h2 className={styles.title}>{t('favourites.title')}</h2>
 
-            {favourites.length > 0 ? (
+            {favourites.length > 0 && (
               <>
                 <span className={styles.counter}>
                   {t('catalog.subtitle.items', {
@@ -31,9 +31,8 @@ export const FavouritesPage: React.FC = () => {
                 </span>
                 <ProductList list={favourites} />
               </>
-            ) : (
-              <FavouritesEmptyPage />
             )}
+            {favourites.length === 0 && <FavouritesEmptyPage />}
           </div>
         </>
       )}
