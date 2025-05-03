@@ -124,5 +124,8 @@
   },
   "phones": {
     "title": "Мобільні телефони"
+  },
+  "search": {
+    "placeholder": "Пошук"
   }
 }

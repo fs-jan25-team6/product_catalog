@@ -120,5 +120,8 @@
   },
   "phones": {
     "title": "Mobile phones"
+  },
+  "search": {
+    "placeholder": "Search"
   }
 }

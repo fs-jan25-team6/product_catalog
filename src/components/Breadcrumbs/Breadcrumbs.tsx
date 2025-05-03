@@ -3,10 +3,12 @@ import { NavLink, useLocation, Link, useParams } from 'react-router-dom';
 import { Icon } from '../../assets/icons/Icon/Icon';
 import { HomeIcon } from '../../assets/icons/home-icon';
 import { ArrowIcon } from '../../assets/icons/arrow-icon';
-import './Breadcrumbs.scss';
+import styles from './Breadcrumbs.module.scss';
 import { useAppSelector } from '../../hooks/hooks';
 import { generateDeviceModel } from '../../helpers/generateDeviceModel';
 import { useTranslation } from 'react-i18next';
+import classNames from 'classnames';
+import { SearchField } from '../SearchField';
 
 export const Breadcrumbs: React.FC = () => {
   const { t } = useTranslation();
@@ -29,15 +31,15 @@ export const Breadcrumbs: React.FC = () => {
   }
 
   return (
-    <div aria-label="Breadcrumb" className="breadcrumbs">
+    <div aria-label="Breadcrumb" className={styles.breadcrumbs}>
       {loading ? (
         <div></div>
       ) : (
-        <nav className="breadcrumbs__navigation">
-          <ul className="breadcrumbs__list">
+        <nav className={styles.navigation}>
+          <ul className={styles.list}>
             {!isHomePage && (
-              <li className="breadcrumbs__item">
-                <NavLink to="/" className="home">
+              <li className={styles.item}>
+                <NavLink to="/" className={styles.home}>
                   <Icon>
                     <HomeIcon />
                   </Icon>
@@ -47,21 +49,21 @@ export const Breadcrumbs: React.FC = () => {
 
             {product ? (
               <>
-                <li className="breadcrumbs__item">
+                <li className={styles.item}>
                   <Icon direction="right" color="secondary">
                     <ArrowIcon />
                   </Icon>
 
-                  <Link to={`/${category}`} className="breadcrumbs__text">
+                  <Link to={`/${category}`} className={styles.text}>
                     {t(`${category}.title`)}
                   </Link>
                 </li>
-                <li className="breadcrumbs__item">
-                  <Icon className="breadcrumbs__arrow">
+                <li className={styles.item}>
+                  <Icon className={styles.arrow}>
                     <ArrowIcon />
                   </Icon>
 
-                  <span className="breadcrumbs__text breadcrumbs__text--current">
+                  <span className={classNames(styles.text, styles.currentText)}>
                     {product?.name} ({productModel})
                   </span>
                 </li>
@@ -73,16 +75,21 @@ export const Breadcrumbs: React.FC = () => {
                   const to = `/${pathnames.slice(0, index + 1).join('/')}`;
 
                   return (
-                    <li key={to} className="breadcrumbs__item">
-                      <Icon className="breadcrumbs__arrow">
+                    <li key={to} className={styles.item}>
+                      <Icon className={styles.arrow}>
                         <ArrowIcon />
                       </Icon>
                       {isLast ? (
-                        <span className="breadcrumbs__text breadcrumbs__text--current">
+                        <span
+                          className={classNames(
+                            styles.text,
+                            styles.currentText,
+                          )}
+                        >
                           {t(`${name}.title`)}
                         </span>
                       ) : (
-                        <Link to={to} className="breadcrumbs__text">
+                        <Link to={to} className={styles.text}>
                           {t(`${name}.title`)}
                         </Link>
                       )}
@@ -92,6 +99,7 @@ export const Breadcrumbs: React.FC = () => {
               </>
             )}
           </ul>
+          <SearchField />
         </nav>
       )}
     </div>
