@@ -18,222 +18,223 @@
   @include on-small-desktop {
     height: 64px;
   }
+}
 
-  &__logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 96px;
-    height: 48px;
-    @include hover(transform, scale(1.1));
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 48px;
+  @include hover(transform, scale(1.1));
 
-    @include on-small-desktop {
-      width: 128px;
-      height: 64px;
-    }
+  @include on-small-desktop {
+    width: 128px;
+    height: 64px;
   }
-  &__img {
-    width: 64px;
-    height: 22px;
-    padding: 13px 16px;
+}
 
-    @include on-small-desktop {
-      width: 80px;
-      height: 28px;
-      padding: 18px 24px;
-      object-fit: contain;
-    }
+.logoImage {
+  width: 64px;
+  height: 22px;
+  padding: 13px 16px;
+
+  @include on-small-desktop {
+    width: 80px;
+    height: 28px;
+    padding: 18px 24px;
+    object-fit: contain;
   }
+}
 
-  &__nav {
-    display: none;
+.nav {
+  display: none;
 
-    @include on-tablet {
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      height: 48px;
-      width: 100%;
-    }
-
-    @include on-small-desktop {
-      height: 64px;
-    }
-  }
-
-  &__list {
-    display: none;
-
-    @include on-tablet {
-      display: flex;
-      gap: 32px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    @include on-small-desktop {
-      gap: 64px;
-    }
-  }
-
-  &__item {
-    display: none;
-
-    @include on-tablet {
-      display: flex;
-      align-items: center;
-      height: 48px;
-    }
-
-    @include on-small-desktop {
-      height: 64px;
-    }
-  }
-
-  &__link {
-    display: none;
-
-    @include on-tablet {
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: 800;
-      text-decoration: none;
-      line-height: 11px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: $secondary-color;
-      height: 100%;
-      position: relative;
-
-      &:hover {
-        color: $white-accent-color;
-      }
-
-      &--active {
-        color: $white-accent-color;
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 3px;
-          background-color: $white-accent-color;
-        }
-      }
-    }
-  }
-
-  &__icons {
+  @include on-tablet {
     box-sizing: border-box;
-    width: 208px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    @include on-tablet {
-      width: 183px;
-    }
-
-    @include on-small-desktop {
-      width: 839px;
-      height: 64px;
-    }
-  }
-
-  &__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    text-decoration: none;
-    color: $white-accent-color;
     width: 100%;
+  }
+
+  @include on-small-desktop {
+    height: 64px;
+  }
+}
+
+.list {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @include on-small-desktop {
+    gap: 64px;
+  }
+}
+
+.item {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    height: 48px;
+  }
+
+  @include on-small-desktop {
+    height: 64px;
+  }
+}
+
+.link {
+  display: none;
+
+  @include on-tablet {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 800;
+    text-decoration: none;
+    line-height: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $secondary-color;
     height: 100%;
-    cursor: pointer;
-    border-left: 1px solid $elements-color;
     position: relative;
 
-    &__counter {
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 14px;
-      height: 14px;
-      background-color: $red-accent-color;
-      border-radius: 50%;
-      border: 1px solid $main-background-color;
-
-      font-weight: 600;
-      font-size: 9px;
-      line-height: 100%;
-      letter-spacing: 0%;
-      text-align: center;
+    &:hover {
+      color: $white-accent-color;
     }
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      opacity: 0;
-      background-color: $white-accent-color;
-      transition: opacity 0.2s ease;
-    }
+    &--active {
+      color: $white-accent-color;
 
-    &:focus::after,
-    &:active::after {
-      opacity: 1;
-    }
-
-    &--theme {
-      width: 48px;
-      background-color: $main-background-color;
-      border-bottom: 1px solid $elements-color;
-
-      @include on-tablet {
-        display: flex;
-      }
-
-      @include on-small-desktop {
-        width: 64px;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $white-accent-color;
       }
     }
+  }
+}
 
-    &--favourites,
-    &--cart {
-      display: none;
+.icons {
+  box-sizing: border-box;
+  width: 208px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 
-      @include on-tablet {
-        width: 48px;
-        display: flex;
-      }
+  @include on-tablet {
+    width: 183px;
+  }
 
-      @include on-small-desktop {
-        width: 64px;
-      }
-    }
+  @include on-small-desktop {
+    width: 839px;
+    height: 64px;
+  }
+}
 
-    &--burger {
-      width: 48px;
-      background-color: $main-background-color;
-      border-bottom: 1px solid $elements-color;
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: $white-accent-color;
+  height: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  border-left: 1px solid $elements-color;
+  position: relative;
 
-      @include on-tablet {
-        display: none;
-      }
-    }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    opacity: 0;
+    background-color: $white-accent-color;
+    transition: opacity 0.2s ease;
+  }
+
+  &:focus::after,
+  &:active::after {
+    opacity: 1;
+  }
+}
+
+.counter {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+  background-color: $red-accent-color;
+  border-radius: 50%;
+  border: 1px solid $main-background-color;
+
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.iconTheme {
+  width: 48px;
+  background-color: $main-background-color;
+  border-bottom: 1px solid $elements-color;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  @include on-small-desktop {
+    width: 64px;
+  }
+}
+
+.iconFavourites,
+.iconCart {
+  display: none;
+
+  @include on-tablet {
+    width: 48px;
+    display: flex;
+  }
+
+  @include on-small-desktop {
+    width: 64px;
+  }
+}
+
+.iconBurger {
+  width: 48px;
+  background-color: $main-background-color;
+  border-bottom: 1px solid $elements-color;
+
+  @include on-tablet {
+    display: none;
   }
 }
 

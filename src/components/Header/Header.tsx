@@ -22,24 +22,24 @@ export const Header: React.FC = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
-    classNames(styles.header__link, {
-      [styles['header__link--active']]: isActive,
+    classNames(styles.link, {
+      [styles['link--active']]: isActive,
     });
 
   return (
     <header className={styles.header}>
-      <NavLink to="/" className={styles.header__logo}>
+      <NavLink to="/" className={styles.logo}>
         <img
           src="./icons/logo-icon.svg"
           alt="logo"
-          className={styles.header__img}
+          className={styles.logoImage}
         />
       </NavLink>
 
-      <nav className={styles.header__nav}>
-        <ul className={styles.header__list}>
+      <nav className={styles.nav}>
+        <ul className={styles.list}>
           {NAV_LINKS.map(({ label, path }) => (
-            <li key={label} className={styles.header__item}>
+            <li key={label} className={styles.item}>
               <NavLink to={path} className={getNavLinkClass}>
                 {label}
               </NavLink>
@@ -48,7 +48,7 @@ export const Header: React.FC = () => {
         </ul>
       </nav>
 
-      <div className={styles.header__icons}>
+      <div className={styles.icons}>
         <div className={styles.langSwitcher}>
           <button
             className={classNames(
@@ -61,12 +61,7 @@ export const Header: React.FC = () => {
           <span> / </span>
           <button className={styles.langOption}>ua</button>
         </div>
-        <button
-          className={classNames(
-            styles.header__icon,
-            styles['header__icon--theme'],
-          )}
-        >
+        <button className={classNames(styles.icon, styles.iconTheme)}>
           <Icon>
             <MoonIcon />
           </Icon>
@@ -74,39 +69,28 @@ export const Header: React.FC = () => {
 
         <NavLink
           to="/favourites"
-          className={classNames(
-            styles.header__icon,
-            styles['header__icon--favourites'],
-          )}
+          className={classNames(styles.icon, styles.iconFavourites)}
         >
           <Icon>
             <HeartIcon />
             {favourites.length > 0 && (
-              <div className={styles.header__icon__counter}>
-                {favourites.length}
-              </div>
+              <div className={styles.counter}>{favourites.length}</div>
             )}
           </Icon>
         </NavLink>
         <NavLink
           to="/cart"
-          className={classNames(
-            styles.header__icon,
-            styles['header__icon--cart'],
-          )}
+          className={classNames(styles.icon, styles.iconCart)}
         >
           <Icon>
             <ShoppingBagIcon />
             {cartItems.length > 0 && (
-              <div className={styles.header__icon__counter}>{totalItems}</div>
+              <div className={styles.counter}>{totalItems}</div>
             )}
           </Icon>
         </NavLink>
         <button
-          className={classNames(
-            styles.header__icon,
-            styles['header__icon--burger'],
-          )}
+          className={classNames(styles.icon, styles.iconBurger)}
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
