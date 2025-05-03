@@ -29,6 +29,7 @@ export const Controls: React.FC = () => {
   const handleSortByChange = (selectedOption: Option | null) => {
     const updatedSearch = getSearchWith(searchParams, {
       [SearchParam.Sort]: selectedOption?.value ?? null,
+      [SearchParam.Page]: null,
     });
 
     navigate({ search: updatedSearch });
@@ -37,6 +38,7 @@ export const Controls: React.FC = () => {
   const handlePerPageChange = (selectedOption: Option | null) => {
     const updatedSearch = getSearchWith(searchParams, {
       [SearchParam.PerPage]: selectedOption?.value ?? null,
+      [SearchParam.Page]: null,
     });
 
     navigate({ search: updatedSearch });

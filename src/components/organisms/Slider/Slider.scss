@@ -48,17 +48,16 @@ button:disabled {
   background-color: $surface1-color;
 }
 
-.swiper-size {
-  max-width: 212px;
-  max-height: 439px;
+.swiper-wrapper .swiper-slide {
+  height: auto;
+
+  @include span-columns(3, 4);
 
   @include on-tablet {
-    max-width: 237px;
-    max-height: 512px;
+    @include span-columns(5, 12);
   }
 
   @include on-small-desktop {
-    max-width: 272px;
-    max-height: 506px;
+    @include span-columns(6, 24);
   }
 }
