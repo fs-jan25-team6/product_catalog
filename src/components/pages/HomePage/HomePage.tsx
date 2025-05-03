@@ -158,9 +158,9 @@ export const HomePage: React.FC = () => {
             <SwiperSlide>
               <ResponsiveImage
                 alt="Phone advertisement"
-                desktopSrc="/img/baner-slider-desktop.png"
-                tabletSrc="/img/baner-slider-tablet.png"
-                mobileSrc="/img/baner-slider-mobile.png"
+                desktopSrc="/src/assets/banners/banner-slider-desktop.png"
+                tabletSrc="/src/assets/banners/banner-slider-desktop.png"
+                mobileSrc="/src/assets/banners/banner-slider-mobile.png"
               />
             </SwiperSlide>
             <SwiperSlide>
