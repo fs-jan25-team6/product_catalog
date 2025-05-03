@@ -51,7 +51,9 @@
       "product": {
         "colors": "Colors",
         "capacity": "Capacity"
-      }
+      },
+      "yes": "Yes",
+      "cancel": "Cancel"
     }
   },
   "product": {
@@ -91,10 +93,12 @@
   },
   "cart": {
     "title": "Cart",
-    "total_one": "Total for {{count}} item",
+    "total": "Total for {{count}} item",
     "total_other": "Total for {{count}} items",
     "checkout": "Checkout",
-    "empty": "Your cart is empty"
+    "empty": "Your cart is empty",
+    "notImplemented": "Checkout is not implemented yet.",
+    "question": "Do you wan't to clear the Cart?"
   },
   "sortBy": {
     "options": {
