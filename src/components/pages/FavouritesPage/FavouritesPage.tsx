@@ -6,12 +6,14 @@ import styles from './FavouritesPage.module.scss';
 import { Loader } from '../../Loader/Loader';
 import { ErrorPage } from '../ErrorPage/ErrorPage';
 import { Breadcrumbs } from '../../Breadcrumbs';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 export const FavouritesPage: React.FC = () => {
   const { favourites, loading, errorMessage } = useAppSelector(
     state => state.favourites,
   );
+  const { t } = useTranslation();
+
   return (
     <>
       {loading ? (

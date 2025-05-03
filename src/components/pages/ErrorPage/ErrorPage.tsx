@@ -8,12 +8,13 @@ import { init as initTablets } from '../../../features/tabletsSlice';
 import { init as initAccessories } from '../../../features/accessoriesSlices';
 import { useAppDispatch } from '../../../hooks/hooks';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 export const ErrorPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { t } = useTranslation();
 
   const dispatchData = async () => {
     dispatch(initProducts());

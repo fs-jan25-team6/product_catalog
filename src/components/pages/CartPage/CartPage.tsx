@@ -13,9 +13,11 @@ import { ErrorPage } from '../ErrorPage/ErrorPage';
 import { Modal } from '../../Modal/Modal';
 import { useDispatch } from 'react-redux';
 import { Back } from '../../Breadcrumbs/Back/Back';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 export const CartPage: React.FC = () => {
+  const { t } = useTranslation();
+
   const { cartItems, loading, errorMessage } = useAppSelector(
     state => state.cart,
   );

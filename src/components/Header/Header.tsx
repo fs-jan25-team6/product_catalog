@@ -11,8 +11,11 @@ import { Icon } from '../../assets/icons/Icon/Icon';
 import { useAppSelector } from '../../hooks/hooks';
 import { selectTotalItems } from '../../features/cartSlice';
 import { LanguageSwitcher } from '../LanguageSwitch';
+import { useTranslation } from 'react-i18next';
 
 export const Header: React.FC = () => {
+  const { t } = useTranslation();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { favourites } = useAppSelector(state => state.favourites);
   const { cartItems } = useAppSelector(state => state.cart);
@@ -41,7 +44,7 @@ export const Header: React.FC = () => {
           {NAV_LINKS.map(({ label, path }) => (
             <li key={label} className={styles.header__item}>
               <NavLink to={path} className={getNavLinkClass}>
-                {label}
+                {t(`navlink.${label}`)}
               </NavLink>
             </li>
           ))}
@@ -49,12 +52,17 @@ export const Header: React.FC = () => {
       </nav>
 
       <div className={styles.header__icons}>
-        <LanguageSwitcher />
+        <LanguageSwitcher
+          className={classNames(
+            styles.header__icon,
+            styles['header__icon--button'],
+          )}
+        />
         <NavLink
           to="/favourites"
           className={classNames(
             styles.header__icon,
-            styles['header__icon--favourites'],
+            styles['header__icon--button'],
           )}
         >
           <Icon>
@@ -70,7 +78,7 @@ export const Header: React.FC = () => {
           to="/cart"
           className={classNames(
             styles.header__icon,
-            styles['header__icon--cart'],
+            styles['header__icon--button'],
           )}
         >
           <Icon>

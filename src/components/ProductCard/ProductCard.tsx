@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { toggleFavourite } from '../../features/favouritesSlice';
 import { add } from '../../features/cartSlice';
 import { useNavigate } from 'react-router-dom';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: Product;
@@ -21,6 +21,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const navigate = useNavigate();
   const { favourites } = useAppSelector(state => state.favourites);
   const { cartItems } = useAppSelector(state => state.cart);
+  const { t } = useTranslation();
 
   const handleToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();

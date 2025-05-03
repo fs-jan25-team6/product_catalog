@@ -6,9 +6,11 @@ import { ArrowIcon } from '../../assets/icons/arrow-icon';
 import './Breadcrumbs.scss';
 import { useAppSelector } from '../../hooks/hooks';
 import { generateDeviceModel } from '../../helpers/generateDeviceModel';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 export const Breadcrumbs: React.FC = () => {
+  const { t } = useTranslation();
+
   const { pathname } = useLocation();
   const pathnames = pathname.split('/').filter(x => x);
 

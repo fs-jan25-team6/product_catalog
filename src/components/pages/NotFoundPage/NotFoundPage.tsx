@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './NotFoundPage.module.scss';
 import { Back } from '../../Breadcrumbs/Back/Back';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 export const NotFoundPage: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.NotFoundPage}>
       <Back />

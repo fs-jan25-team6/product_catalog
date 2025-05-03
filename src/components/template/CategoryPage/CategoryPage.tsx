@@ -15,7 +15,7 @@ import { useSearchParams } from 'react-router-dom';
 import { SearchParam } from '../../../enums/SearchFields';
 import { DefaultValues } from '../../../enums/DefaultValues';
 import { Breadcrumbs } from '../../Breadcrumbs';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   category: string;
@@ -24,6 +24,7 @@ type Props = {
 export const CategoryPage: React.FC<Props> = ({ category }) => {
   const { products, loading, error } = useAppSelector(state => state.products);
   const [searchParams] = useSearchParams();
+  const { t } = useTranslation();
 
   const query = searchParams.get(SearchParam.Query) || DefaultValues.Query;
   const sortBy = searchParams.get(SearchParam.Sort) || DefaultValues.Sort;
@@ -55,7 +56,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
               <Heading
                 title={t(`${category}.title`)}
                 subtitle={t('catalog.subtitle.items', {
-                  count: products?.length,
+                  count: filtered?.length,
                 })}
               />
             </div>

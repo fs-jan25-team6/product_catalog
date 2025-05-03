@@ -18,6 +18,7 @@ import { useAppSelector } from '../../../hooks/hooks';
 import { getHotPricedProducts } from '../../../helpers/getHotPricedProducts';
 import { getNewestExpensiveProducts } from '../../../helpers/getNewestExpensiveProducts';
 import { Loader } from '../../Loader/Loader';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage: React.FC = () => {
   const { productList: phones } = useAppSelector(state => state.phones);
@@ -26,6 +27,7 @@ export const HomePage: React.FC = () => {
     state => state.accessories,
   );
   const { products, loading } = useAppSelector(state => state.products);
+  const { t } = useTranslation();
 
   const hotPrices = loading ? [] : getHotPricedProducts(products, 10);
   const brandNew = loading ? [] : getNewestExpensiveProducts(products, 10);
@@ -36,9 +38,7 @@ export const HomePage: React.FC = () => {
         <Loader />
       ) : (
         <div className={styles.content}>
-          <h2 className={styles['title--bigger']}>
-            Welcome to Nice Gadgets store!
-          </h2>
+          <h2 className={styles['title--bigger']}>{t('home.title')}</h2>
 
           <div className={styles.home_content}>
             <div className={styles.home_content__item}>
@@ -104,13 +104,13 @@ export const HomePage: React.FC = () => {
             </div>
             <div className={styles.home_content__item}>
               <Slider
-                title={'Brand new models'}
+                title={t('slider.title.products.new')}
                 productsList={brandNew}
                 id={1}
               />
             </div>
             <div className={styles.home_content__item}>
-              <h3 className={styles.title}>Shop by category</h3>
+              <h3 className={styles.title}>{t('home.categories')}</h3>
 
               <div className={styles.categories}>
                 <div className={styles.category}>
@@ -121,10 +121,10 @@ export const HomePage: React.FC = () => {
                     mobileSrc="/src/assets/categories/category-phones-desktop.png"
                   />
                   <NavLink to="/phones" className={styles.categoryTitle}>
-                    Mobile phones
+                    {t('phones.title')}
                   </NavLink>
                   <p className={styles.categoryAmount}>
-                    {phones.length} models
+                    {t('catalog.subtitle.items', { count: phones.length })}
                   </p>
                 </div>
 
@@ -136,10 +136,10 @@ export const HomePage: React.FC = () => {
                     mobileSrc="/src/assets/categories/category-tablets-desktop.png"
                   />
                   <NavLink to="/tablets" className={styles.categoryTitle}>
-                    Tablets
+                    {t('tablets.title')}
                   </NavLink>
                   <p className={styles.categoryAmount}>
-                    {tablets.length} models
+                    {t('catalog.subtitle.items', { count: tablets.length })}
                   </p>
                 </div>
 
@@ -151,16 +151,20 @@ export const HomePage: React.FC = () => {
                     mobileSrc="/src/assets/categories/category-accessories-desktop.png"
                   />
                   <NavLink to="/accessories" className={styles.categoryTitle}>
-                    Accessories
+                    {t('accessories.title')}
                   </NavLink>
                   <p className={styles.categoryAmount}>
-                    {accessories.length} models
+                    {t('catalog.subtitle.items', { count: accessories.length })}
                   </p>
                 </div>
               </div>
             </div>
             <div className={styles.home_content__item}>
-              <Slider title={'Hot prices'} productsList={hotPrices} id={2} />
+              <Slider
+                title={t('slider.title.products.hot')}
+                productsList={hotPrices}
+                id={2}
+              />
             </div>
           </div>
         </div>

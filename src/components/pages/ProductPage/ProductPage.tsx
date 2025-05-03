@@ -25,7 +25,7 @@ import { Loader } from '../../Loader/Loader';
 import { Back } from '../../Breadcrumbs/Back/Back';
 import { Breadcrumbs } from '../../Breadcrumbs';
 import { getVariantOptions } from '../../../helpers/getAvailabilityProducts';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
@@ -34,6 +34,7 @@ export const ProductPage: React.FC = () => {
   const { products, error } = useAppSelector(state => state.products);
   const { favourites } = useAppSelector(state => state.favourites);
   const { cartItems } = useAppSelector(state => state.cart);
+  const { t } = useTranslation();
 
   const selectedProduct = products.find(
     product => product.itemId === productId,
@@ -296,7 +297,7 @@ export const ProductPage: React.FC = () => {
                 <DetailesSpecification
                   label={t(
                     selectedProduct.category === 'accessories'
-                      ? 'product.specifications.capacity'
+                      ? 'product.specifications.display'
                       : 'product.specifications.builtInMemory',
                   )}
                   value={productDetails?.capacity}
