@@ -2,28 +2,22 @@
 @use '/src/styles/utils/variables.scss' as *;
 
 .content {
-  @include page-grid;
   height: 100%;
+  flex-grow: 1;
+  overflow: hidden;
   color: $white-accent-color;
   row-gap: 12px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .favouritesEmptyImage {
-  grid-column: 1 / -1;
-  height: auto;
+  height: 66%;
   max-height: 268px;
   max-width: 268px;
   width: 100%;
   margin: 0 auto;
-
-  @include on-tablet {
-    grid-column: 3 / 11;
-  }
-  @include on-small-desktop {
-    max-height: 300px;
-    max-width: 300px;
-    grid-column: 7 / 19;
-  }
 
   &__img {
     width: 100%;
@@ -32,7 +26,7 @@
 }
 
 .errorMessage {
-  grid-column: 1 / -1;
+  height: 33%;
   display: flex;
   flex-direction: column;
   text-align: center;

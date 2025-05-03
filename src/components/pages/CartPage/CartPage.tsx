@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './CartPage.scss';
+import styles from './CartPage.module.scss';
 import { CartItem } from '../../organisms/CartItem/CartItem';
 import { useAppSelector } from '../../../hooks/hooks';
 import {
@@ -31,29 +31,29 @@ export const CartPage: React.FC = () => {
       ) : (
         <>
           <Back />
-          <div className="cart">
-            <h1 className="cart__title">Cart</h1>
+          <div className={styles.cart}>
+            <h1 className={styles.title}>Cart</h1>
 
             {cartItems.length > 0 ? (
-              <div className="cart__content">
-                <div className="cart__list">
+              <div className={styles.content}>
+                <div className={styles.list}>
                   {cartItems.map(item => (
                     <CartItem product={item} key={item.id} />
                   ))}
                 </div>
 
-                <div className="cart__total">
-                  <div className="cart__total-price">
-                    <p className="cart__total-amount"> ${totalPrice} </p>
-                    <p className="cart__total-items">
+                <div className={styles.total}>
+                  <div className={styles.totalPrice}>
+                    <p className={styles.totalAmount}> ${totalPrice} </p>
+                    <p className={styles.totalItems}>
                       Total for {totalItems} items
                     </p>
                   </div>
 
-                  <hr className="cart__divider" />
+                  <hr className={styles.divider} />
 
                   <button
-                    className="cart__checkout-btn"
+                    className={styles.checkout}
                     onClick={() => setIsModalOpen(true)}
                   >
                     Checkout
