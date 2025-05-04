@@ -10,7 +10,11 @@ import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import { SearchField } from '../SearchField';
 
-export const Breadcrumbs: React.FC = () => {
+type Props = {
+  showSearch?: boolean;
+};
+
+export const Breadcrumbs: React.FC<Props> = ({ showSearch = false }) => {
   const { t } = useTranslation();
 
   const { pathname } = useLocation();
@@ -55,7 +59,7 @@ export const Breadcrumbs: React.FC = () => {
                   </Icon>
 
                   <Link to={`/${category}`} className={styles.text}>
-                    {t(`${category}.title`)}
+                    {t(`breadcrumbs.${category}.title`)}
                   </Link>
                 </li>
                 <li className={styles.item}>
@@ -86,11 +90,11 @@ export const Breadcrumbs: React.FC = () => {
                             styles.currentText,
                           )}
                         >
-                          {t(`${name}.title`)}
+                          {t(`breadcrumbs.${name}.title`)}
                         </span>
                       ) : (
                         <Link to={to} className={styles.text}>
-                          {t(`${name}.title`)}
+                          {t(`breadcrumbs.${name}.title`)}
                         </Link>
                       )}
                     </li>
@@ -99,7 +103,7 @@ export const Breadcrumbs: React.FC = () => {
               </>
             )}
           </ul>
-          <SearchField />
+          {showSearch && <SearchField />}
         </nav>
       )}
     </div>

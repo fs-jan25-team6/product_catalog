@@ -16,6 +16,6 @@ $gap: 8px;
   }
 
   &__arrow {
-    background-color: $surface2-color !important;
+    background-color: var(--surface2-color, $surface2-color) !important;
   }
 }

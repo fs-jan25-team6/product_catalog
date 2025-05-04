@@ -19,6 +19,7 @@ import { getHotPricedProducts } from '../../../helpers/getHotPricedProducts';
 import { getNewestExpensiveProducts } from '../../../helpers/getNewestExpensiveProducts';
 import { Loader } from '../../Loader/Loader';
 import { useTranslation } from 'react-i18next';
+import { Typography } from '../../atoms/Typography';
 
 export const HomePage: React.FC = () => {
   const { productList: phones } = useAppSelector(state => state.phones);
@@ -110,7 +111,9 @@ export const HomePage: React.FC = () => {
               />
             </div>
             <div className={styles.home_content__item}>
-              <h3 className={styles.title}>{t('home.categories')}</h3>
+              <Typography variant="h2" tag="h2" className={styles.title}>
+                {t('home.categories')}
+              </Typography>
 
               <div className={styles.categories}>
                 <NavLink to="/phones" className={styles.category}>

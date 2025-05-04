@@ -2,7 +2,7 @@
 @use '/src/styles/utils/mixins.scss' as *;
 
 .breadcrumbs {
-  background-color: $main-background-color;
+  background-color: var(--main-background-color, $main-background-color);
   margin-bottom: 40px;
 }
 
@@ -46,7 +46,7 @@
   transform: rotate(180deg);
   display: inline-flex;
   align-items: center;
-  color: $icons-color;
+  color: (--icons-color, $icons-color);
 }
 
 .text {
@@ -54,14 +54,14 @@
   font-size: 12px;
   line-height: 100%;
   text-decoration: none;
-  color: $white-accent-color;
+  color: var(--main-text-color-primary, $white-accent-color);
   white-space: nowrap;
 }
 
 .currentText {
   font-weight: 600;
   cursor: default;
-  color: $secondary-color;
+  color: var(--main-text-color-secondary, $secondary-color);
   text-decoration: none;
   text-overflow: ellipsis;
   overflow: hidden;

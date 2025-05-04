@@ -2,7 +2,7 @@
 @use '../../../styles/utils/mixins' as *;
 
 .cart-item {
-  background-color: $surface1-color;
+  background-color: var(--surface1-color, $surface1-color);
   box-sizing: border-box;
   // max-width: 320px;
   width: 100%;
@@ -33,7 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $surface1-color;
+    background-color: var(--surface1-color, $surface1-color);
     padding: 0;
     cursor: pointer;
   }
@@ -70,7 +70,7 @@
   }
 
   &__price {
-    color: $white-accent-color;
+    color: var(--main-text-color-primary, $white-accent-color);
     margin: 0;
     font-weight: 800;
     font-size: 22px;
@@ -84,7 +84,7 @@
 .counter {
   display: flex;
   height: 32px;
-  border-color: $surface1-color;
+  border-color: var(--surface1-color, $surface1-color);
   align-items: center;
 
   &__amount {
@@ -100,7 +100,7 @@
   &--active {
     display: flex;
     justify-content: center;
-    background-color: $surface1-color;
+    background-color: var(--surface1-color, $surface1-color);
     border-radius: 0;
     box-sizing: border-box;
     height: 100%;
@@ -111,10 +111,10 @@
   }
 
   &--disabled {
-    border: 1px solid $elements-color;
+    border: 1px solid var(--elements-color, $elements-color);
   }
 
   &--active {
-    background-color: $surface2-color;
+    background-color: var(--surface2-color, $surface2-color);
   }
 }

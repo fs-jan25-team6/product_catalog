@@ -26,6 +26,7 @@ import { Back } from '../../Breadcrumbs/Back/Back';
 import { Breadcrumbs } from '../../Breadcrumbs';
 import { getVariantOptions } from '../../../helpers/getAvailabilityProducts';
 import { useTranslation } from 'react-i18next';
+import { Typography } from '../../atoms/Typography';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
@@ -101,9 +102,9 @@ export const ProductPage: React.FC = () => {
         <>
           <Breadcrumbs />
           <Back />
-          <h2 className={styles.name}>
+          <Typography tag="h2" variant="h2" className={styles.name}>
             {productDetails?.name} ({productModel})
-          </h2>
+          </Typography>
 
           <section className={styles.main_info}>
             <div className={styles.images}>

@@ -36,6 +36,8 @@
   }
 
   &--bigger {
+    color: var(--main-text-color-primary, $white-accent-color);
+
     font-size: 32px;
     margin-bottom: 24px;
 
@@ -70,7 +72,6 @@
 }
 
 .sliderButton {
-  border-color: $surface2-color;
   border-radius: 0;
   box-sizing: border-box;
   padding: 0;
@@ -83,7 +84,7 @@
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  background-color: $surface2-color;
+  background-color: var(--surface2-color, $surface2-color);
 
   @include on-tablet {
     display: flex;
@@ -126,7 +127,7 @@
 
 .categoryTitle {
   text-decoration: none;
-  color: $white-accent-color;
+  color: var(--main-text-color-primary, $white-accent-color);
   margin: 0;
   margin-top: 24px;
   margin-bottom: 4px;
@@ -139,7 +140,7 @@
   font-size: 14px;
   font-weight: 600;
 
-  color: $secondary-color;
+  color: var(--main-text-color-secondary, $secondary-color);
 }
 
 .customPagination {
@@ -152,7 +153,10 @@
   --swiper-pagination-bullet-height: 4px;
   --swiper-pagination-bullet-border-radius: 0;
   --swiper-pagination-bullet-horizontal-gap: 0;
-  --swiper-pagination-color: #{$white-accent-color};
+  --swiper-pagination-color: var(
+    --main-text-color-primary,
+    #{$white-accent-color}
+  );
   --swiper-pagination-bullet-inactive-color: #{$elements-color};
 
   .swiper-pagination-bullet {

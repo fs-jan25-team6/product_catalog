@@ -12,7 +12,7 @@
 .page {
   min-width: 320px;
   box-sizing: border-box;
-  background-color: $main-background-color;
+  background-color: var(--main-background-color, $main-background-color);
 }
 
 .name {
@@ -32,7 +32,7 @@
   align-items: center;
   gap: 4px;
   margin-bottom: 16px;
-  background-color: $main-background-color;
+  background-color: var(--main-background-color, $main-background-color);
   cursor: pointer;
 }
 
@@ -41,5 +41,5 @@
   font-size: 12px;
   line-height: 100%;
   letter-spacing: 0%;
-  color: $white-accent-color;
+  color: var(--main-text-color-primary, $white-accent-color);
 }

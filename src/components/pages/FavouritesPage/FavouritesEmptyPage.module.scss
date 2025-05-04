@@ -3,7 +3,7 @@
 
 .content {
   height: 100%;
-  color: $white-accent-color;
+  color: var(--main-text-color-primary, $white-accent-color);
   row-gap: 12px;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: $purple-accent-color;
+  color: var(--purple-accent-color, $purple-accent-color);
   margin: 0 auto;
 
   @include on-tablet {

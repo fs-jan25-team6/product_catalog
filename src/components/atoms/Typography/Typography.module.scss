@@ -80,9 +80,9 @@ $regular-weight: 400;
     font-weight: $semibold-weight;
   }
   &--color--primary {
-    color: $white-accent-color;
+    color: var(--buttons-text-color-primary, $white-accent-color);
   }
   &--color--secondary {
-    color: $secondary-color;
+    color: var(--buttons-text-color-secondary, $secondary-color);
   }
 }

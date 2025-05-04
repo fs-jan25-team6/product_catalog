@@ -9,7 +9,7 @@
   font-size: 12px;
   font-weight: 800;
   line-height: 100%;
-  color: $white-accent-color;
+  color: var(--main-text-color-primary, $white-accent-color);
 
   @include on-tablet {
     gap: 40px;
@@ -28,7 +28,7 @@
 }
 
 .product {
-  color: $secondary-color;
+  color: var(--main-text-color-secondary, $secondary-color);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

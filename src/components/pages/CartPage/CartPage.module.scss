@@ -2,8 +2,8 @@
 @use '/src/styles/utils/mixins.scss' as *;
 
 .cart {
-  background-color: $main-background-color;
-  color: $white-accent-color;
+  background-color: var(--main-background-color, $main-background-color);
+  color: var(--main-text-color-primary, $white-accent-color);
   opacity: 0;
   animation: fadeIn 0.8s ease forwards;
   height: 100%;
@@ -16,7 +16,7 @@
 }
 
 .title {
-  color: $white-accent-color;
+  color: var(--main-text-color-primary, $white-accent-color);
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;
@@ -63,7 +63,7 @@
 
 .total {
   box-sizing: border-box;
-  border: 1px solid $surface2-color;
+  border: 1px solid var(--surface2-color, $surface2-color);
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -88,7 +88,7 @@
   line-height: 41px;
   letter-spacing: -1%;
   text-align: center;
-  color: $white-accent-color;
+  color: var(--main-text-color-primary, $white-accent-color);
   margin: 0;
 }
 
@@ -98,18 +98,18 @@
   line-height: 21px;
   letter-spacing: 0%;
   text-align: center;
-  color: $secondary-color;
+  color: var(--main-text-color-secondary, $secondary-color);
   margin: 0;
 }
 
 .divider {
   width: 100%;
-  border: 1px solid $elements-color;
+  border: 1px solid var(--elements-color, $elements-color);
 }
 
 .checkout {
-  background-color: $purple-accent-color;
-  color: $white-accent-color;
+  background-color: var(--buttons-background-active, $purple-accent-color);
+  color: var(--buttons-text-color-primary-active, $white-accent-color);
   border: none;
   cursor: pointer;
   font-weight: 700;
@@ -120,4 +120,11 @@
   border-radius: 0;
   width: 100%;
   height: 48px;
+
+  &:hover {
+    background-color: var(
+      --buttons-background-active-hover,
+      $purple-hover-color
+    );
+  }
 }

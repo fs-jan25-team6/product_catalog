@@ -16,6 +16,7 @@ import { SearchParam } from '../../../enums/SearchFields';
 import { DefaultValues } from '../../../enums/DefaultValues';
 import { Breadcrumbs } from '../../Breadcrumbs';
 import { useTranslation } from 'react-i18next';
+import { Typography } from '../../atoms/Typography';
 
 type Props = {
   category: string;
@@ -50,7 +51,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
         <Loader />
       ) : (
         <>
-          <Breadcrumbs />
+          <Breadcrumbs showSearch />
           <div className={styles.content}>
             <div className={styles.page__title}>
               <Heading
@@ -61,18 +62,28 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
               />
             </div>
 
-            <Controls />
+            {paginated.length === 0 ? (
+              <>
+                <Typography variant="h2" tag="h2">
+                  {t('catalog.noMatching')}
+                </Typography>
+              </>
+            ) : (
+              <>
+                <Controls />
 
-            <div>
-              <ProductList list={paginated} />
-            </div>
+                <div>
+                  <ProductList list={paginated} />
+                </div>
 
-            <div className={styles.page__pagination}>
-              <ProductListPagination
-                currentPage={page}
-                totalPages={totalPages}
-              />
-            </div>
+                <div className={styles.page__pagination}>
+                  <ProductListPagination
+                    currentPage={page}
+                    totalPages={totalPages}
+                  />
+                </div>
+              </>
+            )}
           </div>
         </>
       )}

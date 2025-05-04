@@ -31,7 +31,7 @@ export const FavouritesPage: React.FC = () => {
         <Loader />
       ) : (
         <>
-          <Breadcrumbs />
+          <Breadcrumbs showSearch />
           <div className={styles.page}>
             <h2 className={styles.title}>{t('favourites.title')}</h2>
 

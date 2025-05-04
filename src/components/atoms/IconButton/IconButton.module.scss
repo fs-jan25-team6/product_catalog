@@ -5,12 +5,14 @@
   justify-content: center;
   align-items: center;
   width: 40px;
-  background-color: $surface1-color;
+  background-color: var(--surface2-color, $surface2-color);
+  color: var(--buttons-text-color-primary, $white-accent-color);
 
   aspect-ratio: 1/1;
 
   &--active {
-    background-color: $purple-hover-color;
+    color: var(--buttons-text-color-primary-active, $white-accent-color);
+    background-color: var(--buttons-background-active, $purple-hover-color);
   }
 
   cursor: pointer;
