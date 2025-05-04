@@ -1,7 +1,7 @@
 @use '/src/styles/utils/mixins.scss' as *;
 @use '/src/styles/utils/variables.scss' as *;
 
-.content {
+.page {
   opacity: 0;
   animation: fadeIn 0.8s ease forwards;
   height: 100%;
@@ -14,8 +14,6 @@
 }
 
 .title {
-  margin-top: 24px;
-  margin-bottom: 8px;
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;
@@ -26,6 +24,10 @@
     font-size: 48px;
     line-height: 56px;
   }
+}
+
+.content {
+  margin-top: 8px;
 }
 
 .counter {

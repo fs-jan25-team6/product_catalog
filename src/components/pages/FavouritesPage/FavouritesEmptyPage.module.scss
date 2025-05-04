@@ -3,8 +3,6 @@
 
 .content {
   height: 100%;
-  flex-grow: 1;
-  overflow: hidden;
   color: $white-accent-color;
   row-gap: 12px;
   display: flex;
@@ -14,8 +12,8 @@
 }
 .favouritesEmptyImage {
   height: 66%;
-  max-height: 268px;
-  max-width: 268px;
+  max-height: 240px;
+  max-width: 240px;
   width: 100%;
   margin: 0 auto;
 
@@ -50,9 +48,5 @@
 
   @include on-tablet {
     font-size: 36px;
-  }
-
-  @include on-small-desktop {
-    font-size: 40px;
   }
 }
