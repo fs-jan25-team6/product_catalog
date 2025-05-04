@@ -15,6 +15,10 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Language } from '../../enums/Language';
 import { setLanguage } from '../../features/i18nSlice';
+import { HeaderLogo } from '../../assets/icons/header-logo-icon';
+import { Theme } from '../../enums/Theme';
+import { SunIcon } from '../../assets/icons/sun-icon';
+import { setTheme } from '../../features/themeSlice';
 
 const langMap = [Language.EN, Language.UA];
 
@@ -24,6 +28,7 @@ export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { favourites } = useAppSelector(state => state.favourites);
   const { cartItems } = useAppSelector(state => state.cart);
+  const { theme } = useAppSelector(state => state.theme);
   const totalItems = useAppSelector(selectTotalItems);
   const dispatch = useDispatch();
 
@@ -47,11 +52,7 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <NavLink to="/" className={styles.logo}>
-        <img
-          src="./icons/logo-icon.svg"
-          alt="logo"
-          className={styles.logoImage}
-        />
+        <HeaderLogo className={styles.logoImage} />
       </NavLink>
 
       <nav className={styles.nav}>
@@ -82,10 +83,13 @@ export const Header: React.FC = () => {
             </React.Fragment>
           ))}
         </div>
-        <button className={classNames(styles.icon, styles.iconTheme)}>
-          <Icon>
-            <MoonIcon />
-          </Icon>
+        <button
+          className={classNames(styles.icon, styles.iconTheme)}
+          onClick={() => {
+            dispatch(setTheme(theme === Theme.Dark ? Theme.Light : Theme.Dark));
+          }}
+        >
+          <Icon>{theme === Theme.Dark ? <MoonIcon /> : <SunIcon />}</Icon>
         </button>
 
         <NavLink to="/favourites" className={getIconsClass}>

@@ -9,10 +9,10 @@
 
   &--color {
     &--primary {
-      color: $white-accent-color;
+      color: var(--buttons-text-color-primary, $white-accent-color);
     }
     &--secondary {
-      color: $icons-color;
+      color: var(--icons-color, $icons-color);
     }
   }
 

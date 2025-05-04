@@ -9,6 +9,8 @@ export const fetchData = async <T>(url: string): Promise<T> => {
 
   const response = await fetch(`${import.meta.env.BASE_URL}${url}`);
 
+  // throw new Error('test error');
+
   if (!response.ok) {
     throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
   }

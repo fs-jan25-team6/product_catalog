@@ -2,13 +2,13 @@
 @use '/src/styles/utils/mixins.scss' as *;
 
 .card {
-  color: $white-accent-color;
+  color: var(--main-text-color-primary, $white-accent-color);
   height: 100%;
   display: flex;
   flex-direction: column;
   cursor: pointer;
 
-  background-color: $surface1-color;
+  background-color: var(--surface1-color, $surface1-color);
 
   &__content {
     flex: 1;
@@ -53,7 +53,7 @@
 
       &--strikethrough {
         text-decoration: line-through;
-        color: $secondary-color;
+        color: var(--main-text-color-secondary, $secondary-color);
         font-weight: 600;
       }
     }
@@ -61,7 +61,7 @@
 
   &__divider {
     height: 1px;
-    background-color: $elements-color;
+    background-color: var(--elements-color, $elements-color);
   }
 
   &__specs {
@@ -81,7 +81,7 @@
     }
 
     &__label {
-      color: $secondary-color;
+      color: var(--main-text-color-secondary, $secondary-color);
     }
   }
 
@@ -93,7 +93,7 @@
 
   &__button {
     height: 100%;
-    background-color: $surface2-color;
+    background-color: var(--surface2-color, $surface2-color);
 
     display: flex;
     justify-content: center;
@@ -110,9 +110,12 @@
     }
 
     &--cart {
-      background-color: $purple-accent-color;
+      background-color: var(--buttons-background-active, $purple-accent-color);
 
-      @include hover(background-color, $purple-hover-color);
+      @include hover(
+        background-color,
+        var(--buttons-background-active-hover, $purple-hover-color)
+      );
     }
 
     &--fav {

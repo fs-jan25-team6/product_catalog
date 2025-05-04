@@ -13,6 +13,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Icon } from '../../../assets/icons/Icon/Icon';
 import { ArrowIcon } from '../../../assets/icons/arrow-icon';
+import { Typography } from '../../atoms/Typography';
 
 type Props = {
   title: string;
@@ -33,7 +34,9 @@ export const Slider: React.FC<Props> = ({ title, productsList, id }) => {
   return (
     <>
       <div className="recomendation">
-        <h3 className="recomendation__title">{title}</h3>
+        <Typography tag="h2" variant="h2" className="recomendation__title">
+          {title}
+        </Typography>
         <div className="slider-btn">
           <button
             className={`slider-btn__left slider-btn__left--${id}`}

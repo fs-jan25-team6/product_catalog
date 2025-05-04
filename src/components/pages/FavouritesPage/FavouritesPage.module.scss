@@ -18,7 +18,7 @@
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -1%;
-  color: $white-accent-color;
+  color: var(--main-text-color-primary, $white-accent-color);
 
   @include on-tablet {
     font-size: 48px;
@@ -36,7 +36,7 @@
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0%;
-  color: $secondary-color;
+  color: var(--main-text-color-secondary, $secondary-color);
 
   margin-bottom: 40px;
 }

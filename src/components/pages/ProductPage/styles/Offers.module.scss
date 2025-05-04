@@ -17,7 +17,7 @@
       font-weight: 800;
       font-size: 22px;
       line-height: 140%;
-      color: $white-accent-color;
+      color: var(--main-text-color-primary, $white-accent-color);
     }
 
     &__buttons {
@@ -33,11 +33,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $main-background-color;
-      border: 1px solid $surface2-color;
+      background-color: var(--main-background-color, $main-background-color);
+      border: 1px solid var(--surface2-color, $surface2-color);
 
       &.--active {
-        background-color: $surface2-color;
+        background-color: var(--surface2-color, $surface2-color);
         border: 0;
       }
     }

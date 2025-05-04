@@ -8,6 +8,7 @@ import { SearchParam } from '../../enums/SearchFields';
 import { DefaultValues } from '../../enums/DefaultValues';
 import { getSearchWith } from '../../helpers/searchHelper';
 import debounce from 'lodash.debounce';
+import classNames from 'classnames';
 
 export const SearchField: React.FC = () => {
   const { t } = useTranslation();
@@ -47,7 +48,7 @@ export const SearchField: React.FC = () => {
   };
 
   return (
-    <div className={styles.search}>
+    <div className={classNames(styles.search, 'search_field_container')}>
       <label htmlFor="searchInput">
         <Icon color="secondary">
           <SearchIcon />
@@ -56,7 +57,7 @@ export const SearchField: React.FC = () => {
       <input
         type="text"
         id="searchInput"
-        placeholder={t('search.placeholder')}
+        placeholder={`${t('search.placeholder')}...`}
         className={styles.input}
         value={query}
         onChange={handleChange}

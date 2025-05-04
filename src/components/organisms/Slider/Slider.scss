@@ -30,8 +30,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $surface2-color;
-    border-color: $surface2-color;
+    background-color: var(--surface2-color, $surface2-color);
+    border-color: var(--surface2-color, $surface2-color);
     border-radius: 0;
     box-sizing: border-box;
     height: 32px;
@@ -42,10 +42,10 @@
 }
 
 button:disabled {
-  border: 1px solid $surface2-color;
+  border: 1px solid var(--surface2-color, $surface2-color);
   opacity: 0.5;
   cursor: not-allowed;
-  background-color: $surface1-color;
+  background-color: var(--surface1-color, $surface1-color);
 }
 
 .swiper-wrapper .swiper-slide {

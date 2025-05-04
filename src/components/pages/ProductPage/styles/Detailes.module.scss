@@ -21,7 +21,7 @@
   &__breakline {
     width: 100%;
     height: 1px;
-    background-color: $elements-color;
+    background-color: var(--elements-color, $elements-color);
     margin-top: 16px;
     margin-bottom: 32px;
   }
@@ -38,7 +38,7 @@
     font-weight: 800;
     font-size: 20px;
     line-height: 100%;
-    color: $white-accent-color;
+    color: var(--main-text-color-primary, $white-accent-color);
 
     @include on-tablet {
       font-weight: 800;
@@ -63,7 +63,7 @@
       font-weight: 600;
       font-size: 16px;
       line-height: 100%;
-      color: $white-accent-color;
+      color: var(--main-text-color-primary, $white-accent-color);
     }
 
     &__description {
@@ -71,7 +71,7 @@
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;
-      color: $secondary-color;
+      color: var(--main-text-color-primary, $secondary-color);
     }
   }
 }
@@ -87,7 +87,7 @@
     font-weight: 800;
     font-size: 20px;
     line-height: 100%;
-    color: $white-accent-color;
+    color: var(--main-text-color-primary, $white-accent-color);
 
     @include on-tablet {
       font-weight: 800;
@@ -112,7 +112,7 @@
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;
-      color: $secondary-color;
+      color: var(--main-text-color-primary, $secondary-color);
     }
 
     &__value {
@@ -121,7 +121,7 @@
       font-size: 13px;
       line-height: 21px;
       letter-spacing: 0%;
-      color: $white-accent-color;
+      color: var(--main-text-color-primary, $white-accent-color);
     }
   }
 }
