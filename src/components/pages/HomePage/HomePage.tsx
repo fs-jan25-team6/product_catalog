@@ -20,6 +20,7 @@ import { getNewestExpensiveProducts } from '../../../helpers/getNewestExpensiveP
 import { Loader } from '../../Loader/Loader';
 import { useTranslation } from 'react-i18next';
 import { Typography } from '../../atoms/Typography';
+import { ErrorPage } from '../ErrorPage/ErrorPage';
 
 export const HomePage: React.FC = () => {
   const { productList: phones } = useAppSelector(state => state.phones);
@@ -27,7 +28,7 @@ export const HomePage: React.FC = () => {
   const { productList: accessories } = useAppSelector(
     state => state.accessories,
   );
-  const { products, loading } = useAppSelector(state => state.products);
+  const { products, loading, error } = useAppSelector(state => state.products);
   const { t } = useTranslation();
 
   const hotPrices = loading ? [] : getHotPricedProducts(products, 10);
@@ -37,6 +38,8 @@ export const HomePage: React.FC = () => {
     <div className={styles.page}>
       {loading ? (
         <Loader />
+      ) : error ? (
+        <ErrorPage />
       ) : (
         <div className={styles.content}>
           <h2 className={styles['title--bigger']}>{t('home.title')}</h2>

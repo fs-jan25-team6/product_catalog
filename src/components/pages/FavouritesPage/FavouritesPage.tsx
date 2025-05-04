@@ -16,7 +16,7 @@ export const FavouritesPage: React.FC = () => {
   const {
     favourites: products,
     loading,
-    errorMessage,
+    error,
   } = useAppSelector(state => state.favourites);
   const [searchParams] = useSearchParams();
 
@@ -29,6 +29,8 @@ export const FavouritesPage: React.FC = () => {
     <>
       {loading ? (
         <Loader />
+      ) : error ? (
+        <ErrorPage />
       ) : (
         <>
           <Breadcrumbs showSearch />
@@ -49,7 +51,6 @@ export const FavouritesPage: React.FC = () => {
           </div>
         </>
       )}
-      {errorMessage && <ErrorPage />}
     </>
   );
 };

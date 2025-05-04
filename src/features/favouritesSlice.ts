@@ -9,13 +9,13 @@ import { localStorageKey } from '../enums/localStorageKey';
 type FavouritesState = {
   favourites: Product[];
   loading: boolean;
-  errorMessage: string; // must be a new type ErrorType
+  error: boolean;
 };
 
 const initialState: FavouritesState = {
   favourites: [],
   loading: false,
-  errorMessage: '',
+  error: false,
 };
 
 export const favouritesSlice = createSlice({
@@ -46,11 +46,12 @@ export const favouritesSlice = createSlice({
     builder.addCase(init.fulfilled, (state, action) => {
       state.favourites = action.payload;
       state.loading = false;
+      state.error = false;
     });
 
     builder.addCase(init.rejected, state => {
-      state.loading = true;
-      state.errorMessage = 'Error';
+      state.loading = false;
+      state.error = true;
     });
   },
 });
