@@ -31,7 +31,7 @@ export const SideMenu: React.FC<Props> = ({ onClose, isOpen }: Props) => {
   const { cartItems } = useAppSelector(state => state.cart);
   const totalItems = useAppSelector(selectTotalItems);
 
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleLanguageChange = (lang: Language) => {
     dispatch(setLanguage(lang));
@@ -68,7 +68,7 @@ export const SideMenu: React.FC<Props> = ({ onClose, isOpen }: Props) => {
                   className={getMenuNavLinkClass}
                   onClick={onClose}
                 >
-                  {label}
+                  {t(`navlink.${label}`)}
                 </NavLink>
               </li>
             ))}
