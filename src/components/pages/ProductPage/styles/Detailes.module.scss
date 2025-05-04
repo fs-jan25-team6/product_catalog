@@ -71,7 +71,7 @@
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;
-      color: var(--main-text-color-primary, $secondary-color);
+      color: var(--main-text-color-secondary, $secondary-color);
     }
   }
 }
@@ -112,7 +112,7 @@
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0%;
-      color: var(--main-text-color-primary, $secondary-color);
+      color: var(--main-text-color-secondary, $secondary-color);
     }
 
     &__value {
