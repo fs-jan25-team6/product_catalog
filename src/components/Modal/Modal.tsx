@@ -81,7 +81,7 @@ export const Modal: React.FC<ModalProps> = ({
             </button>
             <img
               className={styles.modal__image}
-              src="/src/assets/images/checkout-cart.png"
+              src="images/checkout-cart.png"
               alt="Modal illustration"
             />
             <Typography
