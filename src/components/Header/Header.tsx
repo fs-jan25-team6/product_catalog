@@ -39,6 +39,11 @@ export const Header: React.FC = () => {
       [styles['link--active']]: isActive,
     });
 
+  const getIconsClass = ({ isActive }: { isActive: boolean }) =>
+    classNames(styles.icon, styles.iconLink, {
+      [styles['icon--active']]: isActive,
+    });
+
   return (
     <header className={styles.header}>
       <NavLink to="/" className={styles.logo}>
@@ -83,10 +88,7 @@ export const Header: React.FC = () => {
           </Icon>
         </button>
 
-        <NavLink
-          to="/favourites"
-          className={classNames(styles.icon, styles.iconFavourites)}
-        >
+        <NavLink to="/favourites" className={getIconsClass}>
           <Icon>
             <HeartIcon />
             {favourites.length > 0 && (
@@ -94,10 +96,7 @@ export const Header: React.FC = () => {
             )}
           </Icon>
         </NavLink>
-        <NavLink
-          to="/cart"
-          className={classNames(styles.icon, styles.iconCart)}
-        >
+        <NavLink to="/cart" className={getIconsClass}>
           <Icon>
             <ShoppingBagIcon />
             {cartItems.length > 0 && (

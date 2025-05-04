@@ -113,50 +113,50 @@ export const HomePage: React.FC = () => {
               <h3 className={styles.title}>{t('home.categories')}</h3>
 
               <div className={styles.categories}>
-                <div className={styles.category}>
+                <NavLink to="/phones" className={styles.category}>
                   <ResponsiveImage
                     alt="Phones category"
                     desktopSrc="images/category-phones-desktop.png"
                     tabletSrc="images/category-phones-desktop.png"
                     mobileSrc="images/category-phones-desktop.png"
                   />
-                  <NavLink to="/phones" className={styles.categoryTitle}>
+                  <div className={styles.categoryTitle}>
                     {t('phones.title')}
-                  </NavLink>
+                  </div>
                   <p className={styles.categoryAmount}>
                     {t('catalog.subtitle.items', { count: phones.length })}
                   </p>
-                </div>
+                </NavLink>
 
-                <div className={styles.category}>
+                <NavLink to="/tablets" className={styles.category}>
                   <ResponsiveImage
                     alt="Tablets category"
                     desktopSrc="images/category-tablets-desktop.png"
                     tabletSrc="images/category-tablets-desktop.png"
                     mobileSrc="images/category-tablets-desktop.png"
                   />
-                  <NavLink to="/tablets" className={styles.categoryTitle}>
+                  <div className={styles.categoryTitle}>
                     {t('tablets.title')}
-                  </NavLink>
+                  </div>
                   <p className={styles.categoryAmount}>
                     {t('catalog.subtitle.items', { count: tablets.length })}
                   </p>
-                </div>
+                </NavLink>
 
-                <div className={styles.category}>
+                <NavLink className={styles.category} to="/accessories">
                   <ResponsiveImage
                     alt="Accessories category"
                     desktopSrc="images/category-accessories-desktop.png"
                     tabletSrc="images/category-accessories-desktop.png"
                     mobileSrc="images/category-accessories-desktop.png"
                   />
-                  <NavLink to="/accessories" className={styles.categoryTitle}>
+                  <div className={styles.categoryTitle}>
                     {t('accessories.title')}
-                  </NavLink>
+                  </div>
                   <p className={styles.categoryAmount}>
                     {t('catalog.subtitle.items', { count: accessories.length })}
                   </p>
-                </div>
+                </NavLink>
               </div>
             </div>
             <div className={styles.home_content__item}>
