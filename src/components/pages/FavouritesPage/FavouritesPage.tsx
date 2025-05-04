@@ -32,18 +32,18 @@ export const FavouritesPage: React.FC = () => {
       ) : (
         <>
           <Breadcrumbs />
-          <div className={styles.content}>
+          <div className={styles.page}>
             <h2 className={styles.title}>{t('favourites.title')}</h2>
 
             {favourites.length > 0 && (
-              <>
+              <div className={styles.content}>
                 <span className={styles.counter}>
                   {t('catalog.subtitle.items', {
                     count: favourites.length,
                   })}
                 </span>
                 <ProductList list={favourites} />
-              </>
+              </div>
             )}
             {favourites.length === 0 && <FavouritesEmptyPage />}
           </div>
