@@ -5,13 +5,13 @@ import { ProductDetails } from '../types/ProductDetails';
 type AccessoriesState = {
   productList: ProductDetails[];
   loading: boolean;
-  error: string; // must be a new type ErrorType
+  error: boolean;
 };
 
 const initialState: AccessoriesState = {
   productList: [],
   loading: false,
-  error: '',
+  error: false,
 };
 
 export const accessoriesSlice = createSlice({
@@ -26,11 +26,12 @@ export const accessoriesSlice = createSlice({
     builder.addCase(init.fulfilled, (state, action) => {
       state.productList = action.payload;
       state.loading = false;
+      state.error = false;
     });
 
     builder.addCase(init.rejected, state => {
-      state.loading = true;
-      state.error = 'Error';
+      state.loading = false;
+      state.error = true;
     });
   },
 });

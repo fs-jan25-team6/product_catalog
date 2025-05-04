@@ -17,13 +17,13 @@ type CartItem = Product & { quantity: number };
 type CartState = {
   cartItems: CartItem[];
   loading: boolean;
-  errorMessage: string;
+  error: boolean;
 };
 
 const initialState: CartState = {
   cartItems: [],
   loading: false,
-  errorMessage: '',
+  error: false,
 };
 
 export const cartSlice = createSlice({
@@ -85,11 +85,12 @@ export const cartSlice = createSlice({
     builder.addCase(init.fulfilled, (state, action) => {
       state.cartItems = action.payload;
       state.loading = false;
+      state.error = false;
     });
 
     builder.addCase(init.rejected, state => {
       state.loading = false;
-      state.errorMessage = 'Failed to load cart';
+      state.error = true;
     });
   },
 });

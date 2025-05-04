@@ -5,13 +5,13 @@ import { fetchData } from '../helpers/fetchData';
 type ProductsState = {
   products: Product[];
   loading: boolean;
-  error: string; // must be a new type ErrorType
+  error: boolean;
 };
 
 const initialState: ProductsState = {
   products: [],
   loading: false,
-  error: '',
+  error: false,
 };
 
 export const productsSlice = createSlice({
@@ -26,11 +26,12 @@ export const productsSlice = createSlice({
     builder.addCase(init.fulfilled, (state, action) => {
       state.products = action.payload;
       state.loading = false;
+      state.error = false;
     });
 
     builder.addCase(init.rejected, state => {
-      state.loading = true;
-      state.error = 'Error';
+      state.loading = false;
+      state.error = true;
     });
   },
 });

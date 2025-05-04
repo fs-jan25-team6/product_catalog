@@ -18,9 +18,7 @@ import { useTranslation } from 'react-i18next';
 export const CartPage: React.FC = () => {
   const { t } = useTranslation();
 
-  const { cartItems, loading, errorMessage } = useAppSelector(
-    state => state.cart,
-  );
+  const { cartItems, loading, error } = useAppSelector(state => state.cart);
   const totalItems = useAppSelector(selectTotalItems);
   const totalPrice = useAppSelector(selectTotalPrice);
 
@@ -31,6 +29,8 @@ export const CartPage: React.FC = () => {
     <>
       {loading ? (
         <Loader />
+      ) : error ? (
+        <ErrorPage />
       ) : (
         <>
           <Back />
@@ -79,8 +79,6 @@ export const CartPage: React.FC = () => {
           </div>
         </>
       )}
-
-      {errorMessage && <ErrorPage />}
     </>
   );
 };

@@ -47,9 +47,9 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
 
   return (
     <div className={styles.page}>
-      {loading ? (
-        <Loader />
-      ) : (
+      {loading && <Loader />}
+      {!loading && error && <ErrorPage />}
+      {!loading && !error && (
         <>
           <Breadcrumbs showSearch />
           <div className={styles.content}>
@@ -87,7 +87,6 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
           </div>
         </>
       )}
-      {error && <ErrorPage />}
     </div>
   );
 };
