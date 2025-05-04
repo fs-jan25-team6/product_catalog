@@ -57,7 +57,7 @@ export const SearchField: React.FC = () => {
       <input
         type="text"
         id="searchInput"
-        placeholder={t('search.placeholder')}
+        placeholder={`${t('search.placeholder')}...`}
         className={styles.input}
         value={query}
         onChange={handleChange}
