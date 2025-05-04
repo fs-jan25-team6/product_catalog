@@ -54,7 +54,7 @@ export const Breadcrumbs: React.FC<Props> = ({ showSearch = false }) => {
             {product ? (
               <>
                 <li className={styles.item}>
-                  <Icon direction="right" color="secondary">
+                  <Icon direction="right">
                     <ArrowIcon />
                   </Icon>
 
