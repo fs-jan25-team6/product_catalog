@@ -3,10 +3,6 @@ import styles from './Loader.module.scss';
 
 export const Loader = () => (
   <div className={styles.content}>
-    <img
-      src="/src/assets/images/loading.png"
-      alt=""
-      className={styles.astronaut}
-    />
+    <img src="images/loading.png" alt="" className={styles.astronaut} />
   </div>
 );

@@ -10,7 +10,7 @@ export const CartEmptyPage = () => {
       <div className={styles.cartEmptyImage}>
         <img
           className={styles.cartEmptyImage__img}
-          src="/src/assets/images/no-items.png"
+          src="images/no-items.png"
           alt=""
         />
       </div>

@@ -29,11 +29,7 @@ export const ErrorPage = () => {
   return (
     <div className={styles.content}>
       <div className={styles.ErrorImage}>
-        <img
-          className={styles.ErrorImage__img}
-          src="/src/assets/images/error.png"
-          alt=""
-        />
+        <img className={styles.ErrorImage__img} src="images/error.png" alt="" />
       </div>
       <div className={styles.errorMessage}>
         <span className={styles.error}>{t('error.unknown')}</span>

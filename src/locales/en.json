@@ -123,5 +123,9 @@
   },
   "search": {
     "placeholder": "Search"
+  },
+  "error": {
+    "unknown": "Sorry, something went wrong",
+    "retry": "Try again"
   }
 }

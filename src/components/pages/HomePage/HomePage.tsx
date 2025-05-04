@@ -70,25 +70,25 @@ export const HomePage: React.FC = () => {
                     <SwiperSlide>
                       <ResponsiveImage
                         alt="Phone advertisement"
-                        desktopSrc="/src/assets/banners/banner-slider-1-desktop.png"
-                        tabletSrc="/src/assets/banners/banner-slider-1-desktop.png"
-                        mobileSrc="/src/assets/banners/banner-slider-1-mobile.png"
+                        desktopSrc="images/banner-slider-1-desktop.png"
+                        tabletSrc="images/banner-slider-1-desktop.png"
+                        mobileSrc="images/banner-slider-1-mobile.png"
                       />
                     </SwiperSlide>
                     <SwiperSlide>
                       <ResponsiveImage
                         alt="Phone advertisement"
-                        desktopSrc="/src/assets/banners/banner-slider-2-desktop.png"
-                        tabletSrc="/src/assets/banners/banner-slider-2-desktop.png"
-                        mobileSrc="/src/assets/banners/banner-slider-2-mobile.png"
+                        desktopSrc="images/banner-slider-2-desktop.png"
+                        tabletSrc="images/banner-slider-2-desktop.png"
+                        mobileSrc="images/banner-slider-2-mobile.png"
                       />
                     </SwiperSlide>
                     <SwiperSlide>
                       <ResponsiveImage
                         alt="Phone advertisement"
-                        desktopSrc="/src/assets/banners/banner-slider-3-desktop.png"
-                        tabletSrc="/src/assets/banners/banner-slider-3-desktop.png"
-                        mobileSrc="/src/assets/banners/banner-slider-3-mobile.png"
+                        desktopSrc="images/banner-slider-3-desktop.png"
+                        tabletSrc="images/banner-slider-3-desktop.png"
+                        mobileSrc="images/banner-slider-3-mobile.png"
                       />
                     </SwiperSlide>
                   </Swiper>
@@ -116,9 +116,9 @@ export const HomePage: React.FC = () => {
                 <div className={styles.category}>
                   <ResponsiveImage
                     alt="Phones category"
-                    desktopSrc="/src/assets/categories/category-phones-desktop.png"
-                    tabletSrc="/src/assets/categories/category-phones-desktop.png"
-                    mobileSrc="/src/assets/categories/category-phones-desktop.png"
+                    desktopSrc="images/category-phones-desktop.png"
+                    tabletSrc="images/category-phones-desktop.png"
+                    mobileSrc="images/category-phones-desktop.png"
                   />
                   <NavLink to="/phones" className={styles.categoryTitle}>
                     {t('phones.title')}
@@ -131,9 +131,9 @@ export const HomePage: React.FC = () => {
                 <div className={styles.category}>
                   <ResponsiveImage
                     alt="Tablets category"
-                    desktopSrc="/src/assets/categories/category-tablets-desktop.png"
-                    tabletSrc="/src/assets/categories/category-tablets-desktop.png"
-                    mobileSrc="/src/assets/categories/category-tablets-desktop.png"
+                    desktopSrc="images/category-tablets-desktop.png"
+                    tabletSrc="images/category-tablets-desktop.png"
+                    mobileSrc="images/category-tablets-desktop.png"
                   />
                   <NavLink to="/tablets" className={styles.categoryTitle}>
                     {t('tablets.title')}
@@ -146,9 +146,9 @@ export const HomePage: React.FC = () => {
                 <div className={styles.category}>
                   <ResponsiveImage
                     alt="Accessories category"
-                    desktopSrc="/src/assets/categories/category-accessories-desktop.png"
-                    tabletSrc="/src/assets/categories/category-accessories-desktop.png"
-                    mobileSrc="/src/assets/categories/category-accessories-desktop.png"
+                    desktopSrc="images/category-accessories-desktop.png"
+                    tabletSrc="images/category-accessories-desktop.png"
+                    mobileSrc="images/category-accessories-desktop.png"
                   />
                   <NavLink to="/accessories" className={styles.categoryTitle}>
                     {t('accessories.title')}
