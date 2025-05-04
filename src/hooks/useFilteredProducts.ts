@@ -11,8 +11,8 @@ export function useFilteredProducts(
   return useMemo(() => {
     const result = products.filter(
       p =>
-        p.category === category &&
-        p.name.toLowerCase().includes(query.toLowerCase()),
+        (category === '' || p.category === category) &&
+        (query === '' || p.name.toLowerCase().includes(query.toLowerCase())),
     );
 
     switch (sortBy) {
@@ -23,8 +23,9 @@ export function useFilteredProducts(
         result.sort((a, b) => a.price - b.price);
         break;
       case SortBy.Newest:
-      default:
         result.sort((a, b) => b.year - a.year);
+        break;
+      default:
         break;
     }
 

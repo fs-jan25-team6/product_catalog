@@ -75,6 +75,9 @@ body.modal--open {
 }
 
 .container {
+  max-width: 1200px;
+  margin: 0 auto;
+
   @include content-padding-inline;
   padding-top: 24px;
   padding-bottom: 56px;

@@ -9,19 +9,33 @@ import { ShoppingBagIcon } from '../../assets/icons/shopping-bag-icon';
 import { CloseIcon } from '../../assets/icons/close-icon';
 import { useAppSelector } from '../../hooks/hooks';
 import { selectTotalItems } from '../../features/cartSlice';
+import { Language } from '../../enums/Language';
+import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
+import { setLanguage } from '../../features/i18nSlice';
 
 type Props = {
   onClose: () => void;
   isOpen: boolean;
 };
 
+const langMap = [Language.EN, Language.UA];
+
 export const SideMenu: React.FC<Props> = ({ onClose, isOpen }: Props) => {
   const getMenuNavLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.link, { [styles.activeLink]: isActive });
 
+  const dispatch = useDispatch();
+
   const { favourites } = useAppSelector(state => state.favourites);
   const { cartItems } = useAppSelector(state => state.cart);
   const totalItems = useAppSelector(selectTotalItems);
+
+  const { t, i18n } = useTranslation();
+
+  const handleLanguageChange = (lang: Language) => {
+    dispatch(setLanguage(lang));
+  };
 
   return (
     <aside className={classNames(styles.menu, { [styles.menuOpen]: isOpen })}>
@@ -54,23 +68,26 @@ export const SideMenu: React.FC<Props> = ({ onClose, isOpen }: Props) => {
                   className={getMenuNavLinkClass}
                   onClick={onClose}
                 >
-                  {label}
+                  {t(`navlink.${label}`)}
                 </NavLink>
               </li>
             ))}
           </ul>
         </nav>
         <div className={styles.langSwitcher}>
-          <button
-            className={classNames(
-              styles.langOption,
-              styles['langOption--active'],
-            )}
-          >
-            en
-          </button>
-          <span> / </span>
-          <button className={styles.langOption}>ua</button>
+          {langMap.map((lang, index, arr) => (
+            <React.Fragment key={lang}>
+              <button
+                onClick={() => handleLanguageChange(lang)}
+                className={classNames(styles.langOption, {
+                  [styles['langOption--active']]: i18n.language === lang,
+                })}
+              >
+                {lang}
+              </button>
+              {index < arr.length - 1 && <span> / </span>}
+            </React.Fragment>
+          ))}
         </div>
       </div>
 

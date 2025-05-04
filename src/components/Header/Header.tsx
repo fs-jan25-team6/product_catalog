@@ -11,12 +11,25 @@ import { Icon } from '../../assets/icons/Icon/Icon';
 import { useAppSelector } from '../../hooks/hooks';
 import { selectTotalItems } from '../../features/cartSlice';
 import { MoonIcon } from '../../assets/icons/moon-icon';
+import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
+import { Language } from '../../enums/Language';
+import { setLanguage } from '../../features/i18nSlice';
+
+const langMap = [Language.EN, Language.UA];
 
 export const Header: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { favourites } = useAppSelector(state => state.favourites);
   const { cartItems } = useAppSelector(state => state.cart);
   const totalItems = useAppSelector(selectTotalItems);
+  const dispatch = useDispatch();
+
+  const handleLanguageChange = (lang: Language) => {
+    dispatch(setLanguage(lang));
+  };
 
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
   const closeMenu = () => setIsMenuOpen(false);
@@ -46,7 +59,7 @@ export const Header: React.FC = () => {
           {NAV_LINKS.map(({ label, path }) => (
             <li key={label} className={styles.item}>
               <NavLink to={path} className={getNavLinkClass}>
-                {label}
+                {t(`navlink.${label}`)}
               </NavLink>
             </li>
           ))}
@@ -55,16 +68,19 @@ export const Header: React.FC = () => {
 
       <div className={styles.icons}>
         <div className={styles.langSwitcher}>
-          <button
-            className={classNames(
-              styles.langOption,
-              styles['langOption--active'],
-            )}
-          >
-            en
-          </button>
-          <span> / </span>
-          <button className={styles.langOption}>ua</button>
+          {langMap.map((lang, index, arr) => (
+            <React.Fragment key={lang}>
+              <button
+                onClick={() => handleLanguageChange(lang)}
+                className={classNames(styles.langOption, {
+                  [styles['langOption--active']]: i18n.language === lang,
+                })}
+              >
+                {lang}
+              </button>
+              {index < arr.length - 1 && <span> / </span>}
+            </React.Fragment>
+          ))}
         </div>
         <button className={classNames(styles.icon, styles.iconTheme)}>
           <Icon>

@@ -5,6 +5,7 @@ import { cartSlice } from '../features/cartSlice';
 import { phonesSlice } from '../features/phonesSlice';
 import { tabletsSlice } from '../features/tabletsSlice';
 import { accessoriesSlice } from '../features/accessoriesSlices';
+import { i18nSlice } from '../features/i18nSlice';
 
 const rootReducer = combineSlices({
   products: productsSlice.reducer,
@@ -13,6 +14,7 @@ const rootReducer = combineSlices({
   phones: phonesSlice.reducer,
   tablets: tabletsSlice.reducer,
   accessories: accessoriesSlice.reducer,
+  i18n: i18nSlice.reducer,
 });
 
 export const store = configureStore({

@@ -6,11 +6,25 @@ import styles from './FavouritesPage.module.scss';
 import { Loader } from '../../Loader/Loader';
 import { ErrorPage } from '../ErrorPage/ErrorPage';
 import { Breadcrumbs } from '../../Breadcrumbs';
+import { useTranslation } from 'react-i18next';
+import { useFilteredProducts } from '../../../hooks/useFilteredProducts';
+import { useSearchParams } from 'react-router-dom';
+import { SearchParam } from '../../../enums/SearchFields';
+import { DefaultValues } from '../../../enums/DefaultValues';
 
 export const FavouritesPage: React.FC = () => {
-  const { favourites, loading, errorMessage } = useAppSelector(
-    state => state.favourites,
-  );
+  const {
+    favourites: products,
+    loading,
+    errorMessage,
+  } = useAppSelector(state => state.favourites);
+  const [searchParams] = useSearchParams();
+
+  const query = searchParams.get(SearchParam.Query) || DefaultValues.Query;
+  const favourites = useFilteredProducts(products, '', query, '');
+
+  const { t } = useTranslation();
+
   return (
     <>
       {loading ? (
@@ -19,13 +33,14 @@ export const FavouritesPage: React.FC = () => {
         <>
           <Breadcrumbs />
           <div className={styles.page}>
-            <h2 className={styles.title}>Favourites</h2>
+            <h2 className={styles.title}>{t('favourites.title')}</h2>
 
             {favourites.length > 0 && (
               <div className={styles.content}>
                 <span className={styles.counter}>
-                  {favourites.length}{' '}
-                  {favourites.length === 1 ? 'item' : 'items'}
+                  {t('catalog.subtitle.items', {
+                    count: favourites.length,
+                  })}
                 </span>
                 <ProductList list={favourites} />
               </div>

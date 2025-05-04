@@ -8,11 +8,13 @@ import { init as initTablets } from '../../../features/tabletsSlice';
 import { init as initAccessories } from '../../../features/accessoriesSlices';
 import { useAppDispatch } from '../../../hooks/hooks';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const ErrorPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { t } = useTranslation();
 
   const dispatchData = async () => {
     dispatch(initProducts());
@@ -27,17 +29,13 @@ export const ErrorPage = () => {
   return (
     <div className={styles.content}>
       <div className={styles.ErrorImage}>
-        <img
-          className={styles.ErrorImage__img}
-          src="/src/assets/images/error.png"
-          alt=""
-        />
+        <img className={styles.ErrorImage__img} src="images/error.png" alt="" />
       </div>
       <div className={styles.errorMessage}>
-        <span className={styles.error}>Something went wrong 🥺</span>
+        <span className={styles.error}>{t('error.unknown')}</span>
       </div>
       <button className={styles.button} onClick={dispatchData}>
-        Try again
+        {t('error.retry')}
       </button>
     </div>
   );

@@ -13,8 +13,11 @@ import { ErrorPage } from '../ErrorPage/ErrorPage';
 import { Modal } from '../../Modal/Modal';
 import { useDispatch } from 'react-redux';
 import { Back } from '../../Breadcrumbs/Back/Back';
+import { useTranslation } from 'react-i18next';
 
 export const CartPage: React.FC = () => {
+  const { t } = useTranslation();
+
   const { cartItems, loading, errorMessage } = useAppSelector(
     state => state.cart,
   );
@@ -32,7 +35,7 @@ export const CartPage: React.FC = () => {
         <>
           <Back />
           <div className={styles.cart}>
-            <h1 className={styles.title}>Cart</h1>
+            <h1 className={styles.title}>{t('cart.title')}</h1>
 
             {cartItems.length > 0 ? (
               <div className={styles.content}>
@@ -46,7 +49,7 @@ export const CartPage: React.FC = () => {
                   <div className={styles.totalPrice}>
                     <p className={styles.totalAmount}> ${totalPrice} </p>
                     <p className={styles.totalItems}>
-                      Total for {totalItems} items
+                      {t('cart.total', { count: totalItems })}
                     </p>
                   </div>
 
@@ -56,7 +59,7 @@ export const CartPage: React.FC = () => {
                     className={styles.checkout}
                     onClick={() => setIsModalOpen(true)}
                   >
-                    Checkout
+                    {t('cart.checkout')}
                   </button>
                   {isModalOpen && (
                     <Modal

@@ -6,10 +6,13 @@ import { ArrowIcon } from '../../assets/icons/arrow-icon';
 import styles from './Breadcrumbs.module.scss';
 import { useAppSelector } from '../../hooks/hooks';
 import { generateDeviceModel } from '../../helpers/generateDeviceModel';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
-import { SearchIcon } from '../../assets/icons/search-icon';
+import { SearchField } from '../SearchField';
 
 export const Breadcrumbs: React.FC = () => {
+  const { t } = useTranslation();
+
   const { pathname } = useLocation();
   const pathnames = pathname.split('/').filter(x => x);
 
@@ -52,7 +55,7 @@ export const Breadcrumbs: React.FC = () => {
                   </Icon>
 
                   <Link to={`/${category}`} className={styles.text}>
-                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                    {t(`${category}.title`)}
                   </Link>
                 </li>
                 <li className={styles.item}>
@@ -83,11 +86,11 @@ export const Breadcrumbs: React.FC = () => {
                             styles.currentText,
                           )}
                         >
-                          {name.charAt(0).toUpperCase() + name.slice(1)}
+                          {t(`${name}.title`)}
                         </span>
                       ) : (
                         <Link to={to} className={styles.text}>
-                          {name.charAt(0).toUpperCase() + name.slice(1)}
+                          {t(`${name}.title`)}
                         </Link>
                       )}
                     </li>
@@ -96,16 +99,7 @@ export const Breadcrumbs: React.FC = () => {
               </>
             )}
           </ul>
-          <div className={styles.search}>
-            <Icon color="secondary">
-              <SearchIcon />
-            </Icon>
-            <input
-              type="text"
-              placeholder="Search..."
-              className={styles.input}
-            />
-          </div>
+          <SearchField />
         </nav>
       )}
     </div>
