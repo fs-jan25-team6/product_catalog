@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import styles from './HomePage.module.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { ResponsiveImage } from '../../atoms/ResponsiveImage/ResponsiveImage';
 import { Icon } from '../../../assets/icons/Icon/Icon';
 import { ArrowIcon } from '../../../assets/icons/arrow-icon';
@@ -26,6 +26,7 @@ export const HomePage: React.FC = () => {
     state => state.accessories,
   );
   const { products, loading } = useAppSelector(state => state.products);
+  const navigate = useNavigate();
 
   const hotPrices = loading ? [] : getHotPricedProducts(products, 10);
   const brandNew = loading ? [] : getNewestExpensiveProducts(products, 10);
@@ -105,7 +106,10 @@ export const HomePage: React.FC = () => {
           <h3 className={styles.title}>Shop by category</h3>
 
           <div className={styles.categories}>
-            <div className={styles.category}>
+            <div
+              className={styles.category}
+              onClick={() => navigate('/phones')}
+            >
               <ResponsiveImage
                 alt="Phones category"
                 desktopSrc="/src/assets/categories/category-phones-desktop.png"
@@ -118,7 +122,10 @@ export const HomePage: React.FC = () => {
               <p className={styles.categoryAmount}>{phones.length} models</p>
             </div>
 
-            <div className={styles.category}>
+            <div
+              className={styles.category}
+              onClick={() => navigate('/tablets')}
+            >
               <ResponsiveImage
                 alt="Tablets category"
                 desktopSrc="/src/assets/categories/category-tablets-desktop.png"
@@ -131,7 +138,10 @@ export const HomePage: React.FC = () => {
               <p className={styles.categoryAmount}>{tablets.length} models</p>
             </div>
 
-            <div className={styles.category}>
+            <div
+              className={styles.category}
+              onClick={() => navigate('/accessories')}
+            >
               <ResponsiveImage
                 alt="Accessories category"
                 desktopSrc="/src/assets/categories/category-accessories-desktop.png"

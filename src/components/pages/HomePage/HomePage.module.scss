@@ -121,6 +121,7 @@
 
   grid-column: span 4;
   margin: 0 auto;
+  cursor: pointer;
 
   @include on-small-desktop {
     grid-column: span 8;
@@ -128,6 +129,9 @@
 
   & img {
     width: 100%;
+    z-index: 1;
+
+    @include hover(transform, scale(1.1));
   }
 }
 
